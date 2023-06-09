@@ -2,21 +2,16 @@ import sys
 from flask import Flask, jsonify, request,render_template
 from flask_restful import Api
 from http import HTTPStatus
+from routes import main
 
 
 def create_app():
     app = Flask(__name__)
-
-    @app.route('/', methods=['GET'])
-    def home():
-        return render_template('index.html')
     
-    register_resources(app)
+    # Import the routes from routes.py
+    app.register_blueprint(main)
 
     return app
-
-def register_resources(app):
-    api = Api(app)
 
 
 if __name__ == '__main__':
