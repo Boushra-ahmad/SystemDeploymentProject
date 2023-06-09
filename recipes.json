@@ -5,7 +5,10 @@
     "description": "Classic Italian pasta dish with a rich meat sauce.",
     "category": "Dinner",
     "cuisine": "Italian",
-    "instructions": "1. Cook the pasta in boiling water. \n2. Brown the ground beef in a pan. \n3. Add onions, garlic, and tomatoes. \n4. Simmer for 20 minutes. \n5. Serve the sauce over the cooked pasta.",
+    "instructions": [
+      "Cook the pasta in boiling water.","Brown the ground beef in a pan.",
+      "Add onions, garlic, and tomatoes.","Simmer for 20 minutes.",
+      "Serve the sauce over the cooked pasta."],
     "ingredients": [
       "500g ground beef",
       "1 onion",
@@ -23,7 +26,12 @@
     "description": "Delicious Mexican tacos filled with seasoned chicken.",
     "category": "Dinner",
     "cuisine": "Mexican",
-    "instructions": "1. Season the chicken with spices. \n2. Cook the chicken on a grill or stovetop. \n3. Warm the tortillas. \n4. Assemble the tacos with chicken, salsa, lettuce, and other desired toppings. \n5. Serve and enjoy!",
+    "instructions": [
+      "Season the chicken with spices.","Cook the chicken on a grill or stovetop.",
+      "Warm the tortillas.",
+      "Assemble the tacos with chicken, salsa, lettuce, and other desired toppings.",
+      "Serve and enjoy!"
+    ],
     "ingredients": [
       "2 chicken breasts",
       "1 tablespoon chili powder",
@@ -42,7 +50,11 @@
     "description": "A simple and nutritious breakfast or snack option.",
     "category": "Breakfast",
     "cuisine": "International",
-    "instructions": "1. Toast the bread slices until golden. \n2. Mash the avocado and spread it on the toasted bread. \n3. Sprinkle salt, pepper, and red chili flakes. \n4. Drizzle with olive oil and lemon juice. \n5. Optional: Add toppings like sliced tomatoes or feta cheese. \n6. Serve and enjoy!",
+    "instructions": [
+      "Toast the bread slices until golden.","Mash the avocado and spread it on the toasted bread.",
+      "Sprinkle salt, pepper, and red chili flakes.","Drizzle with olive oil and lemon juice.",
+      "Optional: Add toppings like sliced tomatoes or feta cheese.","Serve and enjoy!"
+    ],
     "ingredients": [
       "2 slices of bread",
       "1 ripe avocado",

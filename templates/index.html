@@ -5,5 +5,42 @@
 </head>
 <body>
     <h1>Recipe Management System</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Cuisine</th>
+            <th>Instructions</th>
+            <th>Ingredients</th>
+            <th>Date Published</th>
+        </tr>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.description }}</td>
+                <td>{{ recipe.category }}</td>
+                <td>{{ recipe.cuisine }}</td>
+                <td>
+                    <ol>
+                        {% for step in recipe.instructions %}
+                        <li>{{ step }}</li>
+                        {% endfor %}
+                    </ol>
+                </td>
+                <td>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ recipe.date_published }}</td>
+            </tr>
+           
+        {% endfor %}
+        
+        
+    </table>
 </body>
 </html>

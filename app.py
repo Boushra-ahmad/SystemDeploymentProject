@@ -7,8 +7,6 @@ from routes import main
 
 def create_app():
     app = Flask(__name__)
-    
-    # Import the routes from routes.py
     app.register_blueprint(main)
 
     return app
