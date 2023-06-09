@@ -1,0 +1,57 @@
+[
+    {
+    "id": 1,
+    "name": "Spaghetti Bolognese",
+    "description": "Classic Italian pasta dish with a rich meat sauce.",
+    "category": "Dinner",
+    "cuisine": "Italian",
+    "instructions": "1. Cook the pasta in boiling water. \n2. Brown the ground beef in a pan. \n3. Add onions, garlic, and tomatoes. \n4. Simmer for 20 minutes. \n5. Serve the sauce over the cooked pasta.",
+    "ingredients": [
+      "500g ground beef",
+      "1 onion",
+      "2 cloves of garlic",
+      "400g canned tomatoes",
+      "250g spaghetti",
+      "Salt and pepper to taste"
+    ],
+    "image": "spaghetti_bolognese.jpg",
+    "date_published": "2022-03-15"
+},
+{
+    "id": 2,
+    "name": "Chicken Tacos",
+    "description": "Delicious Mexican tacos filled with seasoned chicken.",
+    "category": "Dinner",
+    "cuisine": "Mexican",
+    "instructions": "1. Season the chicken with spices. \n2. Cook the chicken on a grill or stovetop. \n3. Warm the tortillas. \n4. Assemble the tacos with chicken, salsa, lettuce, and other desired toppings. \n5. Serve and enjoy!",
+    "ingredients": [
+      "2 chicken breasts",
+      "1 tablespoon chili powder",
+      "1 teaspoon cumin",
+      "1 teaspoon paprika",
+      "1/2 teaspoon salt",
+      "8 small tortillas",
+      "Salsa, lettuce, and toppings of your choice"
+    ],
+    "image": "chicken_tacos.jpg",
+    "date_published": "2022-06-20"
+},  
+{
+    "id": 3,
+    "name": "Avocado Toast",
+    "description": "A simple and nutritious breakfast or snack option.",
+    "category": "Breakfast",
+    "cuisine": "International",
+    "instructions": "1. Toast the bread slices until golden. \n2. Mash the avocado and spread it on the toasted bread. \n3. Sprinkle salt, pepper, and red chili flakes. \n4. Drizzle with olive oil and lemon juice. \n5. Optional: Add toppings like sliced tomatoes or feta cheese. \n6. Serve and enjoy!",
+    "ingredients": [
+      "2 slices of bread",
+      "1 ripe avocado",
+      "Salt and pepper to taste",
+      "Red chili flakes",
+      "Olive oil",
+      "Lemon juice"
+    ],
+    "image": "avocado_toast.jpg",
+    "date_published": "2022-09-10"
+}  
+]
