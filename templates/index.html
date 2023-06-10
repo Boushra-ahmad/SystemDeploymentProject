@@ -2,45 +2,27 @@
 <html>
 <head>
     <title>Recipe Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Style.css') }}">
 </head>
 <body>
-    <h1>Recipe Management System</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Cuisine</th>
-            <th>Instructions</th>
-            <th>Ingredients</th>
-            <th>Date Published</th>
-        </tr>
-        {% for recipe in recipes %}
-            <tr>
-                <td>{{ recipe.name }}</td>
-                <td>{{ recipe.description }}</td>
-                <td>{{ recipe.category }}</td>
-                <td>{{ recipe.cuisine }}</td>
-                <td>
-                    <ol>
-                        {% for step in recipe.instructions %}
-                        <li>{{ step }}</li>
-                        {% endfor %}
-                    </ol>
-                </td>
-                <td>
-                    <ul>
-                        {% for ingredient in recipe.ingredients %}
-                        <li>{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-                <td>{{ recipe.date_published }}</td>
-            </tr>
+<center><h1>Recipe Management System</h1></center>
+    
+<div class="row">
+    {% for recipe in recipes %}
+
+    
+        <div class="column">
+          <div class="content">
+            <img src="{{ url_for('static',filename='images/' + recipe['image'])}}" alt="{{recipe.image}}" >
+            <h3>{{recipe.name}}</h3>
+            <p> <a href="{{ url_for('main.view_recipe', id = recipe.id)}}"> View </a>
+            </p>
+          </div>
+        </div>
+    
+                   
            
         {% endfor %}
-        
-        
-    </table>
+    </div>
 </body>
 </html>
