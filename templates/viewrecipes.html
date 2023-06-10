@@ -9,40 +9,44 @@
     <table>
         <tr>
             <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Cuisine</th>
-            <th>Instructions</th>
-            <th>Ingredients</th>
-            <th>Date Published</th>
+            <td>{{ recipes.name }}</td>
         </tr>
-        
-        
-            <tr>
-                <td>{{ recipes.name }}</td>
-                <td>{{ recipes.description }}</td>
-                <td>{{ recipes.category }}</td>
-                <td>{{ recipes.cuisine }}</td>
-                <td>
-                    <ol>
-                        {% for step in recipes.instructions %}
-                        <li>{{ step }}</li>
-                        {% endfor %}
-                    </ol>
-                </td>
-                <td>
-                    <ul>
-                        {% for ingredient in recipes.ingredients %}
-                        <li>{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-                <td>{{ recipes.date_published }}</td>
-            </tr>
-           
-        
-        
-        
+        <tr>
+            <th>Description</th>
+            <td>{{ recipes.description }}</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>{{ recipes.category }}</td>
+        </tr>
+        <tr>
+            <th>Cuisine</th>
+            <td>{{ recipes.cuisine }}</td>
+        </tr>
+        <tr>
+            <th>Instructions</th>
+            <td>
+                <ol>
+                    {% for step in recipes.instructions %}
+                    <li>{{ step }}</li>
+                    {% endfor %}
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <th>Ingredients</th>
+            <td>
+                <ul>
+                    {% for ingredient in recipes.ingredients %}
+                    <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Date Published</th>            
+            <td>{{ recipes.date_published }}</td>
+        </tr>
     </table>
 </body>
 </html>
