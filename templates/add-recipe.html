@@ -13,19 +13,18 @@
           <div class="col-lg-8 col-xl-6">
             <div class="card rounded-3">
               <div class="card-body p-4 p-md-5">
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Add Recipe</h3>
+                <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">Add Recipe</h2>
     
                 <form method="POST" action="/addrecipe" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
                     </div>
+                    <br/>
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" class="form-control" required></textarea>
+                        <textarea id="description" placeholder="Description" name="description" class="form-control" required></textarea>
                     </div>
+                    <br/>
                     <div class="form-group">
-                        <label for="category">Category</label>
                         <select id="category" name="category" class="form-control" required>
                             <option value="">Select a category</option>
                             <option value="dinner">Dinner</option>
@@ -34,21 +33,21 @@
                             <option value="snack">Snack</option>
                         </select>
                     </div>
+                    <br/>
                     <div class="form-group">
-                        <label for="cuisine">Cuisine</label>
-                        <input type="text" id="cuisine" name="cuisine" class="form-control" required>
+                        <input type="text" id="cuisine" placeholder="Cuisine" name="cuisine" class="form-control" required>
                     </div>
+                    <br/>
                     <div class="form-group">
-                        <label for="instructions">Instructions (Write comma seperated words)</label>
-                        <textarea id="instructions" name="instructions" class="form-control" required></textarea>
+                        <textarea id="instructions" placeholder="Instructions (Write comma seperated words)" name="instructions" class="form-control" required></textarea>
                     </div>
+                    <br/>
                     <div class="form-group">
-                        <label for="ingredients">Ingredients (Write comma seperated words)</label>
-                        <textarea id="ingredients" name="ingredients" class="form-control" required></textarea>
+                        <textarea id="ingredients" placeholder="Ingredients (Write comma seperated words)" name="ingredients" class="form-control" required></textarea>
                     </div>
+                    <br/>
                     <div class="form-group">
-                        <label for="ingredients">Ingredients (Write comma seperated words)</label>
-                        <input class="form-control form-control-lg" id="formFileLg" type="file" />
+                         <input class="form-control form-control-lg" id="image" name="image" type="file" />
                     </div>
                     <br/>
                     <button type="submit" class="btn btn-primary">Add Recipe</button>
