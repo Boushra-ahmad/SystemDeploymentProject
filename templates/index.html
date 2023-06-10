@@ -6,7 +6,10 @@
 </head>
 <body>
 <center><h1>Recipe Management System</h1></center>
-    
+<div id="addbtndiv">
+  <a href="{{ url_for('main.add_recipe')}}"> <button type="button" id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>
+  
+</div>
 <div class="row">
     {% for recipe in recipes %}
 
