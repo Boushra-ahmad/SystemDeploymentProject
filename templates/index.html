@@ -3,24 +3,28 @@
 <head>
     <title>Recipe Management System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
 </head>
 <body>
 <center><h1>Recipe Management System</h1></center>
-<div id="addbtndiv">
-  <a href="{{ url_for('main.add_recipe')}}"> <button type="button" id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>
-  
-</div>
+    <div id="addbtndiv">
+      <a href="{{ url_for('main.add_recipe')}}"> <button type="button" id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>
+      
+    </div>
 <div class="row">
     {% for recipe in recipes %}
 
-    
+
         <div class="column">
+          <a href="{{ url_for('main.view_recipe', id = recipe.id)}}" style="text-decoration: none; color:black;"> 
           <div class="content">
             <img src="{{ url_for('static',filename='images/' + recipe['image'])}}" alt="{{recipe.image}}" >
             <h3>{{recipe.name}}</h3>
-            <p> <a href="{{ url_for('main.view_recipe', id = recipe.id)}}"> View </a>
-            </p>
+           
           </div>
+        </a>
         </div>
     
                    
