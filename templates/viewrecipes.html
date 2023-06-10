@@ -4,7 +4,45 @@
     <title>View -Recipe Management System</title>
 </head>
 <body>
-    <h1>View Recipes</h1>
-
+    <h1>View Recipe</h1>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Cuisine</th>
+            <th>Instructions</th>
+            <th>Ingredients</th>
+            <th>Date Published</th>
+        </tr>
+        
+        
+            <tr>
+                <td>{{ recipes.name }}</td>
+                <td>{{ recipes.description }}</td>
+                <td>{{ recipes.category }}</td>
+                <td>{{ recipes.cuisine }}</td>
+                <td>
+                    <ol>
+                        {% for step in recipes.instructions %}
+                        <li>{{ step }}</li>
+                        {% endfor %}
+                    </ol>
+                </td>
+                <td>
+                    <ul>
+                        {% for ingredient in recipes.ingredients %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ recipes.date_published }}</td>
+            </tr>
+           
+        
+        
+        
+    </table>
 </body>
 </html>
