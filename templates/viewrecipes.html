@@ -2,47 +2,78 @@
 <html>
 <head>
     <title>View -Recipe Management System</title>
+    <style>
+        th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+table{
+    margin-left: auto;
+  margin-right: auto;
+}
+#addbtndiv{
+    margin: auto;
+  }
+  #addbtn{
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    }
+    </style>
 </head>
 <body>
-    <h1>View Recipe</h1>
+    <center><h1>{{ recipes.name }}</h1></center>
     
     <table>
         <tr>
             <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Cuisine</th>
-            <th>Instructions</th>
-            <th>Ingredients</th>
-            <th>Date Published</th>
+            <td>{{ recipes.name }}</td>
         </tr>
-        
-        
-            <tr>
-                <td>{{ recipes.name }}</td>
-                <td>{{ recipes.description }}</td>
-                <td>{{ recipes.category }}</td>
-                <td>{{ recipes.cuisine }}</td>
-                <td>
-                    <ol>
-                        {% for step in recipes.instructions %}
-                        <li>{{ step }}</li>
-                        {% endfor %}
-                    </ol>
-                </td>
-                <td>
-                    <ul>
-                        {% for ingredient in recipes.ingredients %}
-                        <li>{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-                <td>{{ recipes.date_published }}</td>
-            </tr>
-           
-        
-        
-        
+        <tr>
+            <th>Description</th>
+            <td>{{ recipes.description }}</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>{{ recipes.category }}</td>
+        </tr>
+        <tr>
+            <th>Cuisine</th>
+            <td>{{ recipes.cuisine }}</td>
+        </tr>
+        <tr>
+            <th>Instructions</th>
+            <td>
+                <ol>
+                    {% for step in recipes.instructions %}
+                    <li>{{ step }}</li>
+                    {% endfor %}
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <th>Ingredients</th>
+            <td>
+                <ul>
+                    {% for ingredient in recipes.ingredients %}
+                    <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Date Published</th>            
+            <td>{{ recipes.date_published }}</td>
+        </tr>
     </table>
+    <div id="addbtndiv">
+        <a href="{{ url_for('main.home')}}"  style="text-decoration: none;"> <button type="button" id="addbtn">View All Recipes</button></a>
+        
+      </div>
 </body>
 </html>
