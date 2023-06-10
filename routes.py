@@ -14,7 +14,7 @@ def get_by_id(id):
         data = json.load(file)
         for i in data:
             if i['id'] == id*1:
-                print(i, file=sys.stderr)
+                #print(i, file=sys.stderr)
                 return i
         else:
             return "not found"
@@ -33,5 +33,5 @@ def home():
 @main.route('/view/<int:id>',methods=['GET'])
 def view_recipe(id):
     recipe = get_by_id(id)
-    print(recipe, file=sys.stderr)
+    #print(recipe, file=sys.stderr)
     return render_template('viewrecipes.html',recipes = recipe)
