@@ -93,7 +93,6 @@ def view_recipe(id):
     #print(recipe, file=sys.stderr)
     return render_template('viewrecipes.html',recipes = recipe)
 
-
 #search recipe
 @main.route('/search',methods=['GET'])
 def search_recipe():
@@ -108,5 +107,6 @@ def search_recipe():
             search_recipes.append(recipe)
     # print(search_recipes, file=sys.stderr)
     return render_template('search-results.html', query=query, recipes=search_recipes)
+
 
 
