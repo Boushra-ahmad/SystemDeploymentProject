@@ -121,6 +121,7 @@ def search_recipe():
             search_recipes.append(recipe)
     # print(search_recipes, file=sys.stderr)
     return render_template('search-results.html', query=query, recipes=search_recipes)
+
 #import recipes
 @main.route('/import', methods=['GET','POST'])
 def import_recipe():
