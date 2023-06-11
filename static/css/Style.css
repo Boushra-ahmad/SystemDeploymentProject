@@ -81,6 +81,51 @@ img{width:300px; height:300px;display: block;
     padding: 10px;
     text-align: center; font-size: small;
   }
+
+  /*search*/
+  .wrap{
+    width: 30%;
+    position: absolute;
+    top: 28%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+  }
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+  
+  .searchTerm {
+    width: 70%;
+    border: 3px solid #e3e6e7;
+    border-right: none;
+    padding: 5px;
+    height: 46px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    font-size:16px;
+  }
+  
+  .searchTerm:focus{
+    color: #00B4CC;
+  }
+  
+  .searchButton {
+    width: 40px;
+    height: 46px;
+    border: 1px solid #111313;
+    background: #0e0f10;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+
+
   
   /* Responsive layout - makes a two column-layout instead of four columns */
   @media screen and (max-width: 900px) {
