@@ -12,6 +12,9 @@ img{width:300px; height:300px;display: block;
   #addbtndiv{
     margin-left: 68%;
   }
+  #addbtndiv a{
+    cursor: pointer;
+  }
   #addbtn{
     background-color: white;
     color: black;
@@ -20,6 +23,7 @@ img{width:300px; height:300px;display: block;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    cursor: pointer;
     }
   
   body {
@@ -38,6 +42,7 @@ img{width:300px; height:300px;display: block;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    cursor: pointer;
     }
   /* Center website */
   .main {
@@ -100,12 +105,12 @@ img{width:300px; height:300px;display: block;
     height: 46px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
+    color: #3e413f;
     font-size:16px;
   }
   
   .searchTerm:focus{
-    color: #00B4CC;
+    color: #3e413f;
   }
   
   .searchButton {
