@@ -107,6 +107,21 @@ def view_recipe(id):
     #print(recipe, file=sys.stderr)
     return render_template('viewrecipes.html',recipes = recipe)
 
+#search recipe
+@main.route('/search',methods=['GET'])
+def search_recipe():
+    query= request.args.get('search')
+    search_recipes = []
+    for recipe in recipes:
+        if query.lower() in recipe['name'].lower():
+            search_recipes.append(recipe)
+        elif query.lower() in recipe['category'].lower():
+            search_recipes.append(recipe)
+        elif query.lower() in recipe['cuisine'].lower():
+            search_recipes.append(recipe)
+    # print(search_recipes, file=sys.stderr)
+    return render_template('search-results.html', query=query, recipes=search_recipes)
+
 #import recipes
 @main.route('/import', methods=['GET','POST'])
 def import_recipe():
@@ -149,5 +164,6 @@ def import_recipe():
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
+
 
 
