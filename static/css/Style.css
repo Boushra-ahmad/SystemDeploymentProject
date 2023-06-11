@@ -82,22 +82,18 @@ img{width:300px; height:300px;display: block;
     text-align: center; font-size: small;
   }
 
-  /*search*/
-  .wrap{
-    width: 30%;
-    position: absolute;
-    top: 28%;
-    left: 57%;
-    transform: translate(-50%, -50%);
-  }
   .search {
-    width: 100%;
-    position: relative;
+    width: 85%;
+    position: absolute;
     display: flex;
+    -webkit-box-sizing: border-box; /* For Safari/Chrome */
+    -moz-box-sizing: border-box; /* For Firefox */
+    box-sizing: border-box;
+    margin-left: 41%;
   }
   
   .searchTerm {
-    width: 70%;
+    width: 22%;
     border: 3px solid #e3e6e7;
     border-right: none;
     padding: 5px;
