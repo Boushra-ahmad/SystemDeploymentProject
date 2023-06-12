@@ -8,17 +8,18 @@
 </head>
 <body>
 <center><h1>Recipe Management System</h1></center>
- 
+
+  <form action="{{ url_for('main.search_recipe') }}" method="GET">
     <div class="search">
-      <input type="text" class="searchTerm" placeholder="Search...">
+      <input type="text" class="searchTerm" name="search" placeholder="Search...">
       <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
       </button>
     </div>
+  </form>
   
     <div id="addbtndiv">
-      <a href="{{ url_for('main.add_recipe')}}"> <button type="button" id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>
-      
+      <a href="/addrecipe"><button type="button" id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>  
     </div>
 <div class="row">
     {% for recipe in recipes %}
@@ -38,5 +39,6 @@
            
         {% endfor %}
     </div>
+
 </body>
 </html>

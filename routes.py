@@ -56,54 +56,63 @@ def home():
     return render_template('index.html',recipes = recipes)
 
 
+
 #add recipe
 @main.route('/addrecipe',methods=['GET','POST'])
 def add_recipe():
+    message = None
     if request.method == 'POST':
         name = request.form['name']
         description = request.form['description']
         category = request.form['category']
         cuisine = request.form['cuisine']
-        instructions = request.form['instructions'].split(',')
+        instructions = request.form['instructions'].split('.')
         ingredients = request.form['ingredients'].split(',')
         date_published = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        images = request.files['image']
         
-         # Check if a file was uploaded
-        if 'image' in request.files:
-            image_file = request.files['image']
-            if image_file:
-                # Save the image file to the specified directory
-                filename = image_file.filename
-                image_file.save(os.path.join(UPLOAD_FOLDER, filename))
 
-        # Load the existing recipes from the JSON file
-        with open('recipes.json', 'r') as file:
-            existing_recipes = json.load(file)
-        
-        # Generate a unique ID for the new recipe
-        new_recipe_id = len(existing_recipes) + 1
+        #validation
+        if not name or not description or not category or not cuisine or not instructions or not ingredients or not images:
+            message = "All fields are required!"
+        elif any(recipe['name'] == name for recipe in recipes):
+            message = 'Recipe already exists.'
+        else:
+             # Check if a file was uploaded
+            if 'image' in request.files:
+                image_file = request.files['image']
+                if image_file:
+                    # Save the image file to the specified directory
+                    filename = image_file.filename
+                    image_file.save(os.path.join(UPLOAD_FOLDER, filename))
 
-        # Create a new recipe object
-        new_recipe = { 
-            'id': new_recipe_id, 
-            'name': name, 
-            'description': description, 
-            'category': category, 
-            'cuisine': cuisine, 
-            'instructions': instructions, 
-            'ingredients': ingredients, 
-            'date_published': date_published,
-            'image':image_file.filename
-        }
-        # Add the new recipe to the existing recipes
-        existing_recipes.append(new_recipe)
-        # Write the updated recipes back to the JSON file
-        with open('recipes.json', 'w') as file:
-            json.dump(existing_recipes, file, indent=4)
+            # Load the existing recipes from the JSON file
+            with open('recipes.json', 'r') as file:
+                existing_recipes = json.load(file)
+            
+            # Generate a unique ID for the new recipe
+            new_recipe_id = len(existing_recipes) + 1
+            # Create a new recipe object
+            new_recipe = { 
+                'id': new_recipe_id,  
+                'name': name, 
+                'description': description, 
+                'category': category, 
+                'cuisine': cuisine, 
+                'instructions': instructions, 
+                'ingredients': ingredients, 
+                'date_published': date_published,
+                'image':image_file.filename
+            }
+            # Add the new recipe to the existing recipes
+            existing_recipes.append(new_recipe)
+            # Write the updated recipes back to the JSON file
+            with open('recipes.json', 'w') as file:
+                json.dump(existing_recipes, file, indent=4)
 
-        #return to homepage
-        return redirect(url_for('main.home'))
-    return render_template('add-recipe.html')
+            #return to homepage
+            return redirect(url_for('main.home'))
+    return render_template('add-recipe.html',message=message)
 
 #view recipes
 @main.route('/view/<int:id>',methods=['GET'])
@@ -111,6 +120,21 @@ def view_recipe(id):
     recipe = get_by_id(id)
     #print(recipe, file=sys.stderr)
     return render_template('viewrecipes.html',recipes = recipe)
+
+#search recipe
+@main.route('/search',methods=['GET'])
+def search_recipe():
+    query= request.args.get('search')
+    search_recipes = []
+    for recipe in recipes:
+        if query.lower() in recipe['name'].lower():
+            search_recipes.append(recipe)
+        elif query.lower() in recipe['category'].lower():
+            search_recipes.append(recipe)
+        elif query.lower() in recipe['cuisine'].lower():
+            search_recipes.append(recipe)
+    # print(search_recipes, file=sys.stderr)
+    return render_template('search-results.html', query=query, recipes=search_recipes)
 
 #import recipes
 @main.route('/import', methods=['GET','POST'])
@@ -162,5 +186,3 @@ def import_recipe():
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
-
-

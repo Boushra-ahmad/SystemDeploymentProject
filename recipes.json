@@ -20,7 +20,7 @@
             "250g spaghetti",
             "Salt and pepper to taste"
         ],
-        "image": "spaghetti_bolognese.jpg",
+        "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15"
     },
     {
@@ -45,7 +45,7 @@
             "8 small tortillas",
             "Salsa, lettuce, and toppings of your choice"
         ],
-        "image": "chicken_tacos.jpg",
+        "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20"
     },
     {
@@ -70,7 +70,7 @@
             "Olive oil",
             "Lemon juice"
         ],
-        "image": "avocado_toast.jpg",
+        "image": "avocado-toast.jpg",
         "date_published": "2022-09-10"
     },
     {
@@ -134,24 +134,34 @@
     },
     {
         "id": 6,
-        "name": "Chocolate Cake",
-        "description": "Indulge in the rich and decadent flavors of a homemade chocolate cake. This moist and velvety dessert is perfect for chocolate lovers. With layers of moist chocolate cake, creamy chocolate frosting, and a hint of cocoa, this cake is a delightful treat for any occasion. Whether it's a birthday celebration or a special gathering, this chocolate cake is sure to satisfy your sweet tooth and leave you craving for more. Enjoy a slice of pure chocolate bliss!",
-        "category": "Dessert",
-        "cuisine": "American",
+        "name": "Butter Chicken",
+        "description": "A delicious Indian dish made with tender chicken in a rich and creamy tomato-based sauce.",
+        "category": "lunch",
+        "cuisine": "Indian",
         "instructions": [
-            "Preheat the oven.",
-            "Mix the ingredients.",
-            "Bake the cake."
+            "Marinate the chicken with yogurt ginger-garlic paste and spices.",
+            "Grill or cook the marinated chicken until cooked through.",
+            "In a separate pan melt butter and saut\u00e9 onions until golden brown.",
+            "Add tomato puree, spices and cream to the pan.",
+            "Simmer for a few minutes.",
+            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes.",
+            "Serve hot with naan or rice."
         ],
         "ingredients": [
-            "Flour",
-            "sugar",
-            "cocoa powder",
-            "eggs",
-            "butter",
-            "milk"
+            "500g boneless chicken",
+            "1 cup plain yogurt",
+            "2 tablespoons ginger-garlic paste",
+            "1 teaspoon turmeric powder",
+            "1 teaspoon chili powder",
+            "1 teaspoon garam masala",
+            "1/2 cup butter",
+            "1 large onion",
+            " finely chopped",
+            "1 cup tomato puree",
+            "1/2 cup heavy cream",
+            "Salt to taste"
         ],
-        "image": "Chocolate Cake.jpg",
-        "date_published": "2022-09-21"
+        "date_published": "2023-06-12 14:15:14",
+        "image": "butter-chicken-ac2ff98.jpg"
     }
 ]
