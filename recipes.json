@@ -20,7 +20,7 @@
             "250g spaghetti",
             "Salt and pepper to taste"
         ],
-        "image": "spaghetti_bolognese.jpg",
+        "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15"
     },
     {
@@ -45,7 +45,7 @@
             "8 small tortillas",
             "Salsa, lettuce, and toppings of your choice"
         ],
-        "image": "chicken_tacos.jpg",
+        "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20"
     },
     {
@@ -70,7 +70,7 @@
             "Olive oil",
             "Lemon juice"
         ],
-        "image": "avocado_toast.jpg",
+        "image": "avocado-toast.jpg",
         "date_published": "2022-09-10"
     },
     {
