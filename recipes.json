@@ -131,5 +131,27 @@
         ],
         "image": "sushi_roll_2.jpeg",
         "date_published": "2023-06-10 11:21:22"
+    },
+    {
+        "id": 6,
+        "name": "Chocolate Cake",
+        "description": "Indulge in the rich and decadent flavors of a homemade chocolate cake. This moist and velvety dessert is perfect for chocolate lovers. With layers of moist chocolate cake, creamy chocolate frosting, and a hint of cocoa, this cake is a delightful treat for any occasion. Whether it's a birthday celebration or a special gathering, this chocolate cake is sure to satisfy your sweet tooth and leave you craving for more. Enjoy a slice of pure chocolate bliss!",
+        "category": "Dessert",
+        "cuisine": "American",
+        "instructions": [
+            "Preheat the oven.",
+            "Mix the ingredients.",
+            "Bake the cake."
+        ],
+        "ingredients": [
+            "Flour",
+            "sugar",
+            "cocoa powder",
+            "eggs",
+            "butter",
+            "milk"
+        ],
+        "image": "Chocolate Cake.jpg",
+        "date_published": "2022-09-21"
     }
 ]
