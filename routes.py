@@ -186,3 +186,4 @@ def import_recipe():
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
+
