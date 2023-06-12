@@ -29,15 +29,12 @@ def get_by_id(id):
         else:
             return "not found"
         
-#Process recipe data from .csv or .xlsx files
-def process_recipe_row(rows, existingRecipes):
-    # Generate a unique ID for the new recipe
-    rows['id'] = len(existingRecipes) + 1
-    rows['instructions'] = list(rows['instructions'].split(". "))
-    rows['instructions'] = [instruction + '.' if index != len(rows['instructions']) - 1 else instruction for index, instruction in enumerate(rows['instructions'])]
-    rows['ingredients'] = list(rows['ingredients'].split(', '))
-    # Add the new recipe to the existing recipes
-    existingRecipes.append(rows)
+def convert_xlsx_to_csv(xlsx_file, csv_file):
+    # Read the XLSX file
+    data_frame = pd.read_excel(xlsx_file)
+    
+    # Write the DataFrame to CSV file
+    data_frame.to_csv(csv_file, index=False)
 
      
 recipes = load_recipes_from_json()
@@ -111,37 +108,31 @@ def view_recipe(id):
 @main.route('/import', methods=['GET','POST'])
 def import_recipe():
     if request.method == 'POST':
-        # data = []
         if 'import' in request.files:
             csvFile = request.files['import']
             filename = csvFile.filename
-            print(filename)
             csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
-            if csvFile.filename.endswith('.csv'):
-                data = csvFile.read().decode('utf-8')
-            elif filename.endswith('.xlsx'):
+            if filename.endswith('.xlsx'):
                 # Handle XLSX file
-                data = csvFile.read()
-                
+                csv_file = 'static/files/importedRecipes.csv'
+                convert_xlsx_to_csv('static/files/' + filename, csv_file)
+            
             # Open a json writer, and use the json.dumps() function to dump data      
             with open('recipes.json', 'r') as jsonf:
                 existingRecipes = json.load(jsonf)
 
             # Open a csv reader called DictReader
-            with open(UPLOAD_FOLDER2+'/'+filename) as csvf:
-                if filename.endswith('.csv'):
-                    # Convert each row into a dictionary and add it to data
-                    csvReader = csv.DictReader(csvf)    
-                    for rows in csvReader:
-                        process_recipe_row(rows, existingRecipes)
-                
-                elif filename.endswith('.xlsx'):
-                    df = pd.read_excel(data, engine='openpyxl')
-                    # Convert DataFrame to a list of dictionaries
-                    recipes = df.to_dict(orient='records')  
-                    for recipe in recipes:
-                        process_recipe_row(recipe, existingRecipes) 
-            
+            with open(csv_file) as csvf:
+                csvReader = csv.DictReader(csvf)    
+                for rows in csvReader:
+                    # Generate a unique ID for the new recipe
+                    rows['id'] = len(existingRecipes) + 1
+                    rows['instructions'] = list(rows['instructions'].split(". "))
+                    rows['instructions'] = [instruction + '.' if index != len(rows['instructions']) - 1 else instruction for index, instruction in enumerate(rows['instructions'])]
+                    rows['ingredients'] = list(rows['ingredients'].split(', '))
+                    # Add the new recipe to the existing recipes
+                    existingRecipes.append(rows)
+
             # Write the updated recipes back to the JSON file
             with open('recipes.json', 'w') as jsonFile:
                 jsonFile.write(json.dumps(existingRecipes, indent=4))
@@ -149,4 +140,5 @@ def import_recipe():
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
+
 
