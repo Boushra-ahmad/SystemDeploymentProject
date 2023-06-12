@@ -187,3 +187,46 @@ def import_recipe():
         return 'Invalid file'
     return render_template('importRecipes.html')
 
+
+
+#editrecipe
+@main.route('/editrecipe/<int:id>', methods=['GET','POST'])
+def edit_recipe(id):
+    recipe = get_by_id(id)
+
+    if request.method == 'PUT':
+        # Retrieve the updated recipe data from the form
+        name = request.form['name']
+        description = request.form['description']
+        category = request.form['category']
+        cuisine = request.form['cuisine']
+        instructions = request.form['instructions']
+        ingredients = request.form['ingredients']
+
+        print(cuisine, file=sys.stderr)
+        print(description, file=sys.stderr)
+
+
+        with open('recipes.json', 'r') as file:
+            existing_recipes = json.load(file)
+
+
+        for recipe in existing_recipes:
+            if recipe['id'] == id:
+                # Update the recipe fields
+                recipe['name'] = name
+                recipe['description'] = description
+                recipe['category'] = category
+                recipe['cuisine'] = cuisine
+                recipe['instructions'] = instructions
+                recipe['ingredients'] = ingredients
+
+                break
+
+        # Save the updated recipes back to the JSON file
+        with open('recipes.json', 'w') as file:
+            json.dump(existing_recipes, file)
+
+        print(existing_recipes, file=sys.stderr)
+
+    return render_template('editrecipe.html',recipe=recipe)
