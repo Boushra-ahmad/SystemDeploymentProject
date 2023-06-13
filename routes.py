@@ -113,6 +113,11 @@ def add_recipe():
             #return to homepage
             return redirect(url_for('main.home'))
     return render_template('add-recipe.html',message=message)
+        if new_recipe in existing_recipes:
+            #return to homepage
+            return redirect(url_for('main.home'))
+        
+    return render_template('add-recipe.html')
 
 #view recipes
 @main.route('/view/<int:id>',methods=['GET'])
