@@ -211,22 +211,45 @@ def edit_recipe(id):
             existing_recipes = json.load(file)
 
 
+        new_data = {
+            'name': name,
+            'description': description,
+            'category': category,
+            'cuisine': cuisine,
+            'instructions': instructions,
+            'ingredients': ingredients
+            # Add any other fields you want to update
+        }
+
+
         for recipe in existing_recipes:
             if recipe['id'] == id:
-                # Update the recipe fields
-                recipe['name'] = name
-                recipe['description'] = description
-                recipe['category'] = category
-                recipe['cuisine'] = cuisine
-                recipe['instructions'] = instructions
-                recipe['ingredients'] = ingredients
+                print(recipe['name'], file=sys.stderr)
 
-                break
+                #validation
+                if 'name' in new_data:
+                    recipe['name'] = name
+                elif 'description' in new_data :
+                    recipe['description'] = description
+                elif 'category' in new_data:
+                    recipe['category'] = category
+                elif 'cuisine' in new_data:
+                    recipe['cuisine'] = cuisine
+                elif 'instructions' in new_data:
+                    recipe['instructions'] = instructions
+                elif 'ingredients' in new_data:
+                    recipe['ingredients'] = ingredients
+                elif not request.files['newimage']:
+                    recipe['image'] = recipe['image']
+
 
         # Save the updated recipes back to the JSON file
         with open('recipes.json', 'w') as file:
             json.dump(existing_recipes, file)
 
+        message = "Updated Successfully"
         print(existing_recipes, file=sys.stderr)
+        #return to homepage
+        return redirect(url_for('main.home'))
 
     return render_template('editrecipe.html',recipe=recipe)
