@@ -111,7 +111,7 @@ def add_recipe():
                 json.dump(existing_recipes, file, indent=4)
 
             #return to homepage
-            return redirect(url_for('main.home'))
+            return redirect(home())
     return render_template('add-recipe.html',message=message)
 
 #view recipes
