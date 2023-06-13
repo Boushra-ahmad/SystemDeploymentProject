@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template, request, redirect, url_for
+from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file
 import json
 import sys
 from datetime import datetime
@@ -8,7 +8,6 @@ import pandas as pd
 import requests
 
 main = Blueprint('main',__name__)#routename = main
-
 
 # Specify the directory where the images will be saved
 UPLOAD_FOLDER = 'static/images'
@@ -47,15 +46,12 @@ def download_image(url, save_path):
 
 recipes = load_recipes_from_json()
 
-
 #homepage
 @main.route('/', methods=['GET'])
 def home():
     recipes = load_recipes_from_json()
     #print(recipes, file=sys.stderr)
     return render_template('index.html',recipes = recipes)
-
-
 
 #add recipe
 @main.route('/addrecipe',methods=['GET','POST'])
@@ -68,10 +64,9 @@ def add_recipe():
         cuisine = request.form['cuisine']
         instructions = request.form['instructions'].split('.')
         ingredients = request.form['ingredients'].split(',')
-        date_published = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         images = request.files['image']
+        date_published = datetime.now().strftime('%Y-%m-%d')
         
-
         #validation
         if not name or not description or not category or not cuisine or not instructions or not ingredients or not images:
             message = "All fields are required!"
@@ -100,9 +95,9 @@ def add_recipe():
                 'category': category, 
                 'cuisine': cuisine, 
                 'instructions': instructions, 
-                'ingredients': ingredients, 
-                'date_published': date_published,
-                'image':image_file.filename
+                'ingredients': ingredients,               
+                'image':image_file.filename,
+                'date_published': date_published
             }
             # Add the new recipe to the existing recipes
             existing_recipes.append(new_recipe)
@@ -116,7 +111,6 @@ def add_recipe():
 
     return render_template('add-recipe.html',message=message)
         
-
 #view recipes
 @main.route('/view/<int:id>',methods=['GET'])
 def view_recipe(id):
@@ -190,8 +184,6 @@ def import_recipe():
         return 'Invalid file'
     return render_template('importRecipes.html')
 
-
-
 #editrecipe
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
 def edit_recipe(id):
@@ -224,3 +216,33 @@ def edit_recipe(id):
 
    
     return render_template('editrecipe.html',recipe=recipe)
+
+#export recipes
+@main.route('/index', methods=['GET','POST'])
+def export_recipes():
+    with open('recipes.json') as json_file:
+        jsonData = json.load(json_file)
+
+    with open('recipes.csv', 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+
+        count = 0
+
+        for data in jsonData:
+            if count == 0:
+                header = data.keys()
+                csv_writer.writerow(header)
+                count += 1
+            data['instructions'] = " ".join(data['instructions'])
+            data['ingredients'] = ", ".join(data['ingredients'])
+            csv_writer.writerow(data.values())
+
+    # Create a response with the file
+    response = make_response(send_file('recipes.csv', as_attachment=True))
+    response.headers["Content-Disposition"] = "attachment; filename=recipes.csv"
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+        
+
