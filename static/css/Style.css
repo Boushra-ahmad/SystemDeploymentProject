@@ -15,7 +15,7 @@ img{width:300px; height:300px;display: block;
   #addbtndiv a{
     cursor: pointer;
   }
-  #addbtn{
+  #addbtn, #exportbtn{
     background-color: white;
     color: black;
     border: 2px solid #e7e7e7;
