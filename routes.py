@@ -109,15 +109,13 @@ def add_recipe():
             # Write the updated recipes back to the JSON file
             with open('recipes.json', 'w') as file:
                 json.dump(existing_recipes, file, indent=4)
+            
+            if new_recipe in existing_recipes:
+            #return to homepage
+                return redirect(url_for('main.home'))
 
-            #return to homepage
-            return redirect(url_for('main.home'))
     return render_template('add-recipe.html',message=message)
-        if new_recipe in existing_recipes:
-            #return to homepage
-            return redirect(url_for('main.home'))
         
-    return render_template('add-recipe.html')
 
 #view recipes
 @main.route('/view/<int:id>',methods=['GET'])
