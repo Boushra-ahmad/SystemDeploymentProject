@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search -Recipe Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Style.css') }}">
+    <style>
+        .bcktohome{
+            margin-left: 165px;
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <center><h2>Search Result for "{{ query }}"</h2></center>
+
+    <a href="/" class="bcktohome">Home</a>  
+
+    <div class="row">
+        {% for recipe in recipes %}
+    
+            <div class="column">
+              <a href="{{ url_for('main.view_recipe', id = recipe.id)}}" style="text-decoration: none; color:black;"> 
+              <div class="content">
+                <img src="{{ url_for('static',filename='images/' + recipe['image'])}}" alt="{{recipe.image}}" >
+                <h3>{{recipe.name}}</h3>
+              </div>
+            </a>
+            </div>          
+        {% endfor %}
+    </div>
+
+    {% if not recipes %}
+        
+        <center><h4>No recipes found.</h4></center>
+    {% endif %}
+    
+</body>
+</html>

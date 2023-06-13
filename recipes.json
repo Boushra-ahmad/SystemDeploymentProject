@@ -20,7 +20,7 @@
             "250g spaghetti",
             "Salt and pepper to taste"
         ],
-        "image": "spaghetti_bolognese.jpg",
+        "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15"
     },
     {
@@ -45,7 +45,7 @@
             "8 small tortillas",
             "Salsa, lettuce, and toppings of your choice"
         ],
-        "image": "chicken_tacos.jpg",
+        "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20"
     },
     {
@@ -70,27 +70,24 @@
             "Olive oil",
             "Lemon juice"
         ],
-        "image": "avocado_toast.jpg",
+        "image": "avocado-toast.jpg",
         "date_published": "2022-09-10"
     },
     {
         "id": 4,
         "name": "Cheesy Chicken Burger",
         "description": "A delicious chicken burger made with a grilled chicken patty and fresh vegetables.",
-        "category": "snack",
+        "category": "Snack",
         "cuisine": "American",
         "instructions": [
-            "Season the chicken patty with salt",
-            " pepper and preferred spices",
-            "Grill or pan-fry the chicken patty until cooked through",
-            "Toast the burger bun on a grill or in a toaster",
-            "Spread your mayonese sauce on the bottom bun",
-            "Place the cooked chicken patty on top of the sauce",
-            "Layer lettuce",
-            " tomato slices",
-            " and onion rings on top of the chicken patty",
-            "Add additional toppings",
-            "Cover with the top bun",
+            "Season the chicken patty with salt, pepper and preferred spices.",
+            "Grill or pan-fry the chicken patty until cooked through.",
+            "Toast the burger bun on a grill or in a toaster.",
+            "Spread your mayonese sauce on the bottom bun.",
+            "Place the cooked chicken patty on top of the sauce.",
+            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty.",
+            "Add additional toppings.",
+            "Cover with the top bun.",
             "Serve the chicken burger with fries or a side salad."
         ],
         "ingredients": [
@@ -103,25 +100,25 @@
             "Cheese",
             "Pickles"
         ],
-        "date_published": "2023-06-10 10:58:32",
-        "image": "chese_burger_4.jpeg"
+        "image": "chese_burger_4.jpeg",
+        "date_published": "2023-06-10 10:58:32"
     },
     {
         "id": 5,
         "name": "Spicy Sushi Roll",
         "description": "A popular sushi roll made with fresh tuna and spicy mayo.",
-        "category": "dinner",
+        "category": "Dinner",
         "cuisine": "Japanese",
         "instructions": [
-            "Prepare sushi rice",
-            "Cut fresh tuna into small cubes",
-            "Mix tuna with spicy mayo",
-            "Lay a sheet of seaweed on a sushi mat",
-            "Spread sushi rice evenly on the seaweed",
-            "Place the tuna mixture along with cucumber sticks on top of the rice",
-            "Roll the sushi tightly using the sushi mat",
-            "Slice the sushi roll into bite-sized pieces",
-            "Serve with soy sauce and pickled ginger"
+            "Prepare sushi rice.",
+            "Cut fresh tuna into small cubes.",
+            "Mix tuna with spicy mayo.",
+            "Lay a sheet of seaweed on a sushi mat.",
+            "Spread sushi rice evenly on the seaweed.",
+            "Place the tuna mixture along with cucumber sticks on top of the rice.",
+            "Roll the sushi tightly using the sushi mat.",
+            "Slice the sushi roll into bite-sized pieces.",
+            "Serve with soy sauce and pickled ginger."
         ],
         "ingredients": [
             "Sushi rice",
@@ -132,7 +129,39 @@
             "Soy sauce",
             "Pickled ginger"
         ],
-        "date_published": "2023-06-10 11:21:22",
-        "image": "sushi_roll_2.jpeg"
+        "image": "sushi_roll_2.jpeg",
+        "date_published": "2023-06-10 11:21:22"
+    },
+    {
+        "id": 6,
+        "name": "Butter Chicken",
+        "description": "A delicious Indian dish made with tender chicken in a rich and creamy tomato-based sauce.",
+        "category": "lunch",
+        "cuisine": "Indian",
+        "instructions": [
+            "Marinate the chicken with yogurt ginger-garlic paste and spices.",
+            "Grill or cook the marinated chicken until cooked through.",
+            "In a separate pan melt butter and saut\u00e9 onions until golden brown.",
+            "Add tomato puree, spices and cream to the pan.",
+            "Simmer for a few minutes.",
+            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes.",
+            "Serve hot with naan or rice."
+        ],
+        "ingredients": [
+            "500g boneless chicken",
+            "1 cup plain yogurt",
+            "2 tablespoons ginger-garlic paste",
+            "1 teaspoon turmeric powder",
+            "1 teaspoon chili powder",
+            "1 teaspoon garam masala",
+            "1/2 cup butter",
+            "1 large onion",
+            " finely chopped",
+            "1 cup tomato puree",
+            "1/2 cup heavy cream",
+            "Salt to taste"
+        ],
+        "date_published": "2023-06-12 14:15:14",
+        "image": "butter-chicken-ac2ff98.jpg"
     }
 ]
