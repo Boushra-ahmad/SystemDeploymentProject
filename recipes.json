@@ -21,7 +21,8 @@
             "Salt and pepper to taste"
         ],
         "image": "spaghetti-bolognese.jpg",
-        "date_published": "2022-03-15"
+        "date_published": "2022-03-15",
+        "rating": 5
     },
     {
         "id": 2,
@@ -46,7 +47,8 @@
             "Salsa, lettuce, and toppings of your choice"
         ],
         "image": "chicken-tacos.jpg",
-        "date_published": "2022-06-20"
+        "date_published": "2022-06-20",
+        "rating": 7
     },
     {
         "id": 3,
@@ -71,7 +73,8 @@
             "Lemon juice"
         ],
         "image": "avocado-toast.jpg",
-        "date_published": "2022-09-10"
+        "date_published": "2022-09-10",
+        "rating": 7.8
     },
     {
         "id": 4,
@@ -101,7 +104,8 @@
             "Pickles"
         ],
         "image": "chese_burger_4.jpeg",
-        "date_published": "2023-06-10 10:58:32"
+        "date_published": "2023-06-10 10:58:32",
+        "rating": 10
     },
     {
         "id": 5,
@@ -130,7 +134,8 @@
             "Pickled ginger"
         ],
         "image": "sushi_roll_2.jpeg",
-        "date_published": "2023-06-10 11:21:22"
+        "date_published": "2023-06-10 11:21:22",
+        "rating": 6.3
     },
     {
         "id": 6,
@@ -162,6 +167,7 @@
             "Salt to taste"
         ],
         "date_published": "2023-06-12 14:15:14",
-        "image": "butter-chicken-ac2ff98.jpg"
+        "image": "butter-chicken-ac2ff98.jpg",
+        "rating": 9.5
     }
 ]
