@@ -3,22 +3,13 @@
         "id": 1,
         "name": "Spaghetti Bolognese",
         "description": "Classic Italian pasta dish with a rich meat sauce.",
-        "category": "Dinner",
+        "category": "lunch",
         "cuisine": "Italian",
         "instructions": [
-            "Cook the pasta in boiling water.",
-            "Brown the ground beef in a pan.",
-            "Add onions, garlic, and tomatoes.",
-            "Simmer for 20 minutes.",
-            "Serve the sauce over the cooked pasta."
+            "Cook the pasta in boiling water  Brown the ground beef in a pan  Add onions, garlic, and tomatoes  Simmer for 20 minutes  Serve the sauce over the cooked pasta "
         ],
         "ingredients": [
-            "500g ground beef",
-            "1 onion",
-            "2 cloves of garlic",
-            "400g canned tomatoes",
-            "250g spaghetti",
-            "Salt and pepper to taste"
+            "500g ground beef 1 onion 2 cloves of garlic 400g canned tomatoes 250g spaghetti Salt and pepper to taste  "
         ],
         "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15"
@@ -97,7 +88,7 @@
             "Pickles"
         ],
         "image": "chese_burger_4.jpeg",
-        "date_published": "2023-06-10 10:58:32"
+        "date_published": "2023-06-10"
     },
     {
         "id": 5,
@@ -126,7 +117,7 @@
             "Pickled ginger"
         ],
         "image": "sushi_roll_2.jpeg",
-        "date_published": "2023-06-10 11:21:22"
+        "date_published": "2023-06-10"
     },
     {
         "id": 6,
@@ -157,7 +148,7 @@
             "1/2 cup heavy cream",
             "Salt to taste"
         ],
-        "date_published": "2023-06-12 14:15:14",
-        "image": "butter-chicken-ac2ff98.jpg"
+        "image": "butter-chicken-ac2ff98.jpg",
+        "date_published": "2023-06-12"        
     }
 ]
