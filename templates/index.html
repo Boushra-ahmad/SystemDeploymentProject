@@ -23,7 +23,7 @@
   </form>
   
     <div id="addbtndiv">
-      <a href="/addrecipe"><button type="button" id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>  
+      <a href="{{ url_for('main.add_recipe') }}"><button id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>  
     </div>
 <div class="row">
     {% for recipe in recipes %}
