@@ -26,24 +26,20 @@
     {
         "id": 2,
         "name": "Chicken Tacos",
-        "description": "Delicious Mexican tacos filled with seasoned chicken.",
-        "category": "Dinner",
+        "description": "Delicious lovely Mexican tacos filled with seasoned chicken.",
+        "category": "",
         "cuisine": "Mexican",
         "instructions": [
-            "Season the chicken with spices.",
-            "Cook the chicken on a grill or stovetop.",
-            "Warm the tortillas.",
-            "Assemble the tacos with chicken, salsa, lettuce, and other desired toppings.",
-            "Serve and enjoy!"
+            "Season the chicken with spices",
+            " Cook the chicken on a grill or stovetop",
+            " Warm the tortillas",
+            " Assemble the tacos with chicken, salsa, lettuce, and other desired toppings",
+            " Serve and enjoy!"
         ],
         "ingredients": [
-            "2 chicken breasts",
-            "1 tablespoon chili powder",
-            "1 teaspoon cumin",
-            "1 teaspoon paprika",
-            "1/2 teaspoon salt",
-            "8 small tortillas",
-            "Salsa, lettuce, and toppings of your choice"
+            "2 chicken breasts 1 tablespoon chili powder 1 teaspoon cumin 1 teaspoon paprika 1/2 teaspoon salt 8 small tortillas Salsa",
+            " lettuce",
+            " and toppings of your choice "
         ],
         "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20"

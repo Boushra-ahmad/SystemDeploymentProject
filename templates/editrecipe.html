@@ -18,7 +18,7 @@
               <div class="card-body p-4 p-md-5">
                 <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">Edit Recipe</h2>
     
-                <form method="PUT" action="/editrecipe" enctype="multipart/form-data">
+                <form method="POST" action="/editrecipe/{{recipe.id}}" enctype="multipart/form-data">
                     
                     {% if message %}
                         <div class="error-message">
