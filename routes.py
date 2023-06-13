@@ -82,8 +82,10 @@ def add_recipe():
         with open('recipes.json', 'w') as file:
             json.dump(existing_recipes, file, indent=4)
 
-        #return to homepage
-        return redirect(url_for('main.home'))
+        if new_recipe in existing_recipes:
+            #return to homepage
+            return redirect(url_for('main.home'))
+        
     return render_template('add-recipe.html')
 
 #view recipes
