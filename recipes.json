@@ -3,36 +3,49 @@
         "id": 1,
         "name": "Spaghetti Bolognese",
         "description": "Classic Italian pasta dish with a rich meat sauce.",
-        "category": "lunch",
+        "category": "Dinner",
         "cuisine": "Italian",
         "instructions": [
-            "Cook the pasta in boiling water  Brown the ground beef in a pan  Add onions, garlic, and tomatoes  Simmer for 20 minutes  Serve the sauce over the cooked pasta "
+            "Cook the pasta in boiling water.",
+            "Brown the ground beef in a pan.",
+            "Add onions, garlic, and tomatoes.",
+            "Simmer for 20 minutes.",
+            "Serve the sauce over the cooked pasta."
         ],
         "ingredients": [
-            "500g ground beef 1 onion 2 cloves of garlic 400g canned tomatoes 250g spaghetti Salt and pepper to taste  "
+            "500g ground beef",
+            "1 onion",
+            "2 cloves of garlic",
+            "400g canned tomatoes",
+            "250g spaghetti",
+            "Salt and pepper to taste"
         ],
-        "image": "spaghetti-bolognese.jpg",
+        "image": "spaghetti_bolognese.jpg",
         "date_published": "2022-03-15"
     },
     {
         "id": 2,
         "name": "Chicken Tacos",
-        "description": "Delicious lovely Mexican tacos filled with seasoned chicken.",
-        "category": "",
+        "description": "Delicious Mexican tacos filled with seasoned chicken.",
+        "category": "Dinner",
         "cuisine": "Mexican",
         "instructions": [
-            "Season the chicken with spices",
-            " Cook the chicken on a grill or stovetop",
-            " Warm the tortillas",
-            " Assemble the tacos with chicken, salsa, lettuce, and other desired toppings",
-            " Serve and enjoy!"
+            "Season the chicken with spices.",
+            "Cook the chicken on a grill or stovetop.",
+            "Warm the tortillas.",
+            "Assemble the tacos with chicken, salsa, lettuce, and other desired toppings.",
+            "Serve and enjoy!"
         ],
         "ingredients": [
-            "2 chicken breasts 1 tablespoon chili powder 1 teaspoon cumin 1 teaspoon paprika 1/2 teaspoon salt 8 small tortillas Salsa",
-            " lettuce",
-            " and toppings of your choice "
+            "2 chicken breasts",
+            "1 tablespoon chili powder",
+            "1 teaspoon cumin",
+            "1 teaspoon paprika",
+            "1/2 teaspoon salt",
+            "8 small tortillas",
+            "Salsa, lettuce, and toppings of your choice"
         ],
-        "image": "chicken-tacos.jpg",
+        "image": "chicken_tacos.jpg",
         "date_published": "2022-06-20"
     },
     {
@@ -57,34 +70,25 @@
             "Olive oil",
             "Lemon juice"
         ],
-        "image": "avocado-toast.jpg",
+        "image": "avocado_toast.jpg",
         "date_published": "2022-09-10"
     },
     {
         "id": 4,
         "name": "Cheesy Chicken Burger",
         "description": "A delicious chicken burger made with a grilled chicken patty and fresh vegetables.",
-        "category": "Snack",
+        "category": "snack",
         "cuisine": "American",
         "instructions": [
-            "Season the chicken patty with salt, pepper and preferred spices",
-            "",
-            "Grill or pan-fry the chicken patty until cooked through",
-            "",
-            "Toast the burger bun on a grill or in a toaster",
-            "",
-            "Spread your mayonese sauce on the bottom bun",
-            "",
-            "Place the cooked chicken patty on top of the sauce",
-            "",
-            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty",
-            "",
-            "Add additional toppings",
-            "",
-            "Cover with the top bun",
-            "",
-            "Serve the chicken burger with fries or a side salad",
-            ""
+            "Season the chicken patty with salt, pepper and preferred spices.",
+            "Grill or pan-fry the chicken patty until cooked through.",
+            "Toast the burger bun on a grill or in a toaster.",
+            "Spread your mayonese sauce on the bottom bun.",
+            "Place the cooked chicken patty on top of the sauce.",
+            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty.",
+            "Add additional toppings.",
+            "Cover with the top bun.",
+            "Serve the chicken burger with fries or a side salad."
         ],
         "ingredients": [
             " Chicken patty",
@@ -94,16 +98,16 @@
             "Onion",
             "Sauce",
             "Cheese",
-            "Pickles "
+            "Pickles"
         ],
-        "image": "chese_burger_4.jpeg",
-        "date_published": "2023-06-10"
+        "date_published": "2023-06-10 10:58:32",
+        "image": "chese_burger_4.jpeg"
     },
     {
         "id": 5,
         "name": "Spicy Sushi Roll",
         "description": "A popular sushi roll made with fresh tuna and spicy mayo.",
-        "category": "Dinner",
+        "category": "dinner",
         "cuisine": "Japanese",
         "instructions": [
             "Prepare sushi rice.",
@@ -125,8 +129,8 @@
             "Soy sauce",
             "Pickled ginger"
         ],
-        "image": "sushi_roll_2.jpeg",
-        "date_published": "2023-06-10"
+        "date_published": "2023-06-10 11:21:22",
+        "image": "sushi_roll_2.jpeg"
     },
     {
         "id": 6,
