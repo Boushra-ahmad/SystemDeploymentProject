@@ -110,8 +110,9 @@ def view_recipe(id):
     return get_by_id(id)
 
 #Edit Recipes
-def edit_recipe(id,recipe):
-    recipe = get_by_id(id)
+def edit_recipe_function(id,recipe,f):
+    # recipe = get_by_id(id)
+    image_file=None
     message = None
     if request.method == 'POST':
         image_file = request.files['image']
@@ -160,7 +161,7 @@ def edit_recipe(id,recipe):
                 message = "Updated Successfully"
                 break
 
-        with open('recipes.json', 'w') as file:
+        with open(f, 'w') as file:
             json.dump(recipes, file, indent=4)
 
         return message
@@ -178,8 +179,7 @@ def delete_recipe(id):
         json.dump(existing_recipes, file, indent=4)
 
 #Search Recipes   
-def search_recipe():
-    query= request.args.get('search')
+def search_recipe_function(query,recipes):
     search_recipes = []
     for recipe in recipes:
         if query.lower() in recipe['name'].lower():
