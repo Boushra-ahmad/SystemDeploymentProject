@@ -10,48 +10,10 @@ import functions
 
 main = Blueprint('main',__name__)#routename = main
 
-# Specify the directory where the images will be saved
-UPLOAD_FOLDER = 'static/images'
-UPLOAD_FOLDER2 = 'static/files/imported/'
-UPLOAD_FOLDER3 = 'static/files/exported/'
-
-#load recipes.json
-def load_recipes_from_json():
-    with open('recipes.json', 'r') as file:
-        data = json.load(file)
-        return data
-
-def get_by_id(id):
-     with open('recipes.json', 'r') as file:
-        data = json.load(file)
-        for i in data:
-            if i['id'] == id*1:
-                #print(i, file=sys.stderr)
-                return i
-        else:
-            return "not found"
-        
-def convert_xlsx_to_csv(xlsx_file, csv_file):
-    # Read the XLSX file
-    data_frame = pd.read_excel(xlsx_file)
-    
-    # Write the DataFrame to CSV file
-    data_frame.to_csv(csv_file, index=False)
-
-def download_image(url, save_path):
-    response = requests.get(url, stream=True)
-    response.raise_for_status()
-    
-    with open(save_path, 'wb') as file:
-        for chunk in response.iter_content(chunk_size=8192):
-            file.write(chunk)
-
-recipes = load_recipes_from_json()
-
 #homepage
 @main.route('/', methods=['GET'])
 def home():
-    recipes = load_recipes_from_json()
+    recipes = functions.load_recipes_from_json()
     #print(recipes, file=sys.stderr)
     return render_template('index.html',recipes = recipes)
 
@@ -80,33 +42,14 @@ def edit_recipe(id):
 
 #delete recipe
 @main.route('/delete_recipe/<int:id>', methods=['GET','POST'])
-def delete_recipe(id):
-    #recipe_id = request.args.get(id)
-    
-    #Get the recipes from the recipes.json file
-    with open('recipes.json', 'r') as file:
-        existing_recipes = json.load(file)
-        
-    filtered_data = [existing_recipes.remove(recipe) for recipe in existing_recipes if recipe['id'] == id]
-
-    # Save the updated recipes back to the JSON file
-    with open('recipes.json', 'w') as file:
-        json.dump(existing_recipes, file, indent=4)   
-
+def delete_recipe(id):    
+    functions.delete_recipe(id)
     return redirect(url_for('main.home'))
 
 #search recipe
 @main.route('/search',methods=['GET'])
 def search_recipe():
-    query= request.args.get('search')
-    search_recipes = []
-    for recipe in recipes:
-        if query.lower() in recipe['name'].lower():
-            search_recipes.append(recipe)
-        elif query.lower() in recipe['category'].lower():
-            search_recipes.append(recipe)
-        elif query.lower() in recipe['cuisine'].lower():
-            search_recipes.append(recipe)
+    query, search_recipes = functions.search_recipe()
     # print(search_recipes, file=sys.stderr)
     return render_template('search-results.html', query=query, recipes=search_recipes)
 
@@ -115,52 +58,7 @@ def search_recipe():
 def import_recipe():
     if request.method == 'POST':
         if 'import' in request.files:
-            csvFile = request.files['import']
-            filename = csvFile.filename
-            
-            #Create the folder 'static/files/imported' if it doesn't exist
-            if not os.path.exists(UPLOAD_FOLDER2):
-                os.makedirs(UPLOAD_FOLDER2)
-            csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
-            if filename.endswith('.xlsx'):
-                # Handle XLSX file
-                csvFile = 'static/files/imported/xlsxToCSV.csv'
-                convert_xlsx_to_csv(UPLOAD_FOLDER2 + filename, csvFile)
-            
-            # Open a json writer, and use the json.dumps() function to dump data      
-            with open('recipes.json', 'r') as jsonf:
-                existingRecipes = json.load(jsonf)
-
-            # Open a csv reader called DictReader
-            with open(csvFile) as csvf:
-                save_directory = 'static/images'             
-
-                # Convert each row into a dictionary and add it to data
-                csvReader = csv.DictReader(csvf)                    
-                for rows in csvReader:                    
-                    image_filename = rows['name'] + '.jpg'
-                    
-                    # Combine the save directory and image filename to create the save path
-                    save_path = os.path.join(save_directory, image_filename)
-                    
-                    # Create the save directory if it doesn't exist
-                    os.makedirs(save_directory, exist_ok=True)
-                    download_image(rows['image'], save_path)
-                    
-                    # Generate a unique ID for the new recipe
-                    rows['id'] = len(existingRecipes) + 1
-                    rows['instructions'] = list(rows['instructions'].split(". "))
-                    rows['instructions'] = [instruction + '.' if index != len(rows['instructions']) - 1 else instruction for index, instruction in enumerate(rows['instructions'])]
-                    rows['ingredients'] = list(rows['ingredients'].split(', '))
-                    rows['image'] = rows['name'] + '.jpg'
-                    
-                    # Add the new recipe to the existing recipes
-                    existingRecipes.append(rows)
-
-            # Write the updated recipes back to the JSON file
-            with open('recipes.json', 'w') as jsonFile:
-                jsonFile.write(json.dumps(existingRecipes, indent=4))
-                
+            functions.import_recipe()                
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
@@ -168,34 +66,5 @@ def import_recipe():
 #export recipes
 @main.route('/export', methods=['GET','POST'])
 def export_recipes():
-    with open('recipes.json') as json_file:
-        jsonData = json.load(json_file)
-        
-    #Create the folder 'static/files/exported if it doesn't exist
-    if not os.path.exists(UPLOAD_FOLDER3):
-        os.makedirs(UPLOAD_FOLDER3)
-    
-    file_name = 'recipes.csv'
-    csv_file_path = os.path.join(UPLOAD_FOLDER3, file_name)
-
-    with open(csv_file_path, 'w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file)
-
-        count = 0
-
-        for data in jsonData:
-            if count == 0:
-                header = data.keys()
-                csv_writer.writerow(header)
-                count += 1
-            data['instructions'] = " ".join(data['instructions'])
-            data['ingredients'] = ", ".join(data['ingredients'])
-            csv_writer.writerow(data.values())
-
-    # Create a response with the file
-    response = make_response(send_file(csv_file_path, as_attachment=False))
-    response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
+    response = functions.export_recipes()
     return response
