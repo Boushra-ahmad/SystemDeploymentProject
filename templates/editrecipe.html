@@ -5,26 +5,33 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        .error-message{
-            color:red;
+        .success-message{
+            color:green;
         }
     </style>
 </head>
 <body>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{recipe.name}}
+                    </li>
+                </ol>
+            </nav>
           <div class="col-lg-8 col-xl-6">
             <div class="card rounded-3">
               <div class="card-body p-4 p-md-5">
                 <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">Edit Recipe</h2>
     
-                <form method="PUT" action="/editrecipe" enctype="multipart/form-data">
+                <form method="POST" action="/editrecipe/{{recipe.id}}" enctype="multipart/form-data">
                     
                     {% if message %}
-                        <div class="error-message">
-                        <br/>
-                        <p>{{ message }}</p>
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        <h6 class="text-center">{{message}}!</h6>
+                      </div>
                     {% endif %}
                     <div class="form-group">
                         <input type="text" id="name" name="name" class="form-control" value="{{recipe.name}}" >
@@ -49,15 +56,15 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <textarea id="instructions" name="instructions" class="form-control" rows="5" cols="50">{{' '.join(recipe.instructions)}}</textarea>
+                        <textarea id="instructions" name="instructions" class="form-control" rows="5" cols="50">{{'.'.join(recipe.instructions)}}</textarea>
                     </div>
                     <br/>
                     <div class="form-group">
-                        <textarea id="ingredients" name="ingredients" class="form-control" rows="5" cols="50" >{{' '.join(recipe.ingredients)}} </textarea>
+                        <textarea id="ingredients" name="ingredients" class="form-control" rows="5" cols="50" >{{','.join(recipe.ingredients)}} </textarea>
                     </div>
                     <br/>
                     <div class="form-group">
-                         <input class="form-control form-control-lg" id="newimage" name="newimage" type="file"/>
+                         <input class="form-control form-control-lg" id="image" name="image" type="file"/>
                     </div>
                     <br/>
                     <button type="submit" class="btn btn-primary">Save Changes</button>

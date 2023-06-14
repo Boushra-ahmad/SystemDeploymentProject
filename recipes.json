@@ -3,22 +3,13 @@
         "id": 1,
         "name": "Spaghetti Bolognese",
         "description": "Classic Italian pasta dish with a rich meat sauce.",
-        "category": "Dinner",
+        "category": "lunch",
         "cuisine": "Italian",
         "instructions": [
-            "Cook the pasta in boiling water.",
-            "Brown the ground beef in a pan.",
-            "Add onions, garlic, and tomatoes.",
-            "Simmer for 20 minutes.",
-            "Serve the sauce over the cooked pasta."
+            "Cook the pasta in boiling water  Brown the ground beef in a pan  Add onions, garlic, and tomatoes  Simmer for 20 minutes  Serve the sauce over the cooked pasta "
         ],
         "ingredients": [
-            "500g ground beef",
-            "1 onion",
-            "2 cloves of garlic",
-            "400g canned tomatoes",
-            "250g spaghetti",
-            "Salt and pepper to taste"
+            "500g ground beef 1 onion 2 cloves of garlic 400g canned tomatoes 250g spaghetti Salt and pepper to taste  "
         ],
         "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15",
@@ -27,24 +18,20 @@
     {
         "id": 2,
         "name": "Chicken Tacos",
-        "description": "Delicious Mexican tacos filled with seasoned chicken.",
-        "category": "Dinner",
+        "description": "Delicious lovely Mexican tacos filled with seasoned chicken.",
+        "category": "",
         "cuisine": "Mexican",
         "instructions": [
-            "Season the chicken with spices.",
-            "Cook the chicken on a grill or stovetop.",
-            "Warm the tortillas.",
-            "Assemble the tacos with chicken, salsa, lettuce, and other desired toppings.",
-            "Serve and enjoy!"
+            "Season the chicken with spices",
+            " Cook the chicken on a grill or stovetop",
+            " Warm the tortillas",
+            " Assemble the tacos with chicken, salsa, lettuce, and other desired toppings",
+            " Serve and enjoy!"
         ],
         "ingredients": [
-            "2 chicken breasts",
-            "1 tablespoon chili powder",
-            "1 teaspoon cumin",
-            "1 teaspoon paprika",
-            "1/2 teaspoon salt",
-            "8 small tortillas",
-            "Salsa, lettuce, and toppings of your choice"
+            "2 chicken breasts 1 tablespoon chili powder 1 teaspoon cumin 1 teaspoon paprika 1/2 teaspoon salt 8 small tortillas Salsa",
+            " lettuce",
+            " and toppings of your choice "
         ],
         "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20",
@@ -83,15 +70,24 @@
         "category": "Snack",
         "cuisine": "American",
         "instructions": [
-            "Season the chicken patty with salt, pepper and preferred spices.",
-            "Grill or pan-fry the chicken patty until cooked through.",
-            "Toast the burger bun on a grill or in a toaster.",
-            "Spread your mayonese sauce on the bottom bun.",
-            "Place the cooked chicken patty on top of the sauce.",
-            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty.",
-            "Add additional toppings.",
-            "Cover with the top bun.",
-            "Serve the chicken burger with fries or a side salad."
+            "Season the chicken patty with salt, pepper and preferred spices",
+            "",
+            "Grill or pan-fry the chicken patty until cooked through",
+            "",
+            "Toast the burger bun on a grill or in a toaster",
+            "",
+            "Spread your mayonese sauce on the bottom bun",
+            "",
+            "Place the cooked chicken patty on top of the sauce",
+            "",
+            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty",
+            "",
+            "Add additional toppings",
+            "",
+            "Cover with the top bun",
+            "",
+            "Serve the chicken burger with fries or a side salad",
+            ""
         ],
         "ingredients": [
             " Chicken patty",
@@ -101,11 +97,10 @@
             "Onion",
             "Sauce",
             "Cheese",
-            "Pickles"
+            "Pickles "
         ],
         "image": "chese_burger_4.jpeg",
-        "date_published": "2023-06-10 10:58:32",
-        "rating": 10
+        "date_published": "2023-06-10"
     },
     {
         "id": 5,
@@ -134,23 +129,22 @@
             "Pickled ginger"
         ],
         "image": "sushi_roll_2.jpeg",
-        "date_published": "2023-06-10 11:21:22",
-        "rating": 6.3
+        "date_published": "2023-06-10"
     },
     {
         "id": 6,
         "name": "Butter Chicken",
-        "description": "A delicious Indian dish made with tender chicken in a rich and creamy tomato-based sauce.",
-        "category": "lunch",
+        "description": "Delicious Indian dish made with tender chicken in a rich and creamy tomato-based sauce.",
+        "category": "Lunch",
         "cuisine": "Indian",
         "instructions": [
-            "Marinate the chicken with yogurt ginger-garlic paste and spices.",
-            "Grill or cook the marinated chicken until cooked through.",
-            "In a separate pan melt butter and saut\u00e9 onions until golden brown.",
-            "Add tomato puree, spices and cream to the pan.",
-            "Simmer for a few minutes.",
-            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes.",
-            "Serve hot with naan or rice."
+            "Marinate the chicken with yogurt ginger-garlic paste and spices",
+            "Grill or cook the marinated chicken until cooked",
+            "In a separate pan melt butter and saute onions until golden brown",
+            "Add tomato puree, spices and cream to the pan",
+            "Simmer for a few minutes",
+            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes",
+            "Serve hot with naan or rice"
         ],
         "ingredients": [
             "500g boneless chicken",
@@ -160,14 +154,12 @@
             "1 teaspoon chili powder",
             "1 teaspoon garam masala",
             "1/2 cup butter",
-            "1 large onion",
-            " finely chopped",
+            "1 large onion  finely chopped",
             "1 cup tomato puree",
             "1/2 cup heavy cream",
             "Salt to taste"
         ],
         "date_published": "2023-06-12 14:15:14",
-        "image": "butter-chicken-ac2ff98.jpg",
-        "rating": 9.5
+        "image": "butter-chicken-ac2ff98.jpg"
     }
 ]

@@ -3,11 +3,11 @@ import unittest
 from flask import Flask
 import sys
 
-sys.path.append("..")
+sys.path.append("../SystemDeploymentProject")
 
 # Import from the parent directory
-from SystemDeploymentProject.routes import add_recipe
-
+from routes import main
+import functions
 
 class test_unit_routes(unittest.TestCase):
     def test_add_recipe(self):
@@ -23,7 +23,7 @@ class test_unit_routes(unittest.TestCase):
             'ingredients': '1, 2',
             'image': (BytesIO(b'TestImage'), 'test.jpg')
         }):
-            response = add_recipe()
+            response = functions.add_recipes()
             self.assertEqual(response.status_code, 200)
            
 
