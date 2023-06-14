@@ -177,6 +177,23 @@ def edit_recipe(id):
                
     return render_template('editrecipe.html',recipe=recipe,message=message)
 
+#delete recipe
+@main.route('/delete_recipe/<int:id>', methods=['GET','POST'])
+def delete_recipe(id):
+    #recipe_id = request.args.get(id)
+    
+    #Get the recipes from the recipes.json file
+    with open('recipes.json', 'r') as file:
+        existing_recipes = json.load(file)
+        
+    filtered_data = [existing_recipes.remove(recipe) for recipe in existing_recipes if recipe['id'] == id]
+
+    # Save the updated recipes back to the JSON file
+    with open('recipes.json', 'w') as file:
+        json.dump(existing_recipes, file, indent=4)   
+
+    return redirect(url_for('main.home'))
+
 #search recipe
 @main.route('/search',methods=['GET'])
 def search_recipe():
