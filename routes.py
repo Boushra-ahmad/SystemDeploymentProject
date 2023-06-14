@@ -10,6 +10,13 @@ import functions
 
 main = Blueprint('main',__name__)#routename = main
 
+#load recipes.json
+def load_recipes_from_json():
+    with open('recipes.json', 'r') as file:
+        data = json.load(file)
+        return data
+recipes = load_recipes_from_json()
+
 #homepage
 @main.route('/', methods=['GET'])
 def home():
@@ -40,7 +47,10 @@ def view_recipe(id):
 #editrecipe
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
 def edit_recipe(id):    
-    recipe, message = functions.edit_recipe(id)                
+    recipe = functions.get_by_id(id)
+    # data = functions.edit_recipe(id)
+    message = functions.edit_recipe(id,recipe)  
+    print(message, file=sys.stderr)        
     return render_template('editrecipe.html',recipe=recipe,message=message)
 
 #delete recipe
