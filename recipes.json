@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Spaghetti Bolognese",
         "description": "Classic Italian pasta dish with a rich meat sauce.",
-        "category": "Dinner",
+        "category": "lunch",
         "cuisine": "Italian",
         "instructions": [
             "Cook the pasta in boiling water.",
@@ -20,14 +20,14 @@
             "250g spaghetti",
             "Salt and pepper to taste"
         ],
-        "image": "spaghetti_bolognese.jpg",
+        "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15"
     },
     {
         "id": 2,
         "name": "Chicken Tacos",
-        "description": "Delicious Mexican tacos filled with seasoned chicken.",
-        "category": "Dinner",
+        "description": "Delicious lovely Mexican tacos filled with seasoned chicken.",
+        "category": "",
         "cuisine": "Mexican",
         "instructions": [
             "Season the chicken with spices.",
@@ -45,7 +45,7 @@
             "8 small tortillas",
             "Salsa, lettuce, and toppings of your choice"
         ],
-        "image": "chicken_tacos.jpg",
+        "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20"
     },
     {
@@ -70,14 +70,14 @@
             "Olive oil",
             "Lemon juice"
         ],
-        "image": "avocado_toast.jpg",
+        "image": "avocado-toast.jpg",
         "date_published": "2022-09-10"
     },
     {
         "id": 4,
         "name": "Cheesy Chicken Burger",
         "description": "A delicious chicken burger made with a grilled chicken patty and fresh vegetables.",
-        "category": "snack",
+        "category": "Snack",
         "cuisine": "American",
         "instructions": [
             "Season the chicken patty with salt, pepper and preferred spices.",
@@ -91,7 +91,7 @@
             "Serve the chicken burger with fries or a side salad."
         ],
         "ingredients": [
-            " Chicken patty",
+            "Chicken patty",
             "Burger bun",
             "Lettuce",
             "Tomato",
@@ -100,14 +100,14 @@
             "Cheese",
             "Pickles"
         ],
-        "date_published": "2023-06-10 10:58:32",
-        "image": "chese_burger_4.jpeg"
+        "image": "chese_burger_4.jpeg",
+        "date_published": "2023-06-10"
     },
     {
         "id": 5,
         "name": "Spicy Sushi Roll",
         "description": "A popular sushi roll made with fresh tuna and spicy mayo.",
-        "category": "dinner",
+        "category": "Dinner",
         "cuisine": "Japanese",
         "instructions": [
             "Prepare sushi rice.",
@@ -129,8 +129,8 @@
             "Soy sauce",
             "Pickled ginger"
         ],
-        "date_published": "2023-06-10 11:21:22",
-        "image": "sushi_roll_2.jpeg"
+        "image": "sushi_roll_2.jpeg",
+        "date_published": "2023-06-10"
     },
     {
         "id": 6,
@@ -139,13 +139,13 @@
         "category": "Lunch",
         "cuisine": "Indian",
         "instructions": [
-            "Marinate the chicken with yogurt ginger-garlic paste and spices",
-            "Grill or cook the marinated chicken until cooked",
-            "In a separate pan melt butter and saute onions until golden brown",
-            "Add tomato puree, spices and cream to the pan",
-            "Simmer for a few minutes",
-            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes",
-            "Serve hot with naan or rice"
+            "Marinate the chicken with yogurt ginger-garlic paste and spices.",
+            "Grill or cook the marinated chicken until cooked.",
+            "In a separate pan melt butter and saute onions until golden brown.",
+            "Add tomato puree, spices and cream to the pan.",
+            "Simmer for a few minutes.",
+            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes.",
+            "Serve hot with naan or rice."
         ],
         "ingredients": [
             "500g boneless chicken",
