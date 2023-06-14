@@ -21,7 +21,8 @@
             "Salt and pepper to taste"
         ],
         "image": "spaghetti-bolognese.jpg",
-        "date_published": "2022-03-15"
+        "date_published": "2022-03-15",
+        "rating": 5
     },
     {
         "id": 2,
@@ -46,7 +47,8 @@
             "Salsa, lettuce, and toppings of your choice"
         ],
         "image": "chicken-tacos.jpg",
-        "date_published": "2022-06-20"
+        "date_published": "2022-06-20",
+        "rating": 7
     },
     {
         "id": 3,
@@ -71,7 +73,8 @@
             "Lemon juice"
         ],
         "image": "avocado-toast.jpg",
-        "date_published": "2022-09-10"
+        "date_published": "2022-09-10",
+        "rating": 7.8
     },
     {
         "id": 4,
@@ -162,22 +165,5 @@
         ],
         "image": "butter_chicken_2.jpeg",
         "date_published": "2023-06-12"
-    },
-    {
-        "id": 7,
-        "name": "Test Recipe",
-        "description": "Test description",
-        "category": "Test category",
-        "cuisine": "Test cuisine",
-        "instructions": [
-            "Step 1",
-            " Test instruction"
-        ],
-        "ingredients": [
-            "Ingredient 1",
-            " Ingredient 2"
-        ],
-        "image": "test.jpg",
-        "date_published": "2023-06-14"
     }
 ]
