@@ -46,7 +46,7 @@ def download_image(url, save_path):
 recipes = load_recipes_from_json()
 
 
-def add_recipe_function():
+def add_recipe_function(f):
     name = request.form['name']
     description = request.form['description']
     category = request.form['category']
@@ -59,13 +59,15 @@ def add_recipe_function():
     #validation
     if not name or not description or not category or not cuisine or not instructions or not ingredients or not images:
         message = "All fields are required!"
+        return message
     elif any(recipe['name'] == name for recipe in recipes):
         message = 'Recipe already exists.'
+        return message
     else:
             # Check if a file was uploaded
         if 'image' in request.files:
             image_file = request.files['image']
-            if image_file:
+            if image_file: 
                 # Save the image file to the specified directory
                 filename = image_file.filename
                 image_file.save(os.path.join(UPLOAD_FOLDER, filename))
@@ -91,7 +93,7 @@ def add_recipe_function():
         # Add the new recipe to the existing recipes
         existing_recipes.append(new_recipe)
         # Write the updated recipes back to the JSON file
-        with open('recipes.json', 'w') as file:
+        with open(f, 'w') as file:
             json.dump(existing_recipes, file, indent=4)
 
         if new_recipe in existing_recipes:
