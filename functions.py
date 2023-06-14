@@ -109,7 +109,7 @@ def view_recipe(id):
     return get_by_id(id)
 
 #Edit Recipes
-def edit_recipe(id):
+def edit_recipe(id,recipe):
     recipe = get_by_id(id)
     message = None
     if request.method == 'POST':
@@ -162,7 +162,7 @@ def edit_recipe(id):
         with open('recipes.json', 'w') as file:
             json.dump(recipes, file, indent=4)
 
-        return recipe, message
+        return message
 
 #Delete Recipes    
 def delete_recipe(id):
