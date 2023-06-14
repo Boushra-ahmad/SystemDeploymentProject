@@ -67,15 +67,24 @@
         "category": "Snack",
         "cuisine": "American",
         "instructions": [
-            "Season the chicken patty with salt, pepper and preferred spices.",
-            "Grill or pan-fry the chicken patty until cooked through.",
-            "Toast the burger bun on a grill or in a toaster.",
-            "Spread your mayonese sauce on the bottom bun.",
-            "Place the cooked chicken patty on top of the sauce.",
-            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty.",
-            "Add additional toppings.",
-            "Cover with the top bun.",
-            "Serve the chicken burger with fries or a side salad."
+            "Season the chicken patty with salt, pepper and preferred spices",
+            "",
+            "Grill or pan-fry the chicken patty until cooked through",
+            "",
+            "Toast the burger bun on a grill or in a toaster",
+            "",
+            "Spread your mayonese sauce on the bottom bun",
+            "",
+            "Place the cooked chicken patty on top of the sauce",
+            "",
+            "Layer lettuce, tomato slices, and onion rings on top of the chicken patty",
+            "",
+            "Add additional toppings",
+            "",
+            "Cover with the top bun",
+            "",
+            "Serve the chicken burger with fries or a side salad",
+            ""
         ],
         "ingredients": [
             " Chicken patty",
@@ -85,7 +94,7 @@
             "Onion",
             "Sauce",
             "Cheese",
-            "Pickles"
+            "Pickles "
         ],
         "image": "chese_burger_4.jpeg",
         "date_published": "2023-06-10"
