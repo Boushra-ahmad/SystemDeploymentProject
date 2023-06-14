@@ -22,7 +22,7 @@
         ],
         "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15",
-        "rating": 5
+        "rating": "5"
     },
     {
         "id": 2,
@@ -50,7 +50,7 @@
         ],
         "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20",
-        "rating": 7
+        "rating": 3
     },
     {
         "id": 3,
@@ -76,7 +76,7 @@
         ],
         "image": "avocado-toast.jpg",
         "date_published": "2022-09-10",
-        "rating": 7.8
+        "rating": 0
     },
     {
         "id": 4,
@@ -106,7 +106,8 @@
             "Pickles"
         ],
         "image": "chese_burger_4.jpeg",
-        "date_published": "2023-06-10"
+        "date_published": "2023-06-10",
+        "rating": "5"
     },
     {
         "id": 5,
@@ -135,7 +136,8 @@
             "Pickled ginger"
         ],
         "image": "sushi_roll_2.jpeg",
-        "date_published": "2023-06-10"
+        "date_published": "2023-06-10",
+        "rating": 0
     },
     {
         "id": 6,
@@ -166,6 +168,7 @@
             "Salt to taste"
         ],
         "image": "butter_chicken_2.jpeg",
-        "date_published": "2023-06-12"
+        "date_published": "2023-06-12",
+        "rating": "2"
     }
 ]
