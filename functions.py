@@ -89,7 +89,8 @@ def add_recipe_function(f):
                     'instructions': instructions, 
                     'ingredients': ingredients,               
                     'image':image_file.filename,
-                    'date_published': date_published
+                    'date_published': date_published,
+                    'rating' : 0
                 }
                 # Add the new recipe to the existing recipes
                 existing_recipes.append(new_recipe)
@@ -270,3 +271,37 @@ def export_recipes():
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "0"
     return response
+
+def rating(id):
+    recipe = get_by_id(id)
+
+    rating = rating = request.form.get('rating')
+    print(rating, file=sys.stderr)
+
+    new_data = {
+            'name': recipe['name'],
+            'description': recipe['description'],
+            'category':recipe['category'],
+            'cuisine': recipe['cuisine'],
+            'instructions': recipe['instructions'],
+            'ingredients': recipe['ingredients'],
+            'image':recipe['image'],
+            'date_published': recipe['date_published'],
+            'rating': rating
+        }
+
+    with open('recipes.json', 'r') as file:
+        recipes = json.load(file)
+
+    # Find the recipe to update based on its ID
+    for recipe in recipes:
+        if recipe['id'] == id:
+            # Update the recipe data with the new values
+            recipe.update(new_data)
+            message = "Updated Successfully"
+            break
+
+    with open('recipes.json', 'w') as file:
+        json.dump(recipes, file, indent=4)
+    
+    return recipe

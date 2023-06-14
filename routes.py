@@ -20,19 +20,22 @@ def home():
 #add recipe
 @main.route('/addrecipe',methods=['GET','POST'])
 def add_recipe():
-    message = functions.add_recipes('recipes.json')      
+    message = functions.add_recipe_function('recipes.json')      
         #return to homepage
     if message == 'Success':
         return redirect(url_for('main.home'))
     return render_template('add-recipe.html',message=message)
         
 #view recipes
-@main.route('/view/<int:id>',methods=['GET'])
+@main.route('/view/<int:id>',methods=['GET','POST','PUT'])
 def view_recipe(id):
     recipe = functions.view_recipe(id)
     if recipe != "not found":
         #print(recipe, file=sys.stderr)
+        
         return render_template('viewrecipes.html',recipes = recipe)
+
+
 
 #editrecipe
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
@@ -68,3 +71,13 @@ def import_recipe():
 def export_recipes():
     response = functions.export_recipes()
     return response
+
+@main.route('/rate/<int:id>',methods=['POST'])
+def rate_recipe(id):
+        # rating = request.form.get('rating')
+        # tt = request.form.get('tt')
+        # print(rating, file=sys.stderr)
+        # print('id=',id, file=sys.stderr)
+
+        functions.rating(id)
+        return view_recipe(id)
