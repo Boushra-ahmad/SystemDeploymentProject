@@ -60,7 +60,7 @@ def home():
 def add_recipe():
     message = functions.add_recipes()      
         #return to homepage
-    if message == True:
+    if message == 'Success':
         return redirect(url_for('main.home'))
     return render_template('add-recipe.html',message=message)
         
