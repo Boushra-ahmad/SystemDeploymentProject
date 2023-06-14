@@ -196,14 +196,39 @@ def edit_recipe(id):
     message = None
 
     if request.method == 'POST':
+        image_file = request.files['image']
+        filename = None
+        category = request.form['category']
+        new_category = None
+       
+        if image_file:
+            existing_image_filename = recipe['image']
+            # Get the path of the existing image file
+            existing_image_path = os.path.join(UPLOAD_FOLDER, existing_image_filename)
+            # Check if the existing image file exists
+            if os.path.exists(existing_image_path):
+                # Remove the existing image file
+                os.remove(existing_image_path)
+            
+            # Save the image file to the specified directory
+            filename = image_file.filename
+            image_file.save(os.path.join(UPLOAD_FOLDER, filename))       
+        else:
+            filename = recipe['image']
+
+        if category:
+            new_category = request.form['category']
+        else:
+            new_category = recipe['category']
+
         new_data = {
             'name': request.form['name'],
             'description': request.form['description'],
-            'category': request.form['category'],
+            'category':new_category,
             'cuisine': request.form['cuisine'],
             'instructions': request.form['instructions'].split('.'),
             'ingredients': request.form['ingredients'].split(','),
-            'image':recipe['image']
+            'image':filename
         }
 
         with open('recipes.json', 'r') as file:
@@ -214,10 +239,12 @@ def edit_recipe(id):
             if recipe['id'] == id:
                 # Update the recipe data with the new values
                 recipe.update(new_data)
+                message = "Updated Successfully"
                 break
 
         with open('recipes.json', 'w') as file:
             json.dump(recipes, file, indent=4)
+    
 
    
-    return render_template('editrecipe.html',recipe=recipe)
+    return render_template('editrecipe.html',recipe=recipe,message=message)

@@ -131,17 +131,17 @@
     {
         "id": 6,
         "name": "Butter Chicken",
-        "description": "A delicious Indian dish made with tender chicken in a rich and creamy tomato-based sauce.",
-        "category": "lunch",
+        "description": "Delicious Indian dish made with tender chicken in a rich and creamy tomato-based sauce.",
+        "category": "Lunch",
         "cuisine": "Indian",
         "instructions": [
-            "Marinate the chicken with yogurt ginger-garlic paste and spices.",
-            "Grill or cook the marinated chicken until cooked through.",
-            "In a separate pan melt butter and saut\u00e9 onions until golden brown.",
-            "Add tomato puree, spices and cream to the pan.",
-            "Simmer for a few minutes.",
-            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes.",
-            "Serve hot with naan or rice."
+            "Marinate the chicken with yogurt ginger-garlic paste and spices",
+            "Grill or cook the marinated chicken until cooked",
+            "In a separate pan melt butter and saute onions until golden brown",
+            "Add tomato puree, spices and cream to the pan",
+            "Simmer for a few minutes",
+            "Add the cooked chicken to the sauce and simmer for another 5-10 minutes",
+            "Serve hot with naan or rice"
         ],
         "ingredients": [
             "500g boneless chicken",
@@ -151,13 +151,12 @@
             "1 teaspoon chili powder",
             "1 teaspoon garam masala",
             "1/2 cup butter",
-            "1 large onion",
-            " finely chopped",
+            "1 large onion  finely chopped",
             "1 cup tomato puree",
             "1/2 cup heavy cream",
             "Salt to taste"
         ],
         "date_published": "2023-06-12 14:15:14",
-        "image": "butter-chicken-ac2ff98.jpg"
+        "image": "butter_chicken_2.jpeg"
     }
 ]
