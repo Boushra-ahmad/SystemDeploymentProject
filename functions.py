@@ -47,7 +47,6 @@ recipes = load_recipes_from_json()
 
 #Add Recipes
 def add_recipes():
-    message = None
     if request.method == 'POST':
         name = request.form['name']
         description = request.form['description']
@@ -57,53 +56,52 @@ def add_recipes():
         ingredients = request.form['ingredients'].split(',')
         images = request.files['image']
         date_published = datetime.now().strftime('%Y-%m-%d')
-        
+
         #validation
         if not name or not description or not category or not cuisine or not instructions or not ingredients or not images:
             message = "All fields are required!"
-        
+            return message
         elif any(recipe['name'] == name for recipe in recipes):
             message = 'Recipe already exists.'
-        
+            return message
         else:
-             # Check if a file was uploaded
+                # Check if a file was uploaded
             if 'image' in request.files:
                 image_file = request.files['image']
                 if image_file:
                     # Save the image file to the specified directory
                     filename = image_file.filename
                     image_file.save(os.path.join(UPLOAD_FOLDER, filename))
-                    
-        # Load the existing recipes from the JSON file
-        with open('recipes.json', 'r') as file:
-            existing_recipes = json.load(file)
-        
-        # Generate a unique ID for the new recipe
-        new_recipe_id = len(existing_recipes) + 1
-        
-        # Create a new recipe object
-        new_recipe = { 
-            'id': new_recipe_id,  
-            'name': name, 
-            'description': description, 
-            'category': category, 
-            'cuisine': cuisine, 
-            'instructions': instructions, 
-            'ingredients': ingredients,               
-            'image':image_file.filename,
-            'date_published': date_published
-        }
-        
-        # Add the new recipe to the existing recipes
-        existing_recipes.append(new_recipe)
-        
-        # Write the updated recipes back to the JSON file
-        with open('recipes.json', 'w') as file:
-            json.dump(existing_recipes, file, indent=4)
 
-        if new_recipe in existing_recipes:
-            return True
-        return message       
+            # Load the existing recipes from the JSON file
+            with open('recipes.json', 'r') as file:
+                existing_recipes = json.load(file)
+            
+            # Generate a unique ID for the new recipe
+            new_recipe_id = len(existing_recipes) + 1
+            # Create a new recipe object
+            new_recipe = { 
+                'id': new_recipe_id,  
+                'name': name, 
+                'description': description, 
+                'category': category, 
+                'cuisine': cuisine, 
+                'instructions': instructions, 
+                'ingredients': ingredients,               
+                'image':image_file.filename,
+                'date_published': date_published
+            }
+            # Add the new recipe to the existing recipes
+            existing_recipes.append(new_recipe)
+            # Write the updated recipes back to the JSON file
+            with open('recipes.json', 'w') as file:
+                json.dump(existing_recipes, file, indent=4)
+
+    if new_recipe in existing_recipes:
+        message = "Success"
+        return message 
+    else:
+        return message
 
 #View Recipes
 def view_recipe(id):

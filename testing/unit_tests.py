@@ -41,7 +41,7 @@ class test_unit_routes(unittest.TestCase):
             'image': (BytesIO(b'TestImage'), 'test.jpg')
         }, content_type='multipart/form-data'):
             # Call the add_recipe_function()
-            result = functions.add_recipe_function()
+            result = functions.add_recipes()
 
             # Assert the expected result
             self.assertEqual(result, 'Success')

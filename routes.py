@@ -20,7 +20,7 @@ def home():
 #add recipe
 @main.route('/addrecipe',methods=['GET','POST'])
 def add_recipe():
-    message = functions.add_recipes()      
+    message = functions.add_recipe_function()      
         #return to homepage
     if message == 'Success':
         return redirect(url_for('main.home'))
