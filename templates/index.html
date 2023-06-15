@@ -14,27 +14,40 @@
       .checked {
         color: orange;
       }
+
+      .wrapd{
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: stretch;
+        justify-content: center;
+    }
     </style>
 </head>
 <body>
 <center><h1>Recipe Management System</h1></center>
-
-  <form action="{{ url_for('main.search_recipe') }}" method="GET">
-    <div class="search">
-      <input type="text" class="searchTerm" name="search" placeholder="Search...">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-  </form>
   
-    <div id="addbtndiv">
+<div class="wrapd">
+  <div>
+    <form action="{{ url_for('main.search_recipe') }}" method="GET">
+      <div class="search">
+        <input type="text" class="searchTerm" name="search" placeholder="Search...">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+    <div id="exportbtndiv">
       <a href="{{ url_for('main.add_recipe') }}"><button id="addbtn">Add Recipe <i class="fa fa-plus"></i></button> </a>  
     </div>
 
     <div id="exportbtndiv">
       <a href="{{ url_for('main.export_recipes') }}"><button id="exportbtn">Export Recipe <i class="fa fa-upload"></i></button></a>
     </div>
+</div>
+
 <div>
 <div class="row">
     {% for recipe in recipes %}

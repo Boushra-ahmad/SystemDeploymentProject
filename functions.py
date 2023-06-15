@@ -188,7 +188,7 @@ def search_recipe_function(query,recipes):
             search_recipes.append(recipe)
         elif query.lower() in recipe['cuisine'].lower():
             search_recipes.append(recipe)
-    return query, search_recipes
+    return search_recipes
 
 #Import Recipes
 def import_recipe():

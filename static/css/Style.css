@@ -88,25 +88,28 @@ img{width:300px; height:300px;display: block;
   }
 
   .search {
-    width: 85%;
+    /* width: 85%;
     position: absolute;
     display: flex;
-    -webkit-box-sizing: border-box; /* For Safari/Chrome */
-    -moz-box-sizing: border-box; /* For Firefox */
     box-sizing: border-box;
-    margin-left: 41%;
+    margin-left: 41%; */
+    display: flex;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
   }
   
   .searchTerm {
-    width: 22%;
-    border: 3px solid #e3e6e7;
+    /* width: 22%;*/
+    width: 95%;
+    border: 2px solid #e3e6e7;
     border-right: none;
     padding: 5px;
     height: 46px;
     border-radius: 5px 0 0 5px;
     outline: none;
     color: #3e413f;
-    font-size:16px;
+    font-size: 16px;
   }
   
   .searchTerm:focus{
