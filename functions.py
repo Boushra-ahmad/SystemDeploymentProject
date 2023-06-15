@@ -110,8 +110,7 @@ def view_recipe(id):
     return get_by_id(id)
 
 #Edit Recipes
-def edit_recipe_function(id,recipe,f):
-    # recipe = get_by_id(id)
+def edit_recipe_function(id,recipe,f,upload_folder):
     image_file=None
     message = None
     if request.method == 'POST':
@@ -123,15 +122,16 @@ def edit_recipe_function(id,recipe,f):
         if image_file:
             existing_image_filename = recipe['image']
             # Get the path of the existing image file
-            existing_image_path = os.path.join(UPLOAD_FOLDER, existing_image_filename)
-            # Check if the existing image file exists
-            if os.path.exists(existing_image_path):
-                # Remove the existing image file
-                os.remove(existing_image_path)
-            
-            # Save the image file to the specified directory
-            filename = image_file.filename
-            image_file.save(os.path.join(UPLOAD_FOLDER, filename))       
+            if recipe['image'] == image_file.filename:
+                existing_image_path = os.path.join(upload_folder, existing_image_filename)
+                # Check if the existing image file exists
+                if os.path.exists(existing_image_path):
+                    # Remove the existing image file
+                    os.remove(existing_image_path)
+            else:
+                # Save the image file to the specified directory
+                filename = image_file.filename
+                image_file.save(os.path.join(upload_folder, filename))       
         else:
             filename = recipe['image']
 
