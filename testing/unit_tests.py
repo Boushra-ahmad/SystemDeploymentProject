@@ -3,6 +3,7 @@ import unittest
 from flask import Flask
 import sys
 import json
+import os
 
 sys.path.append("../SystemDeploymentProject")
 
@@ -76,6 +77,30 @@ class test_unit_routes(unittest.TestCase):
             # Assertions
             self.assertEqual(result_query, query)
             self.assertEqual(len(result_recipes), 0)
+
+
+
+    #edit recipe 
+    def test_edit_recipe_success(self):
+            # with open('test_recipe.json', 'r') as file:
+            #     recipes = json.load(file)
+            TEST_UPLOAD_FOLDER = 'test_images'
+
+            data = {
+                'name': 'Blueberry Pancake',
+                'description': 'Delicious blueberry pancakes recipe',
+                'category': 'Breakfast',
+                'cuisine': 'American',
+                'instructions': 'Step 1. Step 2. Step 3.',
+                'ingredients': 'flour, milk, eggs, blueberries',
+                'image': (BytesIO(b'TestImage'), 'test_butter_chicken_2.jpeg')
+            }
+            with self.app.test_request_context('/editrecipe/1',method='POST', data=data, content_type='multipart/form-data'):
+                # Call the add_recipe_function()
+                result = functions.edit_recipe_function(1,data,'test_recipe.json',TEST_UPLOAD_FOLDER)
+                # Assert the expected result
+                self.assertEqual(result, 'Updated Successfully')
+
 
 
 if __name__ == '__main__':

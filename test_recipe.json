@@ -1,28 +1,25 @@
 [
     {
         "id": 1,
-        "name": "Spaghetti Bolognese",
-        "description": "Classic Italian pasta dish with a rich meat sauce.",
-        "category": "lunch",
-        "cuisine": "Italian",
+        "name": "Blueberry Pancake",
+        "description": "Delicious blueberry pancakes recipe",
+        "category": "Breakfast",
+        "cuisine": "American",
         "instructions": [
-            "Cook the pasta in boiling water.",
-            "Brown the ground beef in a pan.",
-            "Add onions, garlic, and tomatoes.",
-            "Simmer for 20 minutes.",
-            "Serve the sauce over the cooked pasta."
+            "Step 1",
+            " Step 2",
+            " Step 3",
+            ""
         ],
         "ingredients": [
-            "500g ground beef",
-            "1 onion",
-            "2 cloves of garlic",
-            "400g canned tomatoes",
-            "250g spaghetti",
-            "Salt and pepper to taste"
+            "flour",
+            " milk",
+            " eggs",
+            " blueberries"
         ],
-        "image": "spaghetti-bolognese.jpg",
+        "image": "test_butter_chicken_2.jpeg",
         "date_published": "2022-03-15",
-        "rating": 5
+        "rating": "5"
     },
     {
         "id": 2,
@@ -50,7 +47,7 @@
         ],
         "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20",
-        "rating": 7
+        "rating": 3
     },
     {
         "id": 3,
@@ -76,7 +73,7 @@
         ],
         "image": "avocado-toast.jpg",
         "date_published": "2022-09-10",
-        "rating": 7.8
+        "rating": 0
     },
     {
         "id": 4,
@@ -106,7 +103,8 @@
             "Pickles"
         ],
         "image": "chese_burger_4.jpeg",
-        "date_published": "2023-06-10"
+        "date_published": "2023-06-10",
+        "rating": "5"
     },
     {
         "id": 5,
@@ -135,7 +133,8 @@
             "Pickled ginger"
         ],
         "image": "sushi_roll_2.jpeg",
-        "date_published": "2023-06-10"
+        "date_published": "2023-06-10",
+        "rating": 0
     },
     {
         "id": 6,
@@ -166,6 +165,7 @@
             "Salt to taste"
         ],
         "image": "butter_chicken_2.jpeg",
-        "date_published": "2023-06-12"
+        "date_published": "2023-06-12",
+        "rating": "2"
     }
 ]
