@@ -179,13 +179,16 @@ def delete_recipe(id):
 def search_recipe_function(query,recipes):
     search_recipes = []
     for recipe in recipes:
+        print(recipe['rating'], file=sys.stderr)
         if query.lower() in recipe['name'].lower():
             search_recipes.append(recipe)
         elif query.lower() in recipe['category'].lower():
             search_recipes.append(recipe)
         elif query.lower() in recipe['cuisine'].lower():
             search_recipes.append(recipe)
-    return query, search_recipes
+        elif recipe['rating'] == query:
+            search_recipes.append(recipe)
+    return search_recipes
 
 #Import Recipes
 def import_recipe():
