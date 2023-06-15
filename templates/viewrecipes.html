@@ -131,10 +131,12 @@ datalist option {
                 {% endif %}
 
 
+                <div style="display:flex;gap: 10px;justify-content: flex-start;">
                     <a href="/editrecipe/{{recipes.id}}"><button type="button" class="btn btn-success btn-lg">Edit</button/></a>
-                        <form action="{{ url_for('main.delete_recipe', id=recipes.id) }}" method="POST">
-                            <button type="submit" class="btn btn-danger btn-lg">Delete</button>
-                        </form>
+                    <form action="{{ url_for('main.delete_recipe', id=recipes.id) }}" method="POST">
+                        <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+                    </form>
+                </div>
                         
                     <br/><br/>
                 </div>
