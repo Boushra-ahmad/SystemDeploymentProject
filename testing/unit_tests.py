@@ -89,7 +89,7 @@ class test_unit_routes(unittest.TestCase):
                 'cuisine': 'American',
                 'instructions': 'Step 1. Step 2. Step 3.',
                 'ingredients': 'flour, milk, eggs, blueberries',
-                'image': (BytesIO(b'TestImage'), 'test_butter_chicken_2.jpeg')
+                'image': (BytesIO(b'TestImage'), 'test_pancake.jpeg')
             }
             with self.app.test_request_context('/editrecipe/1',method='POST', data=data, content_type='multipart/form-data'):
                 # Call the add_recipe_function()

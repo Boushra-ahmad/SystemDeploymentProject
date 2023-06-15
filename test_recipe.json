@@ -17,7 +17,7 @@
             " eggs",
             " blueberries"
         ],
-        "image": "test_butter_chicken_2.jpeg",
+        "image": "test_pancake.jpeg",
         "date_published": "2022-03-15",
         "rating": "5"
     },
@@ -73,7 +73,7 @@
         ],
         "image": "avocado-toast.jpg",
         "date_published": "2022-09-10",
-        "rating": 0
+        "rating": "1"
     },
     {
         "id": 4,
