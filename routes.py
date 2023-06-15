@@ -13,7 +13,6 @@ main = Blueprint('main',__name__)#routename = main
 
 recipes = functions.load_recipes_from_json()
 
-UPLOAD_FOLDER = 'static/images'
 
 
 #homepage
@@ -47,7 +46,7 @@ def view_recipe(id):
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
 def edit_recipe(id):    
     recipe = functions.get_by_id(id)
-    message = functions.edit_recipe_function(id,recipe,'recipes.json',UPLOAD_FOLDER)
+    message = functions.edit_recipe_function(id,recipe,'recipes.json',functions.UPLOAD_FOLDER)
     return render_template('editrecipe.html',recipe=recipe,message=message)
 
 #delete recipe
