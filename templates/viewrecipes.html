@@ -45,6 +45,19 @@ datalist option {
     cursor: pointer;
     }
     </style>
+
+    <script>
+        function confirmDelete(recipeId) {
+            var confirmation = confirm("Are you sure you want to delete this recipe?");
+            if (confirmation) {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/delete_recipe/' + recipeId;
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+    </script>
 </head>
 <body>
     {% if recipes %}
@@ -133,9 +146,8 @@ datalist option {
 
                 <div style="display:flex;gap: 10px;justify-content: flex-start;">
                     <a href="/editrecipe/{{recipes.id}}"><button type="button" class="btn btn-success btn-lg">Edit</button/></a>
-                    <form action="{{ url_for('main.delete_recipe', id=recipes.id) }}" method="POST">
-                        <button type="submit" class="btn btn-danger btn-lg">Delete</button>
-                    </form>
+                    <button type="button" class="btn btn-danger btn-lg" onclick="confirmDelete({{ recipes.id }})">Delete</button>
+
                 </div>
                         
                     <br/><br/>

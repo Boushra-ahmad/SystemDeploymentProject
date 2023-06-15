@@ -48,8 +48,6 @@ class test_unit_routes(unittest.TestCase):
             result = functions.add_recipe_function('test_recipe.json')
             self.assertEqual(result, 'All fields are required!')
 
-  
-
   #search recipe testing
     def test_search_recipe(self):
             # request query
@@ -77,8 +75,6 @@ class test_unit_routes(unittest.TestCase):
             # Assertions
             self.assertEqual(result_query, query)
             self.assertEqual(len(result_recipes), 0)
-
-
 
     #edit recipe 
     def test_edit_recipe_success(self):

@@ -51,7 +51,7 @@ def edit_recipe(id):
     return render_template('editrecipe.html',recipe=recipe,message=message)
 
 #delete recipe
-@main.route('/delete_recipe/<int:id>', methods=['GET','POST'])
+@main.route('/delete_recipe/<int:id>', methods=['POST'])
 def delete_recipe(id):    
     functions.delete_recipe(id)
     return redirect(url_for('main.home'))

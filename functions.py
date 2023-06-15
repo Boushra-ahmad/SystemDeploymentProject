@@ -19,14 +19,13 @@ def load_recipes_from_json():
         return data
 
 def get_by_id(id):
-     with open('recipes.json', 'r') as file:
-        data = json.load(file)
-        for i in data:
-            if i['id'] == id*1:
-                #print(i, file=sys.stderr)
-                return i
-        else:
-            return "not found"
+    data = load_recipes_from_json()
+    for i in data:
+        if i['id'] == id*1:
+            #print(i, file=sys.stderr)
+            return i
+    else:
+        return "not found"
         
 def convert_xlsx_to_csv(xlsx_file, csv_file):
     # Read the XLSX file
@@ -45,7 +44,7 @@ def download_image(url, save_path):
 
 recipes = load_recipes_from_json()
 
-
+#Add Recipes
 def add_recipe_function(f):
     if request.method == "POST":
         name = request.form['name']
@@ -74,8 +73,7 @@ def add_recipe_function(f):
                     image_file.save(os.path.join(UPLOAD_FOLDER, filename))
 
                 # Load the existing recipes from the JSON file
-                with open('recipes.json', 'r') as file:
-                    existing_recipes = json.load(file)
+                existing_recipes = load_recipes_from_json()
                 
                 # Generate a unique ID for the new recipe
                 new_recipe_id = len(existing_recipes) + 1
@@ -110,7 +108,8 @@ def view_recipe(id):
     return get_by_id(id)
 
 #Edit Recipes
-def edit_recipe_function(id,recipe,f,upload_folder):
+def edit_recipe_function(id,recipe,f):
+    # recipe = get_by_id(id)
     image_file=None
     message = None
     if request.method == 'POST':
@@ -122,16 +121,15 @@ def edit_recipe_function(id,recipe,f,upload_folder):
         if image_file:
             existing_image_filename = recipe['image']
             # Get the path of the existing image file
-            if recipe['image'] == image_file.filename:
-                existing_image_path = os.path.join(upload_folder, existing_image_filename)
-                # Check if the existing image file exists
-                if os.path.exists(existing_image_path):
-                    # Remove the existing image file
-                    os.remove(existing_image_path)
-            else:
-                # Save the image file to the specified directory
-                filename = image_file.filename
-                image_file.save(os.path.join(upload_folder, filename))       
+            existing_image_path = os.path.join(UPLOAD_FOLDER, existing_image_filename)
+            # Check if the existing image file exists
+            if os.path.exists(existing_image_path):
+                # Remove the existing image file
+                os.remove(existing_image_path)
+            
+            # Save the image file to the specified directory
+            filename = image_file.filename
+            image_file.save(os.path.join(UPLOAD_FOLDER, filename))       
         else:
             filename = recipe['image']
 
@@ -150,8 +148,7 @@ def edit_recipe_function(id,recipe,f,upload_folder):
             'image':filename
         }
 
-        with open('recipes.json', 'r') as file:
-            recipes = json.load(file)
+        recipes = load_recipes_from_json()
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
@@ -169,8 +166,7 @@ def edit_recipe_function(id,recipe,f,upload_folder):
 #Delete Recipes    
 def delete_recipe(id):
     #Get the recipes from the recipes.json file
-    with open('recipes.json', 'r') as file:
-        existing_recipes = json.load(file)
+    existing_recipes = load_recipes_from_json()
         
     filtered_data = [existing_recipes.remove(recipe) for recipe in existing_recipes if recipe['id'] == id]
 
@@ -188,7 +184,7 @@ def search_recipe_function(query,recipes):
             search_recipes.append(recipe)
         elif query.lower() in recipe['cuisine'].lower():
             search_recipes.append(recipe)
-    return search_recipes
+    return query, search_recipes
 
 #Import Recipes
 def import_recipe():
@@ -204,9 +200,7 @@ def import_recipe():
         csvFile = 'static/files/imported/xlsxToCSV.csv'
         convert_xlsx_to_csv(UPLOAD_FOLDER2 + filename, csvFile)
          
-    # Open a json writer, and use the json.dumps() function to dump data      
-    with open('recipes.json', 'r') as jsonf:
-        existingRecipes = json.load(jsonf)
+    existingRecipes = load_recipes_from_json()
 
     # Open a csv reader called DictReader
     with open(csvFile) as csvf:
@@ -240,8 +234,7 @@ def import_recipe():
 
 #Export Recipes
 def export_recipes():
-    with open('recipes.json') as json_file:
-        jsonData = json.load(json_file)
+    jsonData = load_recipes_from_json()
         
     #Create the folder 'static/files/exported if it doesn't exist
     if not os.path.exists(UPLOAD_FOLDER3):
@@ -290,8 +283,7 @@ def rating(id):
             'rating': rating
         }
 
-    with open('recipes.json', 'r') as file:
-        recipes = json.load(file)
+    recipes = load_recipes_from_json()
 
     # Find the recipe to update based on its ID
     for recipe in recipes:
