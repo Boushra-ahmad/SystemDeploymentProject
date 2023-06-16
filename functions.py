@@ -165,14 +165,14 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER):
         return message
 
 #Delete Recipes    
-def delete_recipe(id):
+def delete_recipe(f,id):
     #Get the recipes from the recipes.json file
     existing_recipes = load_recipes_from_json()
         
     filtered_data = [existing_recipes.remove(recipe) for recipe in existing_recipes if recipe['id'] == id]
 
     # Save the updated recipes back to the JSON file
-    with open('recipes.json', 'w') as file:
+    with open(f, 'w') as file:
         json.dump(existing_recipes, file, indent=4)
 
 #Search Recipes   
