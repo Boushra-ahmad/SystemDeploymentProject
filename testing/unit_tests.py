@@ -25,7 +25,7 @@ class test_unit_routes(unittest.TestCase):
             # Assert that the recipe is not "not found"
             self.assertNotEqual(recipe, "not found")
             
-     def test_view_all_recipes(self):
+    def test_view_all_recipes(self):
         with self.app.test_request_context('/', method='GET'):
             # Call the load_recipes_from_json function to get all recipes
             recipes = functions.load_recipes_from_json()
