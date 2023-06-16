@@ -81,6 +81,15 @@ class test_unit_routes(unittest.TestCase):
                 # Assert the expected result
                 self.assertEqual(result, 'Updated Successfully')
 
+    #export recipe
+    def test_export_recipes(self):
+
+        UPLOAD_FOLDER = 'test_files/export'
+        response = functions.export_recipes(UPLOAD_FOLDER)
+        # Assert the expected result
+        self.assertIsNotNone(response)
+       
+
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file
+from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file,current_app
 import json
 import sys
 from datetime import datetime
@@ -237,7 +237,7 @@ def import_recipe():
         jsonFile.write(json.dumps(existingRecipes, indent=4))
 
 #Export Recipes
-def export_recipes():
+def export_recipes(UPLOAD_FOLDER3):
     jsonData = load_recipes_from_json()
         
     #Create the folder 'static/files/exported if it doesn't exist
@@ -261,13 +261,17 @@ def export_recipes():
             data['ingredients'] = ", ".join(data['ingredients'])
             csv_writer.writerow(data.values())
 
-    # Create a response with the file
-    response = make_response(send_file(csv_file_path, as_attachment=False))
-    response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-    return response
+    if current_app:
+        # Create a response with the file
+        response = make_response(send_file(csv_file_path, as_attachment=False))
+        response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
+    else:
+        return csv_file_path
+    
 
 def rating(id):
     recipe = get_by_id(id)
