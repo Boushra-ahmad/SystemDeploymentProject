@@ -45,7 +45,7 @@ def download_image(url, save_path):
 recipes = load_recipes_from_json()
 
 #Add Recipes
-def add_recipe_function(f):
+def add_recipe_function(f,recipes):
     if request.method == "POST":
         name = request.form['name']
         description = request.form['description']
