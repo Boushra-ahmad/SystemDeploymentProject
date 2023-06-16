@@ -85,7 +85,10 @@ class test_unit_routes(unittest.TestCase):
     def test_export_recipes(self):
 
         UPLOAD_FOLDER = 'test_files/export'
-        response = functions.export_recipes(UPLOAD_FOLDER)
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+
+        response = functions.export_recipes(UPLOAD_FOLDER,recipedata)
         # Assert the expected result
         self.assertIsNotNone(response)
        
