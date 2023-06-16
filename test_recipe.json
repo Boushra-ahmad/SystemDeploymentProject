@@ -47,7 +47,7 @@
         ],
         "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20",
-        "rating": 3
+        "rating": "3"
     },
     {
         "id": 3,
@@ -134,7 +134,7 @@
         ],
         "image": "sushi_roll_2.jpeg",
         "date_published": "2023-06-10",
-        "rating": 0
+        "rating": "0"
     },
     {
         "id": 6,
