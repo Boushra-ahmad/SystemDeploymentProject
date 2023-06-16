@@ -25,7 +25,7 @@ class test_unit_routes(unittest.TestCase):
             recipe = functions.view_recipe(recipe_id)
             # Assert that the recipe is not "not found"
             self.assertNotEqual(recipe, "not found")
-        
+    
     #View All Recipes
     def test_view_all_recipes(self):
         with self.app.test_request_context('/', method='GET'):
@@ -145,7 +145,10 @@ class test_unit_routes(unittest.TestCase):
     #export recipe
     def test_export_recipes(self):
         UPLOAD_FOLDER = 'test_files/export'
-        response = functions.export_recipes(UPLOAD_FOLDER)
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+
+        response = functions.export_recipes(UPLOAD_FOLDER,recipedata)
         # Assert the expected result
         self.assertIsNotNone(response)
         
