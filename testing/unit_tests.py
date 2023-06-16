@@ -15,7 +15,16 @@ class test_unit_routes(unittest.TestCase):
         # Create a Flask test client
         self.app = Flask(__name__)
         self.app.config['TESTING'] = True
-
+        
+    def test_view_recipe(self):
+        # Define the recipe ID for the test
+        recipe_id = 1
+        with self.app.test_request_context(f'/view/{recipe_id}', method='GET'):
+            # Call the view_recipe function
+            recipe = functions.view_recipe(recipe_id)
+            # Assert that the recipe is not "not found"
+            self.assertNotEqual(recipe, "not found")
+            
            
     def test_add_recipe_success(self):
         data = {
