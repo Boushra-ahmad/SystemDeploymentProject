@@ -25,7 +25,7 @@ def home():
 #add recipe
 @main.route('/addrecipe',methods=['GET','POST'])
 def add_recipe():
-    message = functions.add_recipe_function('recipes.json')
+    message = functions.add_recipe_function('recipes.json',recipes)
  
     if message == 'Success':
         return redirect(url_for('main.home'))

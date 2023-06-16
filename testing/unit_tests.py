@@ -4,6 +4,7 @@ from flask import Flask
 import sys
 import json
 import os
+import random
 
 sys.path.append("../SystemDeploymentProject")
 
@@ -36,8 +37,11 @@ class test_unit_routes(unittest.TestCase):
     
     #Add Recipe
     def test_add_recipe_success(self):
+        random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
         data = {
-            'name': 'Test Recipe',
+            'name': 'Test Recipes '+random_string,
             'description': 'Test description',
             'category': 'Test category',
             'cuisine': 'Test cuisine',
@@ -47,7 +51,7 @@ class test_unit_routes(unittest.TestCase):
         }
         with self.app.test_request_context('/addrecipe', method='POST', data=data, content_type='multipart/form-data'):
             # Call the add_recipe_function()
-            result = functions.add_recipe_function('test_recipe.json')
+            result = functions.add_recipe_function('test_recipe.json',recipedata)
             # Assert the expected result
             self.assertEqual(result, 'Success')
 
