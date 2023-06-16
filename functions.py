@@ -237,8 +237,7 @@ def import_recipe():
         jsonFile.write(json.dumps(existingRecipes, indent=4))
 
 #Export Recipes
-def export_recipes(UPLOAD_FOLDER3):
-    jsonData = load_recipes_from_json()
+def export_recipes(UPLOAD_FOLDER3,jsonData):
         
     #Create the folder 'static/files/exported if it doesn't exist
     if not os.path.exists(UPLOAD_FOLDER3):

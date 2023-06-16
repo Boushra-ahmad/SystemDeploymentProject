@@ -75,7 +75,7 @@ def import_recipe():
 #export recipes
 @main.route('/export', methods=['GET','POST'])
 def export_recipes():
-    response = functions.export_recipes(functions.UPLOAD_FOLDER3)
+    response = functions.export_recipes(functions.UPLOAD_FOLDER3,recipes)
     return response
 
 @main.route('/rate/<int:id>',methods=['POST'])
