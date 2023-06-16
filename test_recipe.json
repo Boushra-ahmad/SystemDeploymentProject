@@ -1,23 +1,26 @@
 [
     {
         "id": 1,
-        "name": "Blueberry Pancake",
-        "description": "Delicious blueberry pancakes recipe",
-        "category": "Breakfast",
-        "cuisine": "American",
+        "name": "Spaghetti Bolognese",
+        "description": "Classic Italian pasta dish with a rich meat sauce.",
+        "category": "lunch",
+        "cuisine": "Italian",
         "instructions": [
-            "Step 1",
-            " Step 2",
-            " Step 3",
-            ""
+            "Cook the pasta in boiling water.",
+            "Brown the ground beef in a pan.",
+            "Add onions, garlic, and tomatoes.",
+            "Simmer for 20 minutes.",
+            "Serve the sauce over the cooked pasta."
         ],
         "ingredients": [
-            "flour",
-            " milk",
-            " eggs",
-            " blueberries"
+            "500g ground beef",
+            "1 onion",
+            "2 cloves of garlic",
+            "400g canned tomatoes",
+            "250g spaghetti",
+            "Salt and pepper to taste"
         ],
-        "image": "test_pancake.jpeg",
+        "image": "spaghetti-bolognese.jpg",
         "date_published": "2022-03-15",
         "rating": "5"
     },
@@ -167,5 +170,23 @@
         "image": "butter_chicken_2.jpeg",
         "date_published": "2023-06-12",
         "rating": "2"
+    },
+    {
+        "id": 7,
+        "name": "Test Recipe",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-16",
+        "rating": 0
     }
 ]
