@@ -126,6 +126,25 @@ class test_unit_routes(unittest.TestCase):
                 result = functions.edit_recipe_function(1,data,'test_recipe.json',TEST_UPLOAD_FOLDER,recipes)
                 # Assert the expected result
                 self.assertEqual(result, 'Updated Successfully')
+
+    def test_edit_recipe_id_not_found(self):
+            with open('test_recipe.json', 'r') as file:
+                recipes = json.load(file)
+            TEST_UPLOAD_FOLDER = 'test_images'
+
+            data = {
+                'name': 'Blueberry Pancake',
+                'description': 'Delicious blueberry pancakes recipe',
+                'category': 'Breakfast',
+                'cuisine': 'American',
+                'instructions': 'Step 1. Step 2. Step 3.',
+                'ingredients': 'flour, milk, eggs, blueberries',
+                'image': (BytesIO(b'TestImage'), 'test_pancake.jpeg')
+            }
+            with self.app.test_request_context('/editrecipe/55',method='POST', data=data, content_type='multipart/form-data'):
+                # Call the add_recipe_function()
+                result = functions.edit_recipe_function(55,data,'test_recipe.json',TEST_UPLOAD_FOLDER,recipes)
+                self.assertIsNone(result)
                 
     #delete recipe
     def test_delete_recipe_success(self):
