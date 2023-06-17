@@ -87,3 +87,9 @@ def rate_recipe(id):
 
         functions.rating(id)
         return view_recipe(id)
+
+
+#handle 404 error
+@main.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
