@@ -75,8 +75,8 @@ class test_unit_routes(unittest.TestCase):
    
     #edit recipe 
     def test_edit_recipe_success(self):
-            # with open('test_recipe.json', 'r') as file:
-            #     recipes = json.load(file)
+            with open('test_recipe.json', 'r') as file:
+                recipes = json.load(file)
             TEST_UPLOAD_FOLDER = 'test_images'
 
             data = {
@@ -90,7 +90,7 @@ class test_unit_routes(unittest.TestCase):
             }
             with self.app.test_request_context('/editrecipe/1',method='POST', data=data, content_type='multipart/form-data'):
                 # Call the add_recipe_function()
-                result = functions.edit_recipe_function(1,data,'test_recipe.json',TEST_UPLOAD_FOLDER)
+                result = functions.edit_recipe_function(1,data,'test_recipe.json',TEST_UPLOAD_FOLDER,recipes)
                 # Assert the expected result
                 self.assertEqual(result, 'Updated Successfully')
                 
