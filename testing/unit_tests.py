@@ -55,6 +55,39 @@ class test_unit_routes(unittest.TestCase):
             # Assert the expected result
             self.assertEqual(result, 'Success')
 
+    def test_add_recipe_missing(self):
+        random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+        data = {
+            'name': 'Test Recipes '+random_string,
+            'description': 'Test description',
+            'category': 'Test category',
+            'cuisine': '',
+            'instructions': 'Step 1. Test instruction',
+            'ingredients': 'Ingredient 1, Ingredient 2',
+            'image': (BytesIO(b'TestImage'), 'test.jpg')
+        }
+        with self.app.test_request_context('/addrecipe', method='POST', data=data, content_type='multipart/form-data'):
+            result = functions.add_recipe_function('test_recipe.json',recipedata)
+            self.assertEqual(result, 'All fields are required!')
+            
+
+    def test_add_recipe_existing(self):
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+        data = {
+            'name': 'Blueberry Pancake',
+            'description': 'Test description',
+            'category': 'Test category',
+            'cuisine': 'Test cuisine',
+            'instructions': 'Step 1. Test instruction',
+            'ingredients': 'Ingredient 1, Ingredient 2',
+            'image': (BytesIO(b'TestImage'), 'test.jpg')
+        }
+        with self.app.test_request_context('/addrecipe', method='POST', data=data, content_type='multipart/form-data'):
+            result = functions.add_recipe_function('test_recipe.json',recipedata)
+            self.assertEqual(result, 'Recipe already exists.')
 
     #search recipe testing
     def test_search_recipe(self):
