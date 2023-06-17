@@ -1,12 +1,14 @@
 import sys
 from flask import Flask, jsonify, request,render_template
 from http import HTTPStatus
-from routes import main
+from routes import main,page_not_found
+
 
 
 def create_app():
     app = Flask(__name__)
     app.register_blueprint(main)
+    app.register_error_handler(404, page_not_found)
 
     return app
 
