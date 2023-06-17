@@ -46,7 +46,7 @@ def view_recipe(id):
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
 def edit_recipe(id):    
     recipe = functions.get_by_id(id)
-    message = functions.edit_recipe_function(id,recipe,'recipes.json',functions.UPLOAD_FOLDER)
+    message = functions.edit_recipe_function(id,recipe,'recipes.json',functions.UPLOAD_FOLDER,recipes)
     return render_template('editrecipe.html',recipe=recipe,message=message)
 
 #delete recipe

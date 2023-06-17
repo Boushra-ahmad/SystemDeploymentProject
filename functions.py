@@ -108,7 +108,7 @@ def view_recipe(id):
     return get_by_id(id)
 
 #Edit Recipes
-def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER):
+def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
     # recipe = get_by_id(id)
     image_file=None
     message = None
@@ -149,7 +149,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER):
             'image':filename
         }
 
-        recipes = load_recipes_from_json()
+        # recipes = load_recipes_from_json()
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
