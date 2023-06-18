@@ -177,8 +177,7 @@ def delete_recipe(f,id):
         json.dump(existing_recipes, file, indent=4)
 
 #Search Recipes   
-def search_recipe_function(f,query):
-    recipes = load_recipes_from_json(f)
+def search_recipe_function(f,query, recipes):
     search_recipes = []
     for recipe in recipes:
         print(recipe['rating'], file=sys.stderr)
