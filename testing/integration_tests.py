@@ -101,11 +101,52 @@ class integration_tests():
             functions.delete_recipe('test_recipe.json', 20)
 
 
+    def view_and_edit(self):
+        with open('test_recipe.json', 'r') as file:
+            old_data = json.load(file)
+            file.close()
+        TEST_UPLOAD_FOLDER = 'test_images'
+        data = {
+            'id':30,
+            'name': 'Edit Test Recipe',
+            'description': 'Test integration add',
+            'category': 'Test category',
+            'cuisine': 'Test cuisine',
+            'instructions': 'Step 1. Test instruction',
+            'ingredients': 'Ingredient 1, Ingredient 2',
+            'image': 'Edittest.jpg',
+            'date_published':'2022-05-10',
+            'rating':0}
+        old_data.append(data)
+        with open('test_recipe.json', 'w') as file:
+            json.dump(old_data, file)
+            file.close()
+      
+        data = {'id':30,
+            'name': 'Testing Edit Recipe',
+            'description': 'Test integration add',
+            'category': 'Test category',
+            'cuisine': 'Test cuisine',
+            'instructions': 'Step 1. Test instruction',
+            'ingredients': 'Ingredient 1, Ingredient 2',
+            'image': (BytesIO(b'TestImage'), 'testedit.jpg'),
+            'date_published':'2022-05-10',
+            'rating':0}
+
+        with self.app.test_request_context('/editrecipe/30',method='POST',data=data):
+            result = functions.get_by_id('test_recipe.json',30)
+            resultdata = functions.edit_recipe_function(result['id'],data,'test_recipe.json',TEST_UPLOAD_FOLDER,old_data)
+            assert resultdata == 'Updated Successfully'
+
+
+
+
     def runall(self):
         self.setUp()
         self.create_and_read_recipe()
         self.delete_and_read_recipe()
         self.rate_and_view()
+        self.view_and_edit()
 
 
 run = integration_tests()
