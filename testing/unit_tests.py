@@ -131,6 +131,15 @@ class test_unit_routes(unittest.TestCase):
             self.assertEqual(len(result_recipes), 1)
             self.assertEqual(result_recipes[0]['name'], 'Butter Chicken')
 
+    def test_search_recipe_not_found(self):
+        # Set up request query
+        query = 'salad'
+        with open('test_recipe.json', 'r') as file:
+                recipedata = json.load(file)
+        with self.app.test_request_context('/search?search=salad', method='GET'):
+            result_recipes =  functions.search_recipe_function('test_recipe.json',query, recipedata)
+            # Assertions
+            self.assertEqual(len(result_recipes), 0)
    
     #edit recipe 
     def test_edit_recipe_success(self):
