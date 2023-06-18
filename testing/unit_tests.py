@@ -62,8 +62,6 @@ class test_unit_routes(unittest.TestCase):
                 self.assertIsNotNone(recipe['name'])
                 self.assertIsNotNone(recipe['category'])
 
-
-
     #Add Recipe
     def test_add_recipe_success(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
@@ -101,7 +99,6 @@ class test_unit_routes(unittest.TestCase):
             result = functions.add_recipe_function('test_recipe.json')
             self.assertEqual(result, 'All fields are required!')
             
-
     def test_add_recipe_existing(self):
         # with open('test_recipe.json', 'r') as file:
         #     recipedata = json.load(file)
@@ -128,11 +125,7 @@ class test_unit_routes(unittest.TestCase):
             
         with self.app.test_request_context('/search', method='GET'):
             # Call the add_recipe_function()
-<<<<<<< HEAD
-            result_recipes = functions.search_recipe_function('test_recipe.json',query, recipedata)
-=======
             result_recipes = functions.search_recipe_function('test_recipe.json',query,recipedata)
->>>>>>> 9b414a132e89c4b9eb8fe2ca1b3bf26ff0c19685
             # Assert the expected result
             # self.assertEqual(query, query)
             self.assertEqual(len(result_recipes), 1)

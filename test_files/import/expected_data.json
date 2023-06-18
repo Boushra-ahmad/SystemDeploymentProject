@@ -617,5 +617,59 @@
         "image": "test.jpg",
         "date_published": "2023-06-18",
         "rating": 0
+    },
+    {
+        "id": 8,
+        "name": "Test Recipes sns",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-18",
+        "rating": 0
+    },
+    {
+        "id": 33,
+        "name": "Test Recipes xle",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-18",
+        "rating": 0
+    },
+    {
+        "id": 34,
+        "name": "Test Recipes met",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-18",
+        "rating": 0
     }
 ]
