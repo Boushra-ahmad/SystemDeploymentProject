@@ -37,6 +37,11 @@ class test_unit_routes(unittest.TestCase):
             recipes = functions.load_recipes_from_json()
             # Assert that there are recipes available
             self.assertTrue(len(recipes) > 0)
+            # Assert that each recipe has the expected keys
+            expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
+            for recipe in recipes:
+                self.assertListEqual(list(recipe.keys()), expected_keys)
+
      
             
            
