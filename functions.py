@@ -204,6 +204,8 @@ def import_recipe(f):
         # Handle XLSX file
         csvFile = 'static/files/imported/xlsxToCSV.csv'
         convert_xlsx_to_csv(UPLOAD_FOLDER2 + filename, csvFile)
+    else:
+        csvFile = 'static/files/imported/' + filename
          
     existingRecipes = load_recipes_from_json(f)
 
@@ -215,7 +217,7 @@ def import_recipe(f):
         csvReader = csv.DictReader(csvf)                    
         for rows in csvReader:                    
             image_filename = rows['name'] + '.jpg'
-                    
+            
             # Combine the save directory and image filename to create the save path
             save_path = os.path.join(save_directory, image_filename)
                     
