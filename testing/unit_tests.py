@@ -52,6 +52,7 @@ class test_unit_routes(unittest.TestCase):
             expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
             for recipe in recipes:
                 self.assertListEqual(list(recipe.keys()), expected_keys)
+                
             # Add additional assertions
             # assert specific properties of the recipes
             for recipe in recipes:
