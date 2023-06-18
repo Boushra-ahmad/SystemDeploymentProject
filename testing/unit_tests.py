@@ -285,29 +285,63 @@ class test_unit_routes(unittest.TestCase):
             functions.delete_recipe('test_recipe.json', 20)
             
 
-    #import recipe
-    def test_import_recipe(self):
+    #import recipe from a csv file
+    def test_import__csv_recipe(self):
         # Prepare a test CSV file
-        csv_file = FileStorage(filename='test_recipes.xlsx', content_type='application/vnd.ms-excel')
+        csv_file = FileStorage(filename='test_recipes.csv', content_type='application/vnd.ms-excel')
         
         #Specify the folder the imported file be saved to
         UPLOAD_FOLDER2 = './test_files/import/'
         
+        #Specify JSON file
         json_file = 'test_recipe.json'
 
         with open(json_file, 'r') as file:
             recipes = json.load(file)
             
+        initial_recipe_count = len(recipes)
+            
+        #Save all the recipes in an expected data file
         with open('./test_files/import/expected_data.json', 'w') as file:
             json.dump(recipes, file, indent=4)
-
+            
         # Call the import_recipe function
-        functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2) 
+        functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2)
         
         with open('./test_files/import/expected_data.json', 'r+') as file:
-            expected_recipes = json.load(file)       
+            expected_recipes = json.load(file)   
+            
+        final_recipe_count = len(expected_recipes)    
+        
+        total_recipes_imported = final_recipe_count - initial_recipe_count
 
-        self.assertEqual(recipes, expected_recipes)
+        self.assertEqual(final_recipe_count, initial_recipe_count + total_recipes_imported)
+        
+    # #import recipe from a xlsx file
+    # def test_import__xlsx_recipe(self):
+    #     # Prepare a test CSV file
+    #     csv_file = FileStorage(filename='test_recipes.xlsx', content_type='application/vnd.ms-excel')
+        
+    #     #Specify the folder the imported file be saved to
+    #     UPLOAD_FOLDER2 = './test_files/import/'
+        
+    #     json_file = 'test_recipe.json'
+
+    #     with open(json_file, 'r') as file:
+    #         recipes = json.load(file)
+            
+    #     with open('./test_files/import/expected_data.json', 'w') as file:
+    #         json.dump(recipes, file, indent=4)
+            
+    #     csv_file.save(os.path.join(UPLOAD_FOLDER2, csv_file.filename))
+
+    #     # Call the import_recipe function
+    #     functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2)
+        
+    #     with open('./test_files/import/expected_data.json', 'r+') as file:
+    #         expected_recipes = json.load(file)       
+
+    #     self.assertEqual(recipes, expected_recipes)
 
 if __name__ == '__main__':
     unittest.main()

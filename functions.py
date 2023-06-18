@@ -25,7 +25,8 @@ def get_by_id(f,id):
             return i
     else:
         return "not found"
-# print(get_by_id('test_recipe.json',1))
+        # print(get_by_id('test_recipe.json',1))
+
 def convert_xlsx_to_csv(xlsx_file, csv_file):
     # Read the XLSX file
     data_frame = pd.read_excel(xlsx_file)
@@ -101,7 +102,6 @@ def add_recipe_function(f):
                 return message 
             else:
                 return message
-
 
 #View Recipes
 def view_recipe(f,id):
@@ -195,16 +195,16 @@ def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2):
     filename = csvFile.filename
            
     #Create the folder if it doesn't exist
-    if not os.path.exists(UPLOAD_FOLDER2):
-        os.makedirs(UPLOAD_FOLDER2)
-    csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
+    
     if filename.endswith('.xlsx'):
+        if not os.path.exists(UPLOAD_FOLDER2):
+            os.makedirs(UPLOAD_FOLDER2)
+            csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
         # Handle XLSX file
-        csv_file = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
-        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csv_file)
+        csvFile = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
+        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csvFile)
     else:
-        csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
-         
+        csvFile = csvFile.filename  
     existingRecipes = load_recipes_from_json(jsonFile)
 
     # Open a csv reader called DictReader
@@ -229,6 +229,7 @@ def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2):
             rows['instructions'] = [instruction + '.' if index != len(rows['instructions']) - 1 else instruction for index, instruction in enumerate(rows['instructions'])]
             rows['ingredients'] = list(rows['ingredients'].split(', '))
             rows['image'] = rows['name'] + '.jpg'
+            rows['rating'] = 0
                     
             # Add the new recipe to the existing recipes
             existingRecipes.append(rows)
@@ -272,7 +273,6 @@ def export_recipes(UPLOAD_FOLDER3,jsonData):
     else:
         return csv_file_path
     
-
 def rating(f,id):
     recipe = get_by_id(f,id)
     # print(recipe,file=sys.stderr)
