@@ -41,9 +41,10 @@ class test_unit_routes(unittest.TestCase):
             expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
             for recipe in recipes:
                 self.assertListEqual(list(recipe.keys()), expected_keys)
+            # Assert that the recipe IDs are unique
+            recipe_ids = [recipe['id'] for recipe in recipes]
+            self.assertEqual(len(set(recipe_ids)), len(recipe_ids))
 
-     
-            
            
     def test_add_recipe_success(self):
         data = {
