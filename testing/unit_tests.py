@@ -28,6 +28,14 @@ class test_unit_routes(unittest.TestCase):
             recipe = functions.view_recipe('test_recipe.json',recipe_id)
             # Assert that the recipe is not "not found"
             self.assertNotEqual(recipe, "not found")
+            # Assert that the recipe has the expected keys
+            expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
+            self.assertListEqual(list(recipe.keys()), expected_keys)
+
+            #assert specific properties of the recipe
+            self.assertEqual(recipe['id'], recipe_id)
+            self.assertEqual(recipe['name'], 'Blueberry Pancake')
+            self.assertEqual(recipe['category'], 'Breakfast')
     
     #View All Recipes
     def test_view_all_recipes(self):
@@ -40,8 +48,22 @@ class test_unit_routes(unittest.TestCase):
             # Assert that there are recipes available
             # print("The total is",reps)
             # print("the length of recipes",len(recipes))
-            self.assertTrue(len(recipes) == reps)           
-    
+            self.assertTrue(len(recipes) == reps)    
+
+            # Assert that each recipe has the expected keys
+            expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
+            for recipe in recipes:
+                self.assertListEqual(list(recipe.keys()), expected_keys)
+                
+            # Add additional assertions
+            # assert specific properties of the recipes
+            for recipe in recipes:
+                self.assertIsNotNone(recipe['id'])
+                self.assertIsNotNone(recipe['name'])
+                self.assertIsNotNone(recipe['category'])
+
+
+
     #Add Recipe
     def test_add_recipe_success(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
@@ -106,7 +128,11 @@ class test_unit_routes(unittest.TestCase):
             
         with self.app.test_request_context('/search', method='GET'):
             # Call the add_recipe_function()
+<<<<<<< HEAD
             result_recipes = functions.search_recipe_function('test_recipe.json',query, recipedata)
+=======
+            result_recipes = functions.search_recipe_function('test_recipe.json',query,recipedata)
+>>>>>>> 9b414a132e89c4b9eb8fe2ca1b3bf26ff0c19685
             # Assert the expected result
             # self.assertEqual(query, query)
             self.assertEqual(len(result_recipes), 1)
@@ -264,6 +290,7 @@ class test_unit_routes(unittest.TestCase):
             result = functions.rating('test_recipe.json',20)
             self.assertEqual(result,'Recipe already rated.')
             functions.delete_recipe('test_recipe.json', 20)
+            
 
     #import recipe
     def test_import_recipe(self):
