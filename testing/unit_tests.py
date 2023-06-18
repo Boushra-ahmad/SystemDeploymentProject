@@ -27,6 +27,8 @@ class test_unit_routes(unittest.TestCase):
             # Assert that the recipe has the expected keys
             expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
             self.assertListEqual(list(recipe.keys()), expected_keys)
+            # Assert that the recipe ID matches the expected value
+            self.assertEqual(recipe['id'], recipe_id)
 
             
      def test_view_all_recipes(self):
