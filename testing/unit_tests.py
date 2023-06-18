@@ -121,12 +121,13 @@ class test_unit_routes(unittest.TestCase):
         # request query
         query = 'butter chicken'
 
-        # with open('test_recipe.json', 'r') as file:
-        #     recipedata = json.load(file)
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
             
         with self.app.test_request_context('/search', method='GET'):
             # Call the add_recipe_function()
-            result_recipes = functions.search_recipe_function('test_recipe.json',query)
+            result_recipes = functions.search_recipe_function('test_recipe.json',query, recipedata)
+            
             # Assert the expected result
             # self.assertEqual(query, query)
             self.assertEqual(len(result_recipes), 1)
