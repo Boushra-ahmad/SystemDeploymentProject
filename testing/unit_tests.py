@@ -26,6 +26,14 @@ class test_unit_routes(unittest.TestCase):
             recipe = functions.view_recipe('test_recipe.json',recipe_id)
             # Assert that the recipe is not "not found"
             self.assertNotEqual(recipe, "not found")
+            # Assert that the recipe has the expected keys
+            expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
+            self.assertListEqual(list(recipe.keys()), expected_keys)
+
+            #assert specific properties of the recipe
+            self.assertEqual(recipe['id'], recipe_id)
+            self.assertEqual(recipe['name'], 'Blueberry Pancake')
+            self.assertEqual(recipe['category'], 'Breakfast')
     
     #View All Recipes
     def test_view_all_recipes(self):
