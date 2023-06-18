@@ -5,6 +5,8 @@ import sys
 import json
 import os
 import random
+from werkzeug.datastructures import FileStorage
+import openpyxl
 
 sys.path.append("../SystemDeploymentProject")
 
@@ -99,12 +101,12 @@ class test_unit_routes(unittest.TestCase):
         # request query
         query = 'butter chicken'
 
-        # with open('test_recipe.json', 'r') as file:
-        #     recipedata = json.load(file)
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
             
         with self.app.test_request_context('/search', method='GET'):
             # Call the add_recipe_function()
-            result_recipes = functions.search_recipe_function('test_recipe.json',query)
+            result_recipes = functions.search_recipe_function('test_recipe.json',query, recipedata)
             # Assert the expected result
             # self.assertEqual(query, query)
             self.assertEqual(len(result_recipes), 1)
@@ -263,6 +265,29 @@ class test_unit_routes(unittest.TestCase):
             self.assertEqual(result,'Recipe already rated.')
             functions.delete_recipe('test_recipe.json', 20)
 
+    #import recipe
+    def test_import_recipe(self):
+        # Prepare a test CSV file
+        csv_file = FileStorage(filename='test_recipes.xlsx', content_type='application/vnd.ms-excel')
+        
+        #Specify the folder the imported file be saved to
+        UPLOAD_FOLDER2 = './test_files/import/'
+        
+        json_file = 'test_recipe.json'
+
+        with open(json_file, 'r') as file:
+            recipes = json.load(file)
+            
+        with open('./test_files/import/expected_data.json', 'w') as file:
+            json.dump(recipes, file, indent=4)
+
+        # Call the import_recipe function
+        functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2) 
+        
+        with open('./test_files/import/expected_data.json', 'r+') as file:
+            expected_recipes = json.load(file)       
+
+        self.assertEqual(recipes, expected_recipes)
 
 if __name__ == '__main__':
     unittest.main()
