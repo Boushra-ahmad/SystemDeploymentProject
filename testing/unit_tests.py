@@ -23,23 +23,28 @@ class test_unit_routes(unittest.TestCase):
         recipe_id = 1
         with self.app.test_request_context(f'/view/{recipe_id}', method='GET'):
             # Call the view_recipe function
-            recipe = functions.view_recipe(recipe_id)
+            recipe = functions.view_recipe('test_recipe.json',recipe_id)
             # Assert that the recipe is not "not found"
             self.assertNotEqual(recipe, "not found")
     
     #View All Recipes
     def test_view_all_recipes(self):
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+            reps = len(recipedata)
         with self.app.test_request_context('/', method='GET'):
             # Call the load_recipes_from_json function to get all recipes
-            recipes = functions.load_recipes_from_json()
+            recipes = functions.load_recipes_from_json('test_recipe.json')
             # Assert that there are recipes available
-            self.assertTrue(len(recipes) > 0)           
+            # print("The total is",reps)
+            # print("the length of recipes",len(recipes))
+            self.assertTrue(len(recipes) == reps)           
     
     #Add Recipe
     def test_add_recipe_success(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
-        with open('test_recipe.json', 'r') as file:
-            recipedata = json.load(file)
+        # with open('test_recipe.json', 'r') as file:
+        #     recipedata = json.load(file)
         data = {
             'name': 'Test Recipes '+random_string,
             'description': 'Test description',
@@ -51,14 +56,14 @@ class test_unit_routes(unittest.TestCase):
         }
         with self.app.test_request_context('/addrecipe', method='POST', data=data, content_type='multipart/form-data'):
             # Call the add_recipe_function()
-            result = functions.add_recipe_function('test_recipe.json',recipedata)
+            result = functions.add_recipe_function('test_recipe.json')
             # Assert the expected result
             self.assertEqual(result, 'Success')
 
     def test_add_recipe_missing(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
-        with open('test_recipe.json', 'r') as file:
-            recipedata = json.load(file)
+        # with open('test_recipe.json', 'r') as file:
+        #     recipedata = json.load(file)
         data = {
             'name': 'Test Recipes '+random_string,
             'description': 'Test description',
@@ -69,13 +74,13 @@ class test_unit_routes(unittest.TestCase):
             'image': (BytesIO(b'TestImage'), 'test.jpg')
         }
         with self.app.test_request_context('/addrecipe', method='POST', data=data, content_type='multipart/form-data'):
-            result = functions.add_recipe_function('test_recipe.json',recipedata)
+            result = functions.add_recipe_function('test_recipe.json')
             self.assertEqual(result, 'All fields are required!')
             
 
     def test_add_recipe_existing(self):
-        with open('test_recipe.json', 'r') as file:
-            recipedata = json.load(file)
+        # with open('test_recipe.json', 'r') as file:
+        #     recipedata = json.load(file)
         data = {
             'name': 'Blueberry Pancake',
             'description': 'Test description',
@@ -86,7 +91,7 @@ class test_unit_routes(unittest.TestCase):
             'image': (BytesIO(b'TestImage'), 'test.jpg')
         }
         with self.app.test_request_context('/addrecipe', method='POST', data=data, content_type='multipart/form-data'):
-            result = functions.add_recipe_function('test_recipe.json',recipedata)
+            result = functions.add_recipe_function('test_recipe.json')
             self.assertEqual(result, 'Recipe already exists.')
 
     #search recipe testing
@@ -94,12 +99,12 @@ class test_unit_routes(unittest.TestCase):
         # request query
         query = 'butter chicken'
 
-        with open('test_recipe.json', 'r') as file:
-            recipedata = json.load(file)
+        # with open('test_recipe.json', 'r') as file:
+        #     recipedata = json.load(file)
             
         with self.app.test_request_context('/search', method='GET'):
             # Call the add_recipe_function()
-            result_recipes = functions.search_recipe_function(query,recipedata)
+            result_recipes = functions.search_recipe_function('test_recipe.json',query)
             # Assert the expected result
             # self.assertEqual(query, query)
             self.assertEqual(len(result_recipes), 1)
@@ -144,17 +149,19 @@ class test_unit_routes(unittest.TestCase):
             with self.app.test_request_context('/editrecipe/55',method='POST', data=data, content_type='multipart/form-data'):
                 # Call the add_recipe_function()
                 result = functions.edit_recipe_function(55,data,'test_recipe.json',TEST_UPLOAD_FOLDER,recipes)
-                self.assertIsNone(result)
+                # self.assertIsNone(result)
+                self.assertEqual(result, 'Recipe not found.')
                 
     #delete recipe
     def test_delete_recipe_success(self):
-        test_recipe_id = 7
+        test_recipe_id = 20
         test_recipe_filename = 'test_recipe.json'
 
         with open(test_recipe_filename, 'r') as file:
             recipedata = json.load(file)
 
         data = {
+            'id':20,
             'name': 'Chocolate Chip Cookies',
             'description': 'Classic homemade chocolate chip cookies that are soft and chewy.',
             'category': 'Dessert',
@@ -208,5 +215,54 @@ class test_unit_routes(unittest.TestCase):
         # Assert the expected result
         self.assertIsNotNone(response)
         
+    def test_rating_success(self):
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+        rec = {
+                'id':20,
+                'name': 'Blueberry Pancake',
+                'description': 'Delicious blueberry pancakes recipe',
+                'category': 'Breakfast',
+                'cuisine': 'American',
+                'instructions': 'Step 1. Step 2. Step 3.',
+                'ingredients': 'flour, milk, eggs, blueberries',
+                'image': 'test_pancake.jpeg',
+                'date_published':'2022-05-10',
+                'rating':0
+            }        
+        recipedata.append(rec)
+        with open('test_recipe.json', 'w') as file:
+            json.dump(recipedata, file)
+        data = {'rating':3}
+        with self.app.test_request_context('/rating/20',method='POST',data=data):
+            result = functions.rating('test_recipe.json',20)
+            self.assertEqual(result['rating'],'3')
+            functions.delete_recipe('test_recipe.json', 20)
+
+    def test_rating_unsuccessful(self):
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+        rec = {
+                'id':20,
+                'name': 'Blueberry Pancake',
+                'description': 'Delicious blueberry pancakes recipe',
+                'category': 'Breakfast',
+                'cuisine': 'American',
+                'instructions': 'Step 1. Step 2. Step 3.',
+                'ingredients': 'flour, milk, eggs, blueberries',
+                'image': 'test_pancake.jpeg',
+                'date_published':'2022-05-10',
+                'rating':2
+            }        
+        recipedata.append(rec)
+        with open('test_recipe.json', 'w') as file:
+            json.dump(recipedata, file)
+        data = {'rating':3}
+        with self.app.test_request_context('/rating/20',method='POST',data=data):
+            result = functions.rating('test_recipe.json',20)
+            self.assertEqual(result,'Recipe already rated.')
+            functions.delete_recipe('test_recipe.json', 20)
+
+
 if __name__ == '__main__':
     unittest.main()
