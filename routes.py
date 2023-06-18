@@ -39,8 +39,6 @@ def view_recipe(id):
         
         return render_template('viewrecipes.html',recipes = recipe)
 
-
-
 #editrecipe
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
 def edit_recipe(id):    
@@ -87,7 +85,6 @@ def rate_recipe(id):
 
         functions.rating('recipes.json',id)
         return view_recipe('recipes.json',id)
-
 
 #handle 404 error
 @main.errorhandler(404)

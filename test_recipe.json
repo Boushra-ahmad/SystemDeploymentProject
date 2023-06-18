@@ -110,18 +110,19 @@
         "id": 5,
         "name": "Spicy Sushi Roll",
         "description": "A popular sushi roll made with fresh tuna and spicy mayo.",
-        "category": "Dinner",
+        "category": "lunch",
         "cuisine": "Japanese",
         "instructions": [
-            "Prepare sushi rice.",
-            "Cut fresh tuna into small cubes.",
-            "Mix tuna with spicy mayo.",
-            "Lay a sheet of seaweed on a sushi mat.",
-            "Spread sushi rice evenly on the seaweed.",
-            "Place the tuna mixture along with cucumber sticks on top of the rice.",
-            "Roll the sushi tightly using the sushi mat.",
-            "Slice the sushi roll into bite-sized pieces.",
-            "Serve with soy sauce and pickled ginger."
+            "Prepare sushi rice",
+            "Cut fresh tuna into small cubes",
+            "Mix tuna with spicy mayo",
+            "Lay a sheet of seaweed on a sushi mat",
+            "Spread sushi rice evenly on the seaweed",
+            "Place the tuna mixture along with cucumber sticks on top of the rice",
+            "Roll the sushi tightly using the sushi mat",
+            "Slice the sushi roll into bite-sized pieces",
+            "Serve with soy sauce and pickled ginger",
+            ""
         ],
         "ingredients": [
             "Sushi rice",
@@ -130,7 +131,7 @@
             "Seaweed (nori)",
             "Cucumber",
             "Soy sauce",
-            "Pickled ginger"
+            "Pickled ginger "
         ],
         "image": "sushi_roll_2.jpeg",
         "date_published": "2023-06-10",

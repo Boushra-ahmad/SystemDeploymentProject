@@ -45,12 +45,12 @@
             "1/2 teaspoon salt",
             "8 small tortillas",
             "Salsa",
-            "lettuce",
-            "toppings of your choice "
+            " lettuce",
+            " and toppings of your choice  "
         ],
         "image": "chicken-tacos.jpg",
         "date_published": "2022-06-20",
-        "rating": "3"
+        "rating": 3
     },
     {
         "id": 3,
@@ -113,19 +113,18 @@
         "id": 5,
         "name": "Spicy Sushi Roll",
         "description": "A popular sushi roll made with fresh tuna and spicy mayo.",
-        "category": "lunch",
+        "category": "Dinner",
         "cuisine": "Japanese",
         "instructions": [
-            "Prepare sushi rice",
-            "Cut fresh tuna into small cubes",
-            "Mix tuna with spicy mayo",
-            "Lay a sheet of seaweed on a sushi mat",
-            "Spread sushi rice evenly on the seaweed",
-            "Place the tuna mixture along with cucumber sticks on top of the rice",
-            "Roll the sushi tightly using the sushi mat",
-            "Slice the sushi roll into bite-sized pieces",
-            "Serve with soy sauce and pickled ginger",
-            ""
+            "Prepare sushi rice.",
+            "Cut fresh tuna into small cubes.",
+            "Mix tuna with spicy mayo.",
+            "Lay a sheet of seaweed on a sushi mat.",
+            "Spread sushi rice evenly on the seaweed.",
+            "Place the tuna mixture along with cucumber sticks on top of the rice.",
+            "Roll the sushi tightly using the sushi mat.",
+            "Slice the sushi roll into bite-sized pieces.",
+            "Serve with soy sauce and pickled ginger."
         ],
         "ingredients": [
             "Sushi rice",
@@ -134,11 +133,11 @@
             "Seaweed (nori)",
             "Cucumber",
             "Soy sauce",
-            "Pickled ginger "
+            "Pickled ginger"
         ],
         "image": "sushi_roll_2.jpeg",
         "date_published": "2023-06-10",
-        "rating": "0"
+        "rating": 0
     },
     {
         "id": 6,
