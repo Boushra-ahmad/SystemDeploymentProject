@@ -47,11 +47,21 @@ class test_unit_routes(unittest.TestCase):
             # print("The total is",reps)
             # print("the length of recipes",len(recipes))
             self.assertTrue(len(recipes) == reps)    
-                   
+
             # Assert that each recipe has the expected keys
             expected_keys = ['id', 'name', 'description', 'category', 'cuisine', 'instructions', 'ingredients', 'image', 'date_published', 'rating']
             for recipe in recipes:
                 self.assertListEqual(list(recipe.keys()), expected_keys)
+                
+            # Add additional assertions
+            # assert specific properties of the recipes
+            for recipe in recipes:
+                self.assertIsNotNone(recipe['id'])
+                self.assertIsNotNone(recipe['name'])
+                self.assertIsNotNone(recipe['category'])
+
+
+
     #Add Recipe
     def test_add_recipe_success(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
