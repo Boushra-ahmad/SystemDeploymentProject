@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file
+from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file,current_app
 import json
 import sys
 from datetime import datetime
@@ -13,20 +13,20 @@ UPLOAD_FOLDER2 = 'static/files/imported/'
 UPLOAD_FOLDER3 = 'static/files/exported/'
 
 #load recipes.json
-def load_recipes_from_json():
-    with open('recipes.json', 'r') as file:
+def load_recipes_from_json(f):
+    with open(f, 'r') as file:
         data = json.load(file)
         return data
 
-def get_by_id(id):
-    data = load_recipes_from_json()
+def get_by_id(f,id):
+    data = load_recipes_from_json(f)
     for i in data:
         if i['id'] == id*1:
-            #print(i, file=sys.stderr)
+            # print(i, file=sys.stderr)
             return i
     else:
         return "not found"
-        
+# print(get_by_id('test_recipe.json',1))
 def convert_xlsx_to_csv(xlsx_file, csv_file):
     # Read the XLSX file
     data_frame = pd.read_excel(xlsx_file)
@@ -42,7 +42,7 @@ def download_image(url, save_path):
         for chunk in response.iter_content(chunk_size=8192):
             file.write(chunk)
 
-recipes = load_recipes_from_json()
+recipes = load_recipes_from_json('recipes.json')
 
 #Add Recipes
 def add_recipe_function(f):
@@ -56,6 +56,7 @@ def add_recipe_function(f):
         images = request.files['image']
         date_published = datetime.now().strftime('%Y-%m-%d')
 
+        recipes = load_recipes_from_json(f)
         #validation
         if not name or not description or not category or not cuisine or not instructions or not ingredients or not images:
             message = "All fields are required!"
@@ -73,7 +74,7 @@ def add_recipe_function(f):
                     image_file.save(os.path.join(UPLOAD_FOLDER, filename))
 
                 # Load the existing recipes from the JSON file
-                existing_recipes = load_recipes_from_json()
+                existing_recipes = load_recipes_from_json(f)
                 
                 # Generate a unique ID for the new recipe
                 new_recipe_id = len(existing_recipes) + 1
@@ -104,11 +105,11 @@ def add_recipe_function(f):
 
 
 #View Recipes
-def view_recipe(id):
-    return get_by_id(id)
+def view_recipe(f,id):
+    return get_by_id(f,id)
 
 #Edit Recipes
-def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER):
+def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
     # recipe = get_by_id(id)
     image_file=None
     message = None
@@ -149,7 +150,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER):
             'image':filename
         }
 
-        recipes = load_recipes_from_json()
+        # recipes = load_recipes_from_json()
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
@@ -158,25 +159,25 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER):
                 recipe.update(new_data)
                 message = "Updated Successfully"
                 break
-
+            message = "Recipe not found."
         with open(f, 'w') as file:
             json.dump(recipes, file, indent=4)
 
         return message
 
 #Delete Recipes    
-def delete_recipe(id):
+def delete_recipe(f,id):
     #Get the recipes from the recipes.json file
-    existing_recipes = load_recipes_from_json()
+    existing_recipes = load_recipes_from_json(f)
         
     filtered_data = [existing_recipes.remove(recipe) for recipe in existing_recipes if recipe['id'] == id]
 
     # Save the updated recipes back to the JSON file
-    with open('recipes.json', 'w') as file:
+    with open(f, 'w') as file:
         json.dump(existing_recipes, file, indent=4)
 
 #Search Recipes   
-def search_recipe_function(query,recipes):
+def search_recipe_function(f,query, recipes):
     search_recipes = []
     for recipe in recipes:
         print(recipe['rating'], file=sys.stderr)
@@ -191,7 +192,7 @@ def search_recipe_function(query,recipes):
     return search_recipes
 
 #Import Recipes
-def import_recipe():
+def import_recipe(f):
     csvFile = request.files['import']
     filename = csvFile.filename
            
@@ -203,8 +204,10 @@ def import_recipe():
         # Handle XLSX file
         csvFile = 'static/files/imported/xlsxToCSV.csv'
         convert_xlsx_to_csv(UPLOAD_FOLDER2 + filename, csvFile)
+    else:
+        csvFile = 'static/files/imported/' + filename
          
-    existingRecipes = load_recipes_from_json()
+    existingRecipes = load_recipes_from_json(f)
 
     # Open a csv reader called DictReader
     with open(csvFile) as csvf:
@@ -214,7 +217,7 @@ def import_recipe():
         csvReader = csv.DictReader(csvf)                    
         for rows in csvReader:                    
             image_filename = rows['name'] + '.jpg'
-                    
+            
             # Combine the save directory and image filename to create the save path
             save_path = os.path.join(save_directory, image_filename)
                     
@@ -237,8 +240,7 @@ def import_recipe():
         jsonFile.write(json.dumps(existingRecipes, indent=4))
 
 #Export Recipes
-def export_recipes():
-    jsonData = load_recipes_from_json()
+def export_recipes(UPLOAD_FOLDER3,jsonData):
         
     #Create the folder 'static/files/exported if it doesn't exist
     if not os.path.exists(UPLOAD_FOLDER3):
@@ -261,43 +263,49 @@ def export_recipes():
             data['ingredients'] = ", ".join(data['ingredients'])
             csv_writer.writerow(data.values())
 
-    # Create a response with the file
-    response = make_response(send_file(csv_file_path, as_attachment=False))
-    response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-    return response
-
-def rating(id):
-    recipe = get_by_id(id)
-
-    rating = rating = request.form.get('rating')
-    print(rating, file=sys.stderr)
-
-    new_data = {
-            'name': recipe['name'],
-            'description': recipe['description'],
-            'category':recipe['category'],
-            'cuisine': recipe['cuisine'],
-            'instructions': recipe['instructions'],
-            'ingredients': recipe['ingredients'],
-            'image':recipe['image'],
-            'date_published': recipe['date_published'],
-            'rating': rating
-        }
-
-    recipes = load_recipes_from_json()
-
-    # Find the recipe to update based on its ID
-    for recipe in recipes:
-        if recipe['id'] == id:
-            # Update the recipe data with the new values
-            recipe.update(new_data)
-            message = "Updated Successfully"
-            break
-
-    with open('recipes.json', 'w') as file:
-        json.dump(recipes, file, indent=4)
+    if current_app:
+        # Create a response with the file
+        response = make_response(send_file(csv_file_path, as_attachment=False))
+        response.headers["Content-Disposition"] = f"attachment; filename={file_name}"
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
+    else:
+        return csv_file_path
     
-    return recipe
+
+def rating(f,id):
+    recipe = get_by_id(f,id)
+    # print(recipe,file=sys.stderr)
+    if recipe['rating'] == 0:
+        rating = request.form.get('rating')
+        print(rating, file=sys.stderr)
+
+        new_data = {
+                'name': recipe['name'],
+                'description': recipe['description'],
+                'category':recipe['category'],
+                'cuisine': recipe['cuisine'],
+                'instructions': recipe['instructions'],
+                'ingredients': recipe['ingredients'],
+                'image':recipe['image'],
+                'date_published': recipe['date_published'],
+                'rating': rating
+            }
+
+        recipes = load_recipes_from_json(f)
+
+        # Find the recipe to update based on its ID
+        for recipe in recipes:
+            if recipe['id'] == id:
+                # Update the recipe data with the new values
+                recipe.update(new_data)
+                message = "Updated Successfully"
+                break
+
+        with open(f, 'w') as file:
+            json.dump(recipes, file, indent=4)
+        
+        return recipe
+    return "Recipe already rated."
