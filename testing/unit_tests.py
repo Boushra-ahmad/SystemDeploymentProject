@@ -5,6 +5,8 @@ import sys
 import json
 import os
 import random
+from werkzeug.datastructures import FileStorage
+import openpyxl
 
 sys.path.append("../SystemDeploymentProject")
 
@@ -60,8 +62,6 @@ class test_unit_routes(unittest.TestCase):
                 self.assertIsNotNone(recipe['name'])
                 self.assertIsNotNone(recipe['category'])
 
-
-
     #Add Recipe
     def test_add_recipe_success(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
@@ -99,7 +99,6 @@ class test_unit_routes(unittest.TestCase):
             result = functions.add_recipe_function('test_recipe.json')
             self.assertEqual(result, 'All fields are required!')
             
-
     def test_add_recipe_existing(self):
         # with open('test_recipe.json', 'r') as file:
         #     recipedata = json.load(file)
@@ -286,6 +285,29 @@ class test_unit_routes(unittest.TestCase):
             functions.delete_recipe('test_recipe.json', 20)
             
 
+    #import recipe
+    def test_import_recipe(self):
+        # Prepare a test CSV file
+        csv_file = FileStorage(filename='test_recipes.xlsx', content_type='application/vnd.ms-excel')
+        
+        #Specify the folder the imported file be saved to
+        UPLOAD_FOLDER2 = './test_files/import/'
+        
+        json_file = 'test_recipe.json'
+
+        with open(json_file, 'r') as file:
+            recipes = json.load(file)
+            
+        with open('./test_files/import/expected_data.json', 'w') as file:
+            json.dump(recipes, file, indent=4)
+
+        # Call the import_recipe function
+        functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2) 
+        
+        with open('./test_files/import/expected_data.json', 'r+') as file:
+            expected_recipes = json.load(file)       
+
+        self.assertEqual(recipes, expected_recipes)
 
 if __name__ == '__main__':
     unittest.main()

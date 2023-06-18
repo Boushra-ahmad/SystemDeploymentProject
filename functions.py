@@ -9,7 +9,6 @@ import requests
 
 # Specify the directory where the images will be saved
 UPLOAD_FOLDER = 'static/images'
-UPLOAD_FOLDER2 = 'static/files/imported/'
 UPLOAD_FOLDER3 = 'static/files/exported/'
 
 #load recipes.json
@@ -192,22 +191,21 @@ def search_recipe_function(f,query, recipes):
     return search_recipes
 
 #Import Recipes
-def import_recipe(f):
-    csvFile = request.files['import']
+def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2):    
     filename = csvFile.filename
            
-    #Create the folder 'static/files/imported' if it doesn't exist
+    #Create the folder if it doesn't exist
     if not os.path.exists(UPLOAD_FOLDER2):
         os.makedirs(UPLOAD_FOLDER2)
     csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
     if filename.endswith('.xlsx'):
         # Handle XLSX file
-        csvFile = 'static/files/imported/xlsxToCSV.csv'
-        convert_xlsx_to_csv(UPLOAD_FOLDER2 + filename, csvFile)
+        csv_file = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
+        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csv_file)
     else:
-        csvFile = 'static/files/imported/' + filename
+        csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
          
-    existingRecipes = load_recipes_from_json(f)
+    existingRecipes = load_recipes_from_json(jsonFile)
 
     # Open a csv reader called DictReader
     with open(csvFile) as csvf:
@@ -236,7 +234,7 @@ def import_recipe(f):
             existingRecipes.append(rows)
 
         # Write the updated recipes back to the JSON file
-    with open('recipes.json', 'w') as jsonFile:
+    with open(jsonFile, 'w') as jsonFile:
         jsonFile.write(json.dumps(existingRecipes, indent=4))
 
 #Export Recipes

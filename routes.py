@@ -10,10 +10,9 @@ import functions
 
 main = Blueprint('main',__name__)#routename = main
 
-
 recipes = functions.load_recipes_from_json('recipes.json')
 
-
+UPLOAD_FOLDER2 = 'static/files/imported/'
 
 #homepage
 @main.route('/', methods=['GET'])
@@ -67,7 +66,8 @@ def search_recipe():
 def import_recipe():
     if request.method == 'POST':
         if 'import' in request.files:
-            functions.import_recipe('recipes.json')                
+            csvFile = request.files['import']
+            functions.import_recipe(csvFile, 'recipes.json', UPLOAD_FOLDER2)                
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
