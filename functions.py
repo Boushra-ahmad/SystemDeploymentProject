@@ -42,6 +42,9 @@ def download_image(url, save_path):
         for chunk in response.iter_content(chunk_size=8192):
             file.write(chunk)
 
+def get_creation_timestamp(recipe):
+    return recipe['date_published']
+
 recipes = load_recipes_from_json('recipes.json')
 
 #Add Recipes
@@ -272,6 +275,14 @@ def export_recipes(UPLOAD_FOLDER3,jsonData):
         return response
     else:
         return csv_file_path
+    
+def latest_recipes_function(recipes):
+    sorted_recipes = sorted(recipes, key=get_creation_timestamp, reverse=True)
+    # Get the 6 most recent recipes
+    latest_recipes = sorted_recipes[:6]
+
+    return latest_recipes
+
     
 def rating(f,id):
     recipe = get_by_id(f,id)

@@ -86,6 +86,16 @@ def rate_recipe(id):
         functions.rating('recipes.json',id)
         return view_recipe('recipes.json',id)
 
+
+
+@main.route('/latest_recipes',methods=['GET'])
+def latest_recipes():
+    recipes = functions.load_recipes_from_json('recipes.json')
+    latest_recipes = functions.latest_recipes_function(recipes)
+    # Render the template with the latest recipes
+    return render_template('latest_recipes.html', recipes=latest_recipes)
+
+
 #handle 404 error
 @main.errorhandler(404)
 def page_not_found(e):
