@@ -59,20 +59,17 @@
         "category": "Breakfast",
         "cuisine": "International",
         "instructions": [
-            "Toast the bread slices until golden.",
-            "Mash the avocado and spread it on the toasted bread.",
-            "Sprinkle salt, pepper, and red chili flakes.",
-            "Drizzle with olive oil and lemon juice.",
-            "Optional: Add toppings like sliced tomatoes or feta cheese.",
-            "Serve and enjoy!"
+            "Toast the bread slices until golden",
+            "Mash the avocado and spread it on the toasted bread",
+            "Sprinkle salt, pepper, and red chili flakes",
+            "Drizzle with olive oil and lemon juice",
+            "Optional: Add toppings like sliced tomatoes or feta cheese."
         ],
         "ingredients": [
             "2 slices of bread",
             "1 ripe avocado",
             "Salt and pepper to taste",
-            "Red chili flakes",
-            "Olive oil",
-            "Lemon juice"
+            "Red chili flakes"
         ],
         "image": "avocado-toast.jpg",
         "date_published": "2022-09-10",

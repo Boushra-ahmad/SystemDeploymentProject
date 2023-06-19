@@ -154,7 +154,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             'image':filename
         }
 
-        # recipes = load_recipes_from_json()
+        recipes = load_recipes_from_json('recipes.json')
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
@@ -168,7 +168,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             json.dump(recipes, file, indent=4)
 
         return message
-    
+
 #Delete Recipes    
 def delete_recipe(f,id):
     #Get the recipes from the recipes.json file
@@ -206,8 +206,9 @@ def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2, save_directory):
             os.makedirs(UPLOAD_FOLDER2)
             csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
         # Handle XLSX file
-        csvFile = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
-        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csvFile)
+        csv_file = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
+        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csv_file)
+        csvFile = csv_file
     else:
         csvFile = csvFile.filename  
     existingRecipes = load_recipes_from_json(jsonFile)
