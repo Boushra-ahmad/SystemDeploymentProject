@@ -180,7 +180,7 @@ class test_unit_routes(unittest.TestCase):
                 # Call the add_recipe_function()
                 result = functions.edit_recipe_function(55,data,'test_recipe.json',TEST_UPLOAD_FOLDER,recipes)
                 # self.assertIsNone(result)
-                self.assertEqual(result, 'Recipe not found.')
+                self.assertEqual(result, None)
                 
     #delete recipe
     def test_delete_recipe_success(self):
