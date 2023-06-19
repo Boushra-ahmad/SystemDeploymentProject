@@ -194,7 +194,7 @@ def search_recipe_function(f,query, recipes):
     return search_recipes
 
 #Import Recipes
-def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2):    
+def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2, save_directory):    
     filename = csvFile.filename
            
     #Create the folder if it doesn't exist
@@ -211,8 +211,7 @@ def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2):
     existingRecipes = load_recipes_from_json(jsonFile)
 
     # Open a csv reader called DictReader
-    with open(csvFile) as csvf:
-        save_directory = 'static/images'             
+    with open(csvFile) as csvf:            
 
         # Convert each row into a dictionary and add it to data
         csvReader = csv.DictReader(csvf)                    
