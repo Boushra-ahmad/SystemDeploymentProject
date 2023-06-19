@@ -154,7 +154,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             'image':filename
         }
 
-        recipes = load_recipes_from_json('recipes.json')
+        recipes = load_recipes_from_json(f)
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
