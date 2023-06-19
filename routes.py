@@ -84,7 +84,7 @@ def rate_recipe(id):
         # print('id=',id, file=sys.stderr)
 
         functions.rating('recipes.json',id)
-        return view_recipe('recipes.json',id)
+        return view_recipe(id)
 
 
 
