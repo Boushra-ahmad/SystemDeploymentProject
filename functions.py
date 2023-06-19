@@ -168,7 +168,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             json.dump(recipes, file, indent=4)
 
         return message
-
+    
 #Delete Recipes    
 def delete_recipe(f,id):
     #Get the recipes from the recipes.json file
