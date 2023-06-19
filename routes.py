@@ -36,7 +36,6 @@ def view_recipe(id):
 #editrecipe
 @main.route('/editrecipe/<int:id>', methods=['GET','POST'])
 def edit_recipe(id):    
-    recipes = functions.load_recipes_from_json('recipes.json')
     recipe = functions.get_by_id('recipes.json',id)
     message = functions.edit_recipe_function(id,recipe,'recipes.json',functions.UPLOAD_FOLDER,recipes)
     return render_template('editrecipe.html',recipe=recipe,message=message)
