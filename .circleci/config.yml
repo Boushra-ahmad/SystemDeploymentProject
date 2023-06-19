@@ -22,4 +22,4 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python3 -m unittest ../testing/unit_tests.py
+            pytest testing/unit_tests.py
