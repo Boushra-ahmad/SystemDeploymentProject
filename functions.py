@@ -277,9 +277,12 @@ def export_recipes(UPLOAD_FOLDER3,jsonData):
         return csv_file_path
     
 def latest_recipes_function(recipes):
-    sorted_recipes = sorted(recipes, key=get_creation_timestamp, reverse=True)
-    # Get the 6 most recent recipes
-    latest_recipes = sorted_recipes[:6]
+    if len(recipes) > 0:
+        sorted_recipes = sorted(recipes, key=get_creation_timestamp, reverse=True)
+        # Get the 6 most recent recipes
+        latest_recipes = sorted_recipes[:6]
+    else:
+        latest_recipes = "No Recipes Found"
 
     return latest_recipes
 
