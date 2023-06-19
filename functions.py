@@ -1,6 +1,5 @@
-from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file,current_app
+from flask import request, make_response, send_file,current_app
 import json
-import sys
 from datetime import datetime
 import os
 import csv
@@ -141,14 +140,17 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             new_category = request.form['category']
         else:
             new_category = recipe['category']
+            
+        instructions = list(request.form['instructions'].split(". "))
+        ingredients = list(request.form['ingredients'].split(', '))
 
         new_data = {
             'name': request.form['name'],
             'description': request.form['description'],
             'category':new_category,
             'cuisine': request.form['cuisine'],
-            'instructions': request.form['instructions'].split('.'),
-            'ingredients': request.form['ingredients'].split(','),
+            'instructions': instructions,
+            'ingredients': ingredients,
             'image':filename
         }
 
@@ -166,7 +168,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             json.dump(recipes, file, indent=4)
 
         return message
-
+    
 #Delete Recipes    
 def delete_recipe(f,id):
     #Get the recipes from the recipes.json file

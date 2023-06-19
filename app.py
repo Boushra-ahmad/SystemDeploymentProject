@@ -1,6 +1,4 @@
-import sys
-from flask import Flask, jsonify, request,render_template
-from http import HTTPStatus
+from flask import Flask
 from routes import main,page_not_found
 
 def create_app():

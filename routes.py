@@ -1,11 +1,4 @@
-from flask import Blueprint,render_template, request, redirect, url_for, make_response, send_file
-import json
-import sys
-from datetime import datetime
-import os
-import csv
-import pandas as pd
-import requests
+from flask import Blueprint,render_template, request, redirect, url_for
 import functions
 
 main = Blueprint('main',__name__)#routename = main
