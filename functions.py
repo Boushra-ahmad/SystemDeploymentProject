@@ -141,20 +141,18 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
         else:
             new_category = recipe['category']
             
-        instructions = list(request.form['instructions'].split(". "))
-        ingredients = list(request.form['ingredients'].split(', '))
+        # instructions = list(request.form['instructions'].split(". "))
+        # ingredients = list(request.form['ingredients'].split(', '))
 
         new_data = {
             'name': request.form['name'],
             'description': request.form['description'],
             'category':new_category,
             'cuisine': request.form['cuisine'],
-            'instructions': instructions,
-            'ingredients': ingredients,
+            'instructions': request.form['instructions'].split('.'),
+            'ingredients': request.form['ingredients'].split(','),
             'image':filename
         }
-
-        # recipes = load_recipes_from_json()
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
@@ -163,7 +161,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
                 recipe.update(new_data)
                 message = "Updated Successfully"
                 break
-            message = "Recipe not found."
+            # message = "Recipe not found."
         with open(f, 'w') as file:
             json.dump(recipes, file, indent=4)
 
