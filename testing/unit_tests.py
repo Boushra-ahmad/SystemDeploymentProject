@@ -301,6 +301,7 @@ class test_unit_routes(unittest.TestCase):
         
         #Specify the folder the imported file be saved to
         UPLOAD_FOLDER2 = './test_files/import/'
+        image_directory = './test_images/'
         
         #Specify JSON file
         json_file = 'test_recipe.json'
@@ -315,7 +316,7 @@ class test_unit_routes(unittest.TestCase):
             json.dump(recipes, file, indent=4)
             
         # Call the import_recipe function
-        functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2)
+        functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2, image_directory)
         
         with open('./test_files/import/expected_data.json', 'r+') as file:
             expected_recipes = json.load(file)   

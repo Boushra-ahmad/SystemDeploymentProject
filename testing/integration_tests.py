@@ -167,9 +167,9 @@ class integration_tests():
             # Assert the expected result
             assert result_recipes == expected_results
             functions.delete_recipe('test_recipe.json', 31)
-
-
-
+            
+    def import_and_view():
+        old_data = functions.load_recipes_from_json('test_recipe.json')
 
     def runall(self):
         self.setUp()
@@ -178,7 +178,6 @@ class integration_tests():
         self.rate_and_view()
         self.view_and_edit()
         self.search_by_name_and_view()
-
 
 run = integration_tests()
 run.runall()

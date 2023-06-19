@@ -168,5 +168,148 @@
         "image": "butter_chicken_2.jpeg",
         "date_published": "2023-06-12",
         "rating": "2"
+    },
+    {
+        "id": 7,
+        "name": "Test Recipes bwk",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 8,
+        "name": "Chocolate Cake",
+        "description": "Indulge in the rich and decadent flavors of a homemade chocolate cake. This moist and velvety dessert is perfect for chocolate lovers. With layers of moist chocolate cake, creamy chocolate frosting, and a hint of cocoa, this cake is a delightful treat for any occasion. Whether it's a birthday celebration or a special gathering, this chocolate cake is sure to satisfy your sweet tooth and leave you craving for more. Enjoy a slice of pure chocolate bliss!",
+        "category": "Snack",
+        "cuisine": "American",
+        "instructions": [
+            "Preheat the oven.",
+            "Mix the ingredients.",
+            "Bake the cake."
+        ],
+        "ingredients": [
+            "Flour",
+            "sugar",
+            "cocoa powder",
+            "eggs",
+            "butter",
+            "milk"
+        ],
+        "image": "Chocolate Cake.jpg",
+        "date_published": "9/21/2022",
+        "rating": 0
+    },
+    {
+        "id": 9,
+        "name": "Test Recipes ajj",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 10,
+        "name": "Test Recipes ghe",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 11,
+        "name": "Test Recipes oee",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 12,
+        "name": "Test Recipes dzd",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 100,
+        "name": "Edit Test Recipe",
+        "description": "Test integration add",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": "Step 1. Test instruction",
+        "ingredients": "Ingredient 1, Ingredient 2",
+        "image": "Edittest.jpg",
+        "date_published": "2022-05-10",
+        "rating": 0
+    },
+    {
+        "id": 14,
+        "name": "Test Recipes owe",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
     }
 ]
