@@ -204,8 +204,13 @@ class integration_tests():
                 
         updated_recipes = functions.load_recipes_from_json(json_file)
         
+        for rows in updated_recipes:
+            if rows['name'] == 'Chocolate Cake':
+                id = rows['id']
+                break
+        
         data = {
-            "id": 8,
+            "id": id,
             "name": "Chocolate Cake",
             "description": "Indulge in the rich and decadent flavors of a homemade chocolate cake. This moist and velvety dessert is perfect for chocolate lovers. With layers of moist chocolate cake, creamy chocolate frosting, and a hint of cocoa, this cake is a delightful treat for any occasion. Whether it's a birthday celebration or a special gathering, this chocolate cake is sure to satisfy your sweet tooth and leave you craving for more. Enjoy a slice of pure chocolate bliss!",
             "category": "Snack",
@@ -227,12 +232,7 @@ class integration_tests():
             "date_published": "9/21/2022",
             "rating": 0
         }
-        
-        for rows in updated_recipes:
-            if rows['name'] == 'Chocolate Cake':
-                id = rows['id']
-                break
-        
+                
         result = functions.get_by_id('test_recipe.json',id)
             
         assert result == data

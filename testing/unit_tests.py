@@ -6,7 +6,6 @@ import json
 import os
 import random
 from werkzeug.datastructures import FileStorage
-import openpyxl
 
 sys.path.append("../SystemDeploymentProject")
 

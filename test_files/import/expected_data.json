@@ -171,7 +171,61 @@
     },
     {
         "id": 7,
-        "name": "Test Recipes bwk",
+        "name": "Test Recipes kfn",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 8,
+        "name": "Test Recipes sdj",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 9,
+        "name": "Test Recipes pmp",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 10,
+        "name": "Test Recipes ego",
         "description": "Test description",
         "category": "Test category",
         "cuisine": "Test cuisine",
