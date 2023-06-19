@@ -23,7 +23,7 @@ class integration_tests():
         with open('test_recipe.json', 'r') as file:
             recipedata = json.load(file)
             previous = len(recipedata)
-            # print('previous number of recipes: ',previous)
+
         data = {
             'name': 'Test Recipes '+random_string,
             'description': 'Test description',
@@ -39,16 +39,18 @@ class integration_tests():
             # Assert the expected result
             new = previous + 1
             assert previous + 1 ==  new
-            # print('new number of recipes: ',new)
+   
             assert result == 'Success'
-            # print('Result: ', result)
+            if result == 'Success':
+                print("create_and_read_recipe test passed")
+            else:
+                print("create_and_read_recipe test failed")
             
     def delete_and_read_recipe(self):
 
         with open('test_recipe.json', 'r') as file:
             old_data = json.load(file)
             file.close()
-            # print('previous number of recipes: ',previous)
 
         data = {
             'id':21,
@@ -67,8 +69,11 @@ class integration_tests():
             file.close()
         functions.delete_recipe('test_recipe.json', 21)
         data = functions.get_by_id('test_recipe.json',21)
-        # print(data)
         assert data == 'not found'
+        if data == 'not found':
+            print("delete_and_read_recipe test passed")
+        else:
+            print("delete_and_read_recipe test failed")
 
     def rate_and_view(self):
         with open('test_recipe.json', 'r') as file:
@@ -99,6 +104,10 @@ class integration_tests():
             result = functions.get_by_id('test_recipe.json',20)
             assert result['rating'] == '3'
             functions.delete_recipe('test_recipe.json', 20)
+            if result['rating'] == '3':
+                print("rate_and_view test passed")
+            else:
+                print("rate_and_view test failed")
 
 
     def view_and_edit(self):
@@ -138,6 +147,10 @@ class integration_tests():
             resultdata = functions.edit_recipe_function(result['id'],data,'test_recipe.json',TEST_UPLOAD_FOLDER,old_data)
             assert resultdata == 'Updated Successfully'
             functions.delete_recipe('test_recipe.json', 30)
+            if resultdata == 'Updated Successfully':
+                print("view_and_edit test passed")
+            else:
+                print("view_and_edit test failed")
 
 
     def search_by_name_and_view(self):
@@ -167,9 +180,10 @@ class integration_tests():
             # Assert the expected result
             assert result_recipes == expected_results
             functions.delete_recipe('test_recipe.json', 31)
-
-
-
+            if result_recipes == expected_results:
+                print("search_by_name_and_view test passed")
+            else:
+                print("search_by_name_and_view test failed")
 
     def runall(self):
         self.setUp()

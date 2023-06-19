@@ -182,7 +182,7 @@ def delete_recipe(f,id):
 def search_recipe_function(f,query, recipes):
     search_recipes = []
     for recipe in recipes:
-        print(recipe['rating'], file=sys.stderr)
+        # print(recipe['rating'], file=sys.stderr)
         if query.lower() in recipe['name'].lower():
             search_recipes.append(recipe)
         elif query.lower() in recipe['category'].lower():
@@ -292,7 +292,7 @@ def rating(f,id):
     # print(recipe,file=sys.stderr)
     if recipe['rating'] == 0:
         rating = request.form.get('rating')
-        print(rating, file=sys.stderr)
+        # print(rating, file=sys.stderr)
 
         new_data = {
                 'name': recipe['name'],
