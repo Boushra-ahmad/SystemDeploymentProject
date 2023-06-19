@@ -1,11 +1,8 @@
 from io import BytesIO
-import unittest
 from flask import Flask
 import sys
 import json
-import os
 import random
-import requests
 from threading import Thread
 from werkzeug.datastructures import FileStorage
 
