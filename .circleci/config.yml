@@ -22,4 +22,4 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            pytest -v testing/unit_tests.py testing/integration_tests.py --show-capture=no
+            pytest -v testing/unit_tests.py testing/integration_tests.py
