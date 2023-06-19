@@ -137,6 +137,36 @@ class integration_tests():
             result = functions.get_by_id('test_recipe.json',30)
             resultdata = functions.edit_recipe_function(result['id'],data,'test_recipe.json',TEST_UPLOAD_FOLDER,old_data)
             assert resultdata == 'Updated Successfully'
+            functions.delete_recipe('test_recipe.json', 30)
+
+
+    def search_by_name_and_view(self):
+    
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+
+            data= {
+                "id": 31,
+                "name": "Search Test Recipe",
+                "description": "Test integration search",
+                "category": "Test category",
+                "cuisine": "Test cuisine",
+                "instructions": "Step 1. Test instruction",
+                "ingredients": "Ingredient 1, Ingredient 2",
+                "image": "Edittest.jpg",
+                "date_published": "2022-05-10",
+                "rating": 0
+            }
+            recipedata.append(data)
+            query = 'Search Test Recipe'
+
+            expected_results = [data]
+
+        with self.app.test_request_context('/search?search=Search Test Recipe', method='GET'):
+            result_recipes = functions.search_recipe_function('test_recipe.json',query,recipedata)
+            # Assert the expected result
+            assert result_recipes == expected_results
+            functions.delete_recipe('test_recipe.json', 31)
 
 
 
@@ -147,6 +177,7 @@ class integration_tests():
         self.delete_and_read_recipe()
         self.rate_and_view()
         self.view_and_edit()
+        self.search_by_name_and_view()
 
 
 run = integration_tests()

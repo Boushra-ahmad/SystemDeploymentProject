@@ -326,7 +326,7 @@ class test_unit_routes(unittest.TestCase):
 
         self.assertEqual(final_recipe_count, initial_recipe_count + total_recipes_imported)
         
-    # #import recipe from a xlsx file
+    #import recipe from a xlsx file
     # def test_import__xlsx_recipe(self):
     #     # Prepare a test CSV file
     #     csv_file = FileStorage(filename='test_recipes.xlsx', content_type='application/vnd.ms-excel')
@@ -351,6 +351,28 @@ class test_unit_routes(unittest.TestCase):
     #         expected_recipes = json.load(file)       
 
     #     self.assertEqual(recipes, expected_recipes)
+
+    #test to get latest recipes
+    def test_get_latest_recipes(self):
+        with open('test_recipe.json', 'r') as file:
+            recipedata = json.load(file)
+
+        with self.app.test_request_context('/latest_recipes',method='GET'):
+            response = functions.latest_recipes_function(recipedata)
+            self.assertIsNotNone(response)
+
+    def test_get_latest_recipes_not_found(self):
+        recipe_data = []
+        with self.app.test_request_context('/latest_recipes',method='GET'):
+            response = functions.latest_recipes_function(recipe_data)
+            self.assertEqual(response, 'No Recipes Found')
+
+
+        
+    
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
