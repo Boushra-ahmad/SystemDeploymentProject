@@ -30,6 +30,7 @@
     <a href="/" class="bcktohome">Home</a>  
     <br/>
     <div class="row">
+      {% if recipes|length > 0 %}
         {% for recipe in recipes %}
             <div class="col-md-4">
                 <div class="column">
@@ -52,7 +53,10 @@
             </div>
           
             {% endfor %}
-        </div>
+      {% else %}
+        <p>Recipe Not Found</p>
+      {% endif %}
+    </div>
 
 </div>
 
