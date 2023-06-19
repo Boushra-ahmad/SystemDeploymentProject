@@ -8,8 +8,12 @@ import random
 import requests
 from threading import Thread
 sys.path.append("../SystemDeploymentProject")
+import logging
 
 import functions
+
+# Create a logger
+logger = logging.getLogger(__name__)
 
 class integration_tests():
     
@@ -17,6 +21,7 @@ class integration_tests():
         # Create a Flask test client
         self.app = Flask(__name__)
         self.app.config['TESTING'] = True
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     def create_and_read_recipe(self):
         random_string = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=3))
@@ -42,9 +47,9 @@ class integration_tests():
    
             assert result == 'Success'
             if result == 'Success':
-                print("create_and_read_recipe test passed")
+                logger.info("create_and_read_recipe test passed")
             else:
-                print("create_and_read_recipe test failed")
+                logger.info("create_and_read_recipe test failed")
             
     def delete_and_read_recipe(self):
 
@@ -71,9 +76,9 @@ class integration_tests():
         data = functions.get_by_id('test_recipe.json',21)
         assert data == 'not found'
         if data == 'not found':
-            print("delete_and_read_recipe test passed")
+            logger.info("delete_and_read_recipe test passed")
         else:
-            print("delete_and_read_recipe test failed")
+            logger.info("delete_and_read_recipe test failed")
 
     def rate_and_view(self):
         with open('test_recipe.json', 'r') as file:
@@ -105,9 +110,9 @@ class integration_tests():
             assert result['rating'] == '3'
             functions.delete_recipe('test_recipe.json', 20)
             if result['rating'] == '3':
-                print("rate_and_view test passed")
+                logger.info("rate_and_view test passed")
             else:
-                print("rate_and_view test failed")
+                logger.info("rate_and_view test failed")
 
 
     def view_and_edit(self):
@@ -148,9 +153,9 @@ class integration_tests():
             assert resultdata == 'Updated Successfully'
             functions.delete_recipe('test_recipe.json', 30)
             if resultdata == 'Updated Successfully':
-                print("view_and_edit test passed")
+                logger.info("view_and_edit test passed")
             else:
-                print("view_and_edit test failed")
+                logger.info("view_and_edit test failed")
 
 
     def search_by_name_and_view(self):
@@ -181,9 +186,9 @@ class integration_tests():
             assert result_recipes == expected_results
             functions.delete_recipe('test_recipe.json', 31)
             if result_recipes == expected_results:
-                print("search_by_name_and_view test passed")
+                logger.info("search_by_name_and_view test passed")
             else:
-                print("search_by_name_and_view test failed")
+                logger.info("search_by_name_and_view test failed")
 
     def runall(self):
         self.setUp()
