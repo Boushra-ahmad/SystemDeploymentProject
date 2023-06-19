@@ -23,3 +23,4 @@ jobs:
           command: |
             . venv/bin/activate
             pytest -v testing/unit_tests.py
+            pytest -v testing/integration_tests.py
