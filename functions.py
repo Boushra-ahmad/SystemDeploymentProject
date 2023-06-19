@@ -149,7 +149,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             'description': request.form['description'],
             'category':new_category,
             'cuisine': request.form['cuisine'],
-            'instructions': instructions,
+            'instructions':instructions,
             'ingredients': ingredients,
             'image':filename
         }
@@ -163,7 +163,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
                 recipe.update(new_data)
                 message = "Updated Successfully"
                 break
-            message = "Recipe not found."
+            # message = "Recipe not found."
         with open(f, 'w') as file:
             json.dump(recipes, file, indent=4)
 
