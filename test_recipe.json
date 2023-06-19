@@ -168,23 +168,5 @@
         "image": "butter_chicken_2.jpeg",
         "date_published": "2023-06-12",
         "rating": "2"
-    },
-    {
-        "id": 7,
-        "name": "Test Recipes eql",
-        "description": "Test description",
-        "category": "Test category",
-        "cuisine": "Test cuisine",
-        "instructions": [
-            "Step 1",
-            " Test instruction"
-        ],
-        "ingredients": [
-            "Ingredient 1",
-            " Ingredient 2"
-        ],
-        "image": "test.jpg",
-        "date_published": "2023-06-19",
-        "rating": 0
     }
 ]

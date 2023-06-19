@@ -85,9 +85,7 @@ def rate_recipe(id):
         # print('id=',id, file=sys.stderr)
 
         functions.rating('recipes.json',id)
-        return view_recipe('recipes.json',id)
-
-
+        return view_recipe(id)
 
 @main.route('/latest_recipes',methods=['GET'])
 def latest_recipes():
@@ -95,7 +93,6 @@ def latest_recipes():
     latest_recipes = functions.latest_recipes_function(recipes)
     # Render the template with the latest recipes
     return render_template('latest_recipes.html', recipes=latest_recipes)
-
 
 #handle 404 error
 @main.errorhandler(404)
