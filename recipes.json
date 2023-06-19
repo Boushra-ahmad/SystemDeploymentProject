@@ -170,5 +170,55 @@
         "image": "butter_chicken_2.jpeg",
         "date_published": "2023-06-12",
         "rating": "2"
+    },
+    {
+        "id": 7,
+        "name": "Grilled beef steak",
+        "description": "A delicious grilled beef steak recipe.",
+        "category": "lunch",
+        "cuisine": "American",
+        "instructions": [
+            "Preheat the grill to medium-high heat",
+            "Season the beef steak with salt and pepper",
+            "Grill the steak for 4-6 minutes per side, or until desired doneness",
+            "Remove the steak from the grill and let it rest for a few minutes",
+            "Slice the steak and serve hot",
+            ""
+        ],
+        "ingredients": [
+            "1 beef steak",
+            "Salt",
+            "Pepper"
+        ],
+        "image": "Grilled Beef Steak_1.jpeg",
+        "date_published": "2023-06-19",
+        "rating": 0
+    },
+    {
+        "id": 8,
+        "name": "Chilaquiles",
+        "description": "Chilaquiles is a traditional Mexican dish made with tortilla chips, salsa, and cheese.",
+        "category": "breakfast",
+        "cuisine": "Mexican",
+        "instructions": [
+            "Preheat the oven to 350F (175C)",
+            "Spread the tortilla chips evenly in a baking dish",
+            "Pour the salsa over the chips, ensuring they are well coated",
+            "Sprinkle the shredded cheese, diced onion, and chopped cilantro over the top",
+            "Bake in the preheated oven for 10-15 minutes, or until the cheese is melted and bubbly",
+            "Remove from the oven and let it cool slightly",
+            "Serve the chilaquiles with a dollop of sour cream on top"
+        ],
+        "ingredients": [
+            "2 cups tortilla chips",
+            "1 cup salsa",
+            "1/2 cup shredded cheese",
+            "1/4 cup diced onion",
+            "1/4 cup chopped cilantro",
+            "1/4 cup sour cream"
+        ],
+        "image": "Chilaquiles_3.jpg",
+        "date_published": "2023-06-19",
+        "rating": 0
     }
 ]
