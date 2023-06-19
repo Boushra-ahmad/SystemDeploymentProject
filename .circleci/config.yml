@@ -22,9 +22,4 @@ jobs:
           name: run unit tests
           command: |
             . venv/bin/activate
-            pytest -v testing/unit_tests.py
-      - run:
-          name: run integration tests
-          command: |
-            . venv/bin/activate
-            pytest -v testing/integration_tests.py
+            pytest -v testing/unit_tests.py testing/integration_tests.py
