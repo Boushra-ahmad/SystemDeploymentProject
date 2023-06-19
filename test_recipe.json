@@ -7,15 +7,14 @@
         "cuisine": "American",
         "instructions": [
             "Step 1",
-            " Step 2",
-            " Step 3",
-            ""
+            "Step 2",
+            "Step 3."
         ],
         "ingredients": [
             "flour",
-            " milk",
-            " eggs",
-            " blueberries"
+            "milk",
+            "eggs",
+            "blueberries"
         ],
         "image": "test_pancake.jpeg",
         "date_published": "2022-03-15",
@@ -168,5 +167,23 @@
         "image": "butter_chicken_2.jpeg",
         "date_published": "2023-06-12",
         "rating": "2"
+    },
+    {
+        "id": 7,
+        "name": "Test Recipes vov",
+        "description": "Test description",
+        "category": "Test category",
+        "cuisine": "Test cuisine",
+        "instructions": [
+            "Step 1",
+            " Test instruction"
+        ],
+        "ingredients": [
+            "Ingredient 1",
+            " Ingredient 2"
+        ],
+        "image": "test.jpg",
+        "date_published": "2023-06-20",
+        "rating": 0
     }
 ]

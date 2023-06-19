@@ -141,18 +141,20 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
         else:
             new_category = recipe['category']
             
-        # instructions = list(request.form['instructions'].split(". "))
-        # ingredients = list(request.form['ingredients'].split(', '))
+        instructions = list(request.form['instructions'].split(". "))
+        ingredients = list(request.form['ingredients'].split(', '))
 
         new_data = {
             'name': request.form['name'],
             'description': request.form['description'],
             'category':new_category,
             'cuisine': request.form['cuisine'],
-            'instructions': request.form['instructions'].split('.'),
-            'ingredients': request.form['ingredients'].split(','),
+            'instructions':instructions,
+            'ingredients': ingredients,
             'image':filename
         }
+
+        recipes = load_recipes_from_json(f)
 
         # Find the recipe to update based on its ID
         for recipe in recipes:
@@ -166,7 +168,7 @@ def edit_recipe_function(id,recipe,f,UPLOAD_FOLDER,recipes):
             json.dump(recipes, file, indent=4)
 
         return message
-    
+
 #Delete Recipes    
 def delete_recipe(f,id):
     #Get the recipes from the recipes.json file
@@ -204,8 +206,9 @@ def import_recipe(csvFile, jsonFile, UPLOAD_FOLDER2, save_directory):
             os.makedirs(UPLOAD_FOLDER2)
             csvFile.save(os.path.join(UPLOAD_FOLDER2, filename))
         # Handle XLSX file
-        csvFile = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
-        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csvFile)
+        csv_file = UPLOAD_FOLDER2 + 'xlsxToCSV.csv'
+        convert_xlsx_to_csv(os.path.join(UPLOAD_FOLDER2 + filename), csv_file)
+        csvFile = csv_file
     else:
         csvFile = csvFile.filename  
     existingRecipes = load_recipes_from_json(jsonFile)
