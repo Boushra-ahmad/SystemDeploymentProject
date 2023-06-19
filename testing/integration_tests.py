@@ -7,6 +7,8 @@ import os
 import random
 import requests
 from threading import Thread
+from werkzeug.datastructures import FileStorage
+
 sys.path.append("../SystemDeploymentProject")
 
 import functions
@@ -100,7 +102,6 @@ class integration_tests():
             assert result['rating'] == '3'
             functions.delete_recipe('test_recipe.json', 20)
 
-
     def view_and_edit(self):
         with open('test_recipe.json', 'r') as file:
             old_data = json.load(file)
@@ -139,7 +140,6 @@ class integration_tests():
             assert resultdata == 'Updated Successfully'
             functions.delete_recipe('test_recipe.json', 30)
 
-
     def search_by_name_and_view(self):
     
         with open('test_recipe.json', 'r') as file:
@@ -168,8 +168,70 @@ class integration_tests():
             assert result_recipes == expected_results
             functions.delete_recipe('test_recipe.json', 31)
             
-    def import_and_view():
-        old_data = functions.load_recipes_from_json('test_recipe.json')
+    def import_and_read(self):
+        # Prepare the test data
+        csv_file = FileStorage(filename='test_recipes.csv', content_type='application/vnd.ms-excel')
+        json_file = 'test_recipe.json'
+        upload_folder = './test_files/import/'
+        image_directory = './test_images/'
+        
+        recipes = functions.load_recipes_from_json(json_file)
+        
+        initial_recipe_count = len(recipes)
+        
+        with open('./test_files/import/expected_data.json', 'w') as file:
+            json.dump(recipes, file, indent=4)   
+
+        # Call the import_recipe function
+        functions.import_recipe(csv_file, json_file, upload_folder, image_directory)
+        
+        expected_recipes = functions.load_recipes_from_json('./test_files/import/expected_data.json')  
+        
+        final_recipe_count = len(expected_recipes) 
+        
+        total_recipes_imported = final_recipe_count - initial_recipe_count
+        
+        updated_recipes = functions.load_recipes_from_json(json_file)
+        
+        recipe_imported = {
+            "id": 8,
+            "name": "Chocolate Cake",
+            "description": "Indulge in the rich and decadent flavors of a homemade chocolate cake. This moist and velvety dessert is perfect for chocolate lovers. With layers of moist chocolate cake, creamy chocolate frosting, and a hint of cocoa, this cake is a delightful treat for any occasion. Whether it's a birthday celebration or a special gathering, this chocolate cake is sure to satisfy your sweet tooth and leave you craving for more. Enjoy a slice of pure chocolate bliss!",
+            "category": "Snack",
+            "cuisine": "American",
+            "instructions": [
+                "Preheat the oven.",
+                "Mix the ingredients.",
+                "Bake the cake."
+            ],
+            "ingredients": [
+                "Flour",
+                "sugar",
+                "cocoa powder",
+                "eggs",
+                "butter",
+                "milk"
+            ],
+            "image": "Chocolate Cake.jpg",
+            "date_published": "9/21/2022",
+            "rating": 0
+        }
+        
+        for rows in updated_recipes:
+            if rows['name'] == 'Chocolate Cake':
+                id = rows['id']
+                break
+        
+        result = functions.get_by_id('test_recipe.json',id)
+        
+        self.assertEqual(recipe_imported, result)
+        # Assert the expected number of recipes imported
+        self.assertEqual(final_recipe_count, initial_recipe_count + total_recipes_imported)
+        
+        if recipe_imported == result:
+            print("import and read recipe test has passed")
+        else:
+            print("import and read recipe test has failed")
 
     def runall(self):
         self.setUp()

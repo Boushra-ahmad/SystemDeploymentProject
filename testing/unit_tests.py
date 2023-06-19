@@ -293,7 +293,6 @@ class test_unit_routes(unittest.TestCase):
             self.assertEqual(result,'Recipe already rated.')
             functions.delete_recipe('test_recipe.json', 20)
             
-
     #import recipe from a csv file
     def test_import__csv_recipe(self):
         # Prepare a test CSV file
@@ -318,11 +317,13 @@ class test_unit_routes(unittest.TestCase):
         # Call the import_recipe function
         functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2, image_directory)
         
+        #Read the expected data file
         with open('./test_files/import/expected_data.json', 'r+') as file:
             expected_recipes = json.load(file)   
-            
+        
         final_recipe_count = len(expected_recipes)    
         
+        #count total recipes imported
         total_recipes_imported = final_recipe_count - initial_recipe_count
 
         self.assertEqual(final_recipe_count, initial_recipe_count + total_recipes_imported)
