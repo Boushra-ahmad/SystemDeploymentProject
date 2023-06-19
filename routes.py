@@ -13,6 +13,7 @@ main = Blueprint('main',__name__)#routename = main
 recipes = functions.load_recipes_from_json('recipes.json')
 
 UPLOAD_FOLDER2 = 'static/files/imported/'
+image_save_directory = 'static/images' 
 
 #homepage
 @main.route('/', methods=['GET'])
@@ -65,7 +66,7 @@ def import_recipe():
     if request.method == 'POST':
         if 'import' in request.files:
             csvFile = request.files['import']
-            functions.import_recipe(csvFile, 'recipes.json', UPLOAD_FOLDER2)                
+            functions.import_recipe(csvFile, 'recipes.json', UPLOAD_FOLDER2, image_save_directory)                
             return redirect(url_for('main.home'))
         return 'Invalid file'
     return render_template('importRecipes.html')
@@ -86,15 +87,12 @@ def rate_recipe(id):
         functions.rating('recipes.json',id)
         return view_recipe(id)
 
-
-
 @main.route('/latest_recipes',methods=['GET'])
 def latest_recipes():
     recipes = functions.load_recipes_from_json('recipes.json')
     latest_recipes = functions.latest_recipes_function(recipes)
     # Render the template with the latest recipes
     return render_template('latest_recipes.html', recipes=latest_recipes)
-
 
 #handle 404 error
 @main.errorhandler(404)

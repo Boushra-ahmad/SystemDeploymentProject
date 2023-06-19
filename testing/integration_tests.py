@@ -7,6 +7,8 @@ import os
 import random
 import requests
 from threading import Thread
+from werkzeug.datastructures import FileStorage
+
 sys.path.append("../SystemDeploymentProject")
 
 import functions
@@ -69,8 +71,11 @@ class integration_tests():
             file.close()
         functions.delete_recipe('test_recipe.json', 21)
         data = functions.get_by_id('test_recipe.json',21)
-        assert data == 'not found'
-        if data == 'not found':
+        
+        new_data = functions.load_recipes_from_json('test_recipe.json')
+        
+        assert data not in new_data 
+        if data not in new_data:
             print("delete_and_read_recipe test passed")
         else:
             print("delete_and_read_recipe test failed")
@@ -184,6 +189,57 @@ class integration_tests():
                 print("search_by_name_and_view test passed")
             else:
                 print("search_by_name_and_view test failed")
+                
+    def import_and_read(self):
+        # Prepare the test data
+        csv_file = FileStorage(filename='test_recipes.csv', content_type='application/vnd.ms-excel')
+        json_file = 'test_recipe.json'
+        upload_folder = './test_files/import/'
+        image_directory = './test_images/'
+        
+        recipes = functions.load_recipes_from_json(json_file)
+
+        # Call the import_recipe function
+        functions.import_recipe(csv_file, json_file, upload_folder, image_directory)
+                
+        updated_recipes = functions.load_recipes_from_json(json_file)
+        
+        for rows in updated_recipes:
+            if rows['name'] == 'Chocolate Cake':
+                id = rows['id']
+                break
+        
+        data = {
+            "id": id,
+            "name": "Chocolate Cake",
+            "description": "Indulge in the rich and decadent flavors of a homemade chocolate cake. This moist and velvety dessert is perfect for chocolate lovers. With layers of moist chocolate cake, creamy chocolate frosting, and a hint of cocoa, this cake is a delightful treat for any occasion. Whether it's a birthday celebration or a special gathering, this chocolate cake is sure to satisfy your sweet tooth and leave you craving for more. Enjoy a slice of pure chocolate bliss!",
+            "category": "Snack",
+            "cuisine": "American",
+            "instructions": [
+                "Preheat the oven.",
+                "Mix the ingredients.",
+                "Bake the cake."
+            ],
+            "ingredients": [
+                "Flour",
+                "sugar",
+                "cocoa powder",
+                "eggs",
+                "butter",
+                "milk"
+            ],
+            "image": "Chocolate Cake.jpg",
+            "date_published": "9/21/2022",
+            "rating": 0
+        }
+                
+        result = functions.get_by_id('test_recipe.json',id)
+            
+        assert result == data
+        if result == data:
+            print("import and read recipe test has passed")
+        else:
+            print("import and read recipe test has failed")
 
     def runall(self):
         self.setUp()
@@ -192,7 +248,7 @@ class integration_tests():
         self.rate_and_view()
         self.view_and_edit()
         self.search_by_name_and_view()
-
+        self.import_and_read()
 
 run = integration_tests()
 run.runall()
