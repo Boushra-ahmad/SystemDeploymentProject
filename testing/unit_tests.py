@@ -43,7 +43,8 @@ class test_unit_routes(unittest.TestCase):
             reps = len(recipedata)
         with self.app.test_request_context('/', method='GET'):
             # Call the load_recipes_from_json function to get all recipes
-            recipes = functions.load_recipes_from_json('test_recipe.json')
+            with open('test_recipe.json', "r") as file:
+                recipes = json.load(file)
             # Assert that there are recipes available
             # print("The total is",reps)
             # print("the length of recipes",len(recipes))
@@ -326,32 +327,6 @@ class test_unit_routes(unittest.TestCase):
         total_recipes_imported = final_recipe_count - initial_recipe_count
 
         self.assertEqual(final_recipe_count, initial_recipe_count + total_recipes_imported)
-        
-    #import recipe from a xlsx file
-    # def test_import__xlsx_recipe(self):
-    #     # Prepare a test CSV file
-    #     csv_file = FileStorage(filename='test_recipes.xlsx', content_type='application/vnd.ms-excel')
-        
-    #     #Specify the folder the imported file be saved to
-    #     UPLOAD_FOLDER2 = './test_files/import/'
-        
-    #     json_file = 'test_recipe.json'
-
-    #     with open(json_file, 'r') as file:
-    #         recipes = json.load(file)
-            
-    #     with open('./test_files/import/expected_data.json', 'w') as file:
-    #         json.dump(recipes, file, indent=4)
-            
-    #     csv_file.save(os.path.join(UPLOAD_FOLDER2, csv_file.filename))
-
-    #     # Call the import_recipe function
-    #     functions.import_recipe(csv_file, json_file, UPLOAD_FOLDER2)
-        
-    #     with open('./test_files/import/expected_data.json', 'r+') as file:
-    #         expected_recipes = json.load(file)       
-
-    #     self.assertEqual(recipes, expected_recipes)
 
     #test to get latest recipes
     def test_get_latest_recipes(self):
